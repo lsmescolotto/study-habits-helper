@@ -1,12 +1,12 @@
-import { createContext, useState } from "react";
+import { createContext, useContext, useState } from "react";
 import api from "../../services/api";
-import { useUser } from "../user/user";
+import { UserContext } from "../user/user";
 
 export const HabitsContext = createContext();
 
 export const HabitsProvider = ({ children }) => {
   const [habitsList, setHabitsList] = useState([]);
-  const { token } = useUser();
+  const { token } = useContext(UserContext);
 
   const createHabit = (payload) => {
     const Auth = { Authorization: `Bearer  ${token}` };
