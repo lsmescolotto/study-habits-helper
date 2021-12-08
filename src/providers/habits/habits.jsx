@@ -11,8 +11,6 @@ export const HabitsProvider = ({ children }) => {
   const createHabit = (payload) => {
     const Auth = { Authorization: `Bearer  ${token}` };
 
-    console.log(Auth);
-
     api
       .post("habits/", payload, {
         headers: Auth,
