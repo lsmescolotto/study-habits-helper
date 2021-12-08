@@ -1,4 +1,5 @@
 import { createContext, useContext, useState } from "react";
+import api from "../../services/api";
 import { useUser } from "../user/user";
 
 export const HabitsContext = createContext();
@@ -11,8 +12,9 @@ export const HabitsProvider = ({ children }) => {
     const Auth = { Authorization: `Bearer  ${token}` };
 
     console.log(Auth);
-    axios
-      .post("https://kenzie-habits.herokuapp.com/habits/", payload, {
+
+    api
+      .post("habits/", payload, {
         headers: Auth,
       })
       .then((res) => {
@@ -25,8 +27,8 @@ export const HabitsProvider = ({ children }) => {
   };
 
   const getHabitsAxios = () => {
-    axios
-      .get("https://kenzie-habits.herokuapp.com/habits/personal/", {
+    api
+      .get("habits/personal/", {
         headers: {
           Authorization: `Bearer  ${JSON.parse(token)}`,
         },
@@ -42,8 +44,8 @@ export const HabitsProvider = ({ children }) => {
   };
 
   const updateHabit = (id, payload) => {
-    axios
-      .patch(`https://kenzie-habits.herokuapp.com/habits/:${id}/`, payload, {
+    api
+      .patch(`habits/:${id}/`, payload, {
         headers: {
           Authorization: `Bearer  ${JSON.parse(token)}`,
         },
@@ -57,8 +59,8 @@ export const HabitsProvider = ({ children }) => {
       });
   };
   const deleteHabit = (id) => {
-    axios
-      .delete(`https://kenzie-habits.herokuapp.com/habits/:${id}/`, {
+    api
+      .delete(`habits/:${id}/`, {
         headers: {
           Authorization: `Bearer  ${JSON.parse(token)}`,
         },
