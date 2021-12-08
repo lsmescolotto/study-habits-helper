@@ -1,4 +1,4 @@
-import { createContext, useContext, useState } from "react";
+import { createContext, useState } from "react";
 import api from "../../services/api";
 import { useUser } from "../user/user";
 
@@ -82,5 +82,3 @@ export const HabitsProvider = ({ children }) => {
     </HabitsContext.Provider>
   );
 };
-
-export const useHabits = useContext(HabitsContext);
