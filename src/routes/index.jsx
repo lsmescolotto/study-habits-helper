@@ -1,5 +1,6 @@
 import { Route, Switch } from "react-router-dom";
 
+import Signup from "../pages/signup";
 import Team from "../pages/team";
 import Dashboard from "../pages/dashboard";
 import Group from "../pages/group";
@@ -14,7 +15,7 @@ const Routes = () => {
         <h1>Login</h1>
       </Route>
       <Route path="/signup">
-        <h1>Signup</h1>
+        <Signup />
       </Route>
       <Route path="/dashboard">
         <Dashboard />
