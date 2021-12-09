@@ -1,5 +1,6 @@
 import { Route, Switch } from "react-router-dom";
 import Dashboard from "../pages/dashboard";
+import Group from "../pages/group";
 
 const Routes = () => {
   return (
@@ -20,7 +21,7 @@ const Routes = () => {
         <h1>Groups List</h1>
       </Route>
       <Route path="/group/:group_id">
-        <h1>Group</h1>
+        <Group />
       </Route>
     </Switch>
   );
