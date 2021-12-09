@@ -1,4 +1,8 @@
 import { Route, Switch } from "react-router-dom";
+import Team from "../pages/team";
+import Dashboard from "../pages/dashboard";
+import Group from "../pages/group";
+import AboutUs from "../pages/about";
 
 const Routes = () => {
   return (
@@ -13,13 +17,19 @@ const Routes = () => {
         <h1>Signup</h1>
       </Route>
       <Route path="/dashboard">
-        <h1>Dashboard</h1>
+        <Dashboard />
       </Route>
       <Route path="/groups_list">
         <h1>Groups List</h1>
       </Route>
       <Route path="/group/:group_id">
-        <h1>Group</h1>
+        <Group />
+      </Route>
+      <Route path="/team">
+        <Team />
+      </Route>
+      <Route path="/about">
+        <AboutUs />
       </Route>
     </Switch>
   );
