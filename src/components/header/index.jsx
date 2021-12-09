@@ -1,4 +1,4 @@
-import { Container } from "./style";
+import { Container } from "./styles";
 
 const Header = ({ name = "", token = "" }) => {
   return (

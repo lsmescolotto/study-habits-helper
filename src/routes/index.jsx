@@ -1,8 +1,8 @@
 import { Route, Switch } from "react-router-dom";
-
 import Team from "../pages/team";
 import Dashboard from "../pages/dashboard";
 import Group from "../pages/group";
+import AboutUs from "../pages/about";
 
 const Routes = () => {
   return (
@@ -27,6 +27,9 @@ const Routes = () => {
       </Route>
       <Route path="/team">
         <Team />
+      </Route>
+      <Route path="/about">
+        <AboutUs />
       </Route>
     </Switch>
   );
