@@ -1,6 +1,7 @@
 import { Route, Switch } from "react-router-dom";
-import Login from "../pages/login";
 
+import Home from "../pages/home";
+import Login from "../pages/login";
 import Signup from "../pages/signup";
 import Team from "../pages/team";
 import Dashboard from "../pages/dashboard";
@@ -10,7 +11,7 @@ const Routes = () => {
   return (
     <Switch>
       <Route exact path="/">
-        <h1>Home</h1>
+        <Home />
       </Route>
       <Route exact path="/login">
         <Login />
