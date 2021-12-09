@@ -7,6 +7,8 @@ import * as yup from "yup";
 import api from "../../services/api";
 import Button from "../../components/button";
 import Input from "../../components/input";
+import Header from "../../components/header";
+import Footer from "../../components/footer";
 
 const Login = () => {
   const history = useHistory();
@@ -30,6 +32,7 @@ const Login = () => {
 
   return (
     <div>
+      <Header />
       <h2>Login</h2>
       <form onSubmit={handleSubmit(onSubmitFunction)}>
         <Input
@@ -54,6 +57,7 @@ const Login = () => {
           Não possui conta? <Link to="/signup">Cadastre-se</Link>
         </p>
       </form>
+      <Footer />
     </div>
   );
 };
