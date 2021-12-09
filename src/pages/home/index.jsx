@@ -1,21 +1,25 @@
 import Button from "../../components/button"
+import Footer from "../../components/footer"
+import Header from "../../components/header"
+import { useHistory } from "react-router-dom"
+import { Container, RedirectContainer } from "./styles"
 
 
 const Home = () => {
 
-    return (
-        <div>
-            <header>
-                <img src="#" alt='placeholder-icon'></img>
-                <h1>Title placeholder</h1>
-            </header>
+    const history = useHistory()
 
-            <div>
+    return (
+        <Container>
+            <Header />
+
+            <RedirectContainer>
                 <h3>Seja bem-vindo!</h3>
-                <Button>Login</Button>
-                <Button>Cadastro</Button>
-            </div>
-        </div>
+                <Button onClick={() => history.push('/login')}>Login</Button>
+                <Button onClick={() => history.push('/signup')}>Cadastro</Button>
+            </RedirectContainer>
+            <Footer />
+        </Container>
     )
 }
 
