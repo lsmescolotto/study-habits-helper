@@ -1,4 +1,6 @@
 import { Route, Switch } from "react-router-dom";
+
+import Team from "../pages/team";
 import Dashboard from "../pages/dashboard";
 import Group from "../pages/group";
 
@@ -22,6 +24,9 @@ const Routes = () => {
       </Route>
       <Route path="/group/:group_id">
         <Group />
+      </Route>
+      <Route path="/team">
+        <Team />
       </Route>
     </Switch>
   );
