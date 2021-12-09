@@ -24,10 +24,6 @@ const Routes = () => {
         <h1>Group</h1>
       </Route>
 
-
-
-
-
       <Route path="/aboutus">
         <AboutUs />
       </Route>
