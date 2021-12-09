@@ -12,6 +12,8 @@ import Button from "../../components/button";
 import Header from "../../components/header";
 import Footer from "../../components/footer";
 
+import { Container, Content } from "./styles";
+
 const Signup = () => {
   const schema = yup.object().shape({
     username: yup.string().required("Campo obrigatório"),
@@ -50,9 +52,9 @@ const Signup = () => {
   };
 
   return (
-    <>
+    <Container>
       <Header />
-      <main>
+      <Content>
         <h2> Cadastro </h2>
         <form onSubmit={handleSubmit(submitFunction)}>
           <Input
@@ -91,9 +93,9 @@ const Signup = () => {
           <span>Já possui conta? </span>
           <Link to="/login">Ir para login</Link>
         </div>
-      </main>
+      </Content>
       <Footer />
-    </>
+    </Container>
   );
 };
 
