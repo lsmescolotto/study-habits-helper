@@ -1,5 +1,7 @@
 import { Route, Switch } from "react-router-dom";
 
+import Signup from "../pages/signup";
+
 const Routes = () => {
   return (
     <Switch>
@@ -10,7 +12,7 @@ const Routes = () => {
         <h1>Login</h1>
       </Route>
       <Route path="/signup">
-        <h1>Signup</h1>
+        <Signup />
       </Route>
       <Route path="/dashboard">
         <h1>Dashboard</h1>
