@@ -1,5 +1,7 @@
 import { Route, Switch } from "react-router-dom";
 
+import AboutUs from "../pages/aboutUs";
+
 const Routes = () => {
   return (
     <Switch>
@@ -20,6 +22,14 @@ const Routes = () => {
       </Route>
       <Route path="/group/:group_id">
         <h1>Group</h1>
+      </Route>
+
+
+
+
+
+      <Route path="/aboutus">
+        <AboutUs />
       </Route>
     </Switch>
   );
