@@ -9,6 +9,8 @@ import toast from "react-hot-toast";
 import api from "../../services/api";
 import Input from "../../components/input";
 import Button from "../../components/button";
+import Header from "../../components/header";
+import Footer from "../../components/footer";
 
 const Signup = () => {
   const schema = yup.object().shape({
@@ -49,7 +51,7 @@ const Signup = () => {
 
   return (
     <>
-      {/* header */}
+      <Header />
       <main>
         <h2> Cadastro </h2>
         <form onSubmit={handleSubmit(submitFunction)}>
@@ -90,7 +92,7 @@ const Signup = () => {
           <Link to="/login">Ir para login</Link>
         </div>
       </main>
-      {/* footer */}
+      <Footer />
     </>
   );
 };
