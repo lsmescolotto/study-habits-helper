@@ -21,6 +21,10 @@ const GlobalStyle = createGlobalStyle`
 	--yellow-50:#FEB546;
 	--pink-60:#F24A75;
 	--pink-50:#FF5B7E;
+	--red-20: #E11738;
+	--red-50: #AC122B;
+	--main-font: 'Roboto', sans-serif;
+	--title-font: 'Anton', sans-serif;
 }
 
 html, body, div, span, applet, object, iframe,
