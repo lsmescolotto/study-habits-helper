@@ -25,13 +25,7 @@ export const Container = styled.div`
   }
 `;
 
-export const HeaderContainer = styled.div`
-  align-items: center;
-  display: flex;
-  height: 85px;
-  justify-content: center;
-  width: 100%;
-`;
+
 
 export const GoalsContainer = styled.div`
   @media (min-width: 1024px) {
@@ -51,10 +45,3 @@ export const MembersContainer = styled.div`
   }
 `;
 
-export const FooterContainer = styled.div`
-  align-items: center;
-  display: flex;
-  height: 50px;
-  justify-content: center;
-  width: 100%;
-`;

@@ -1,17 +1,17 @@
 import { useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
-import { toast } from "react-hot-toast";
-import { useHistory, Link } from "react-router-dom";
+import { Link } from "react-router-dom";
 import * as yup from "yup";
+import { useContext } from "react";
 
-import api from "../../services/api";
 import Button from "../../components/button";
 import Input from "../../components/input";
 import Header from "../../components/header";
 import Footer from "../../components/footer";
+import { UserContext } from "../../providers/user/user";
 
 const Login = () => {
-  const history = useHistory();
+  const { userLogin } = useContext(UserContext);
 
   const schema = yup.object().shape({
     username: yup.string().required("Campo Obrigatório"),
@@ -27,7 +27,7 @@ const Login = () => {
   });
 
   const onSubmitFunction = (data) => {
-    console.log(data);
+    userLogin(data);
   };
 
   return (
