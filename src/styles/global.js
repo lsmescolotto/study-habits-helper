@@ -1,27 +1,10 @@
 import { createGlobalStyle } from "styled-components";
 
 const GlobalStyle = createGlobalStyle`
-:root{
-	--white:#fff;
-	--black-100:#0B1E27;
-	--black-50:#2C373F;
-	--grey-100:#939393;
-	--grey-90:#D2D2D2;
-	--grey-80:rgba(197, 197, 197, 0.5);
-	--grey-60:#EFEFEF;
-	--grey-40:#F5F5F5;
-	--grey-20:rgba(245, 245, 245, 0.75);
-	--blue-100:#003459;
-	--blue-80:#00486E;
-	--blue-60:#189AD3;
-	--blue-50:#00A8E8;
-	--blue-40:#BAD7E2;
-	--blue-20:#DAEEF7;
-	--yellow-60:#F4A640;
-	--yellow-50:#FEB546;
-	--pink-60:#F24A75;
-	--pink-50:#FF5B7E;
-}
+/* http://meyerweb.com/eric/tools/css/reset/ 
+   v2.0 | 20110126
+   License: none (public domain)
+*/
 
 html, body, div, span, applet, object, iframe,
 h1, h2, h3, h4, h5, h6, p, blockquote, pre,
