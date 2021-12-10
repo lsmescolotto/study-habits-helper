@@ -21,8 +21,9 @@ const Team = () => {
     {
       role: "SM",
       name: "Luan Diniz",
-      profileImg: "",
-      profileLink: "",
+      profileImg:
+        "https://media-exp1.licdn.com/dms/image/C4D03AQGy_V9HI-BJSA/profile-displayphoto-shrink_800_800/0/1639085064248?e=1644451200&v=beta&t=2PSiZjMtk9cmDneA7eGzjuU37OLvgR4Ro6lDWZRCE0A",
+      profileLink: "https://www.linkedin.com/in/luan-diniz-985a7b223/",
     },
     {
       role: "QA",
