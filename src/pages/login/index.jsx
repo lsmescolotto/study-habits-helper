@@ -14,7 +14,7 @@ const Login = () => {
   const history = useHistory();
 
   const schema = yup.object().shape({
-    email: yup.string().email("Email inválido").required("Campo Obrigatório"),
+    username: yup.string().required("Campo Obrigatório"),
     password: yup.string().required("Campo Obrigatório"),
   });
 
@@ -36,11 +36,11 @@ const Login = () => {
       <h2>Login</h2>
       <form onSubmit={handleSubmit(onSubmitFunction)}>
         <Input
-          label="Digite seu Email"
-          placeholder="E-mail"
+          label="Digite seu Username"
+          placeholder="Username"
           register={register}
-          name="email"
-          error={errors.email?.message}
+          name="username"
+          error={errors.username?.message}
         />
 
         <Input
