@@ -1,25 +1,17 @@
 import React from "react";
-import {
-  Container,
-  HeaderContainer,
-  HabitsContainer,
-  GroupsContainer,
-  UserContainer,
-  FooterContainer,
-} from "./styles.js";
+import { Container, HabitsContainer, GroupsContainer } from "./styles.js";
+import Header from "../../components/header";
+import Footer from "../../components/footer";
 
 const Dashboard = () => {
   return (
     <Container>
-      <HeaderContainer>HEADER</HeaderContainer>
-
+      <Header dashboard />
       <div className="cards-containers">
         <HabitsContainer>HABITOS</HabitsContainer>
         <GroupsContainer>GROUPS</GroupsContainer>
-        <UserContainer>USER</UserContainer>
       </div>
-
-      <FooterContainer>FOOTER</FooterContainer>
+      <Footer />
     </Container>
   );
 };
