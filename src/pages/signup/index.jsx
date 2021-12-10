@@ -8,7 +8,7 @@ import Input from "../../components/input";
 import Button from "../../components/button";
 import Header from "../../components/header";
 import Footer from "../../components/footer";
-import UserContext from "../../providers/user/user";
+import { UserContext } from "../../providers/user/user";
 
 import { Container, Content } from "./styles";
 
