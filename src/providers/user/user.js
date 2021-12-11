@@ -1,4 +1,4 @@
-import { createContext, useEffect, useState } from "react";
+import { createContext, useState } from "react";
 import api from "../../services/api";
 
 export const UserContext = createContext();
@@ -18,14 +18,13 @@ export const UserProvider = ({ children }) => {
       .post("sessions/", payload)
       .then((res) => {
         setToken(JSON.stringify(res.data.access));
+        setAuthenticated(true);
+        localStorage.setItem("token", JSON.stringify(res.data.access));
       })
       .catch((err) => {
         console.log(err.message);
       });
   };
-  useEffect(() => {
-    setAuthenticated(true);
-  }, [token]);
 
   return (
     <UserContext.Provider
