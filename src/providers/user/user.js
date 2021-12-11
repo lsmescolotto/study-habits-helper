@@ -1,9 +1,8 @@
-
-import { createContext,  useState } from "react";
+import { createContext, useState } from "react";
 import { useHistory } from "react-router-dom";
 import toast from "react-hot-toast";
 import api from "../../services/api";
-
+import jwtDecode from "jwt-decode";
 export const UserContext = createContext();
 
 export const UserProvider = ({ children }) => {
@@ -25,12 +24,12 @@ export const UserProvider = ({ children }) => {
     api
       .post("sessions/", payload)
       .then((res) => {
-      
         setToken(JSON.stringify(res.data.access));
         setAuthenticated(true);
         localStorage.setItem("token", JSON.stringify(res.data.access));
+        const userDecoded = jwtDecode(res.data.access);
+        localStorage.setItem("userId", userDecoded.user_id);
         history.push("/dashboard");
-
       })
       .catch((err) => {
         console.log(err.message);
