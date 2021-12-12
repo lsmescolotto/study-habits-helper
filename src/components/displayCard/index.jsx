@@ -1,26 +1,24 @@
-const DisplayCard = ({ type, data }) => {
-  const dataInfo =
-    type === "group"
-      ? {
-          name: data.name,
-          category: data.category,
-          description: data.description,
-          additionalInfo: data.creator.username,
-        }
-      : {
-          name: data.title,
-          category: data.category,
-          description: data.achieved,
-          additionalInfo: data.how_much_achieved,
-        };
-
+const DisplayCard = ({ type = "", data }) => {
   return (
-    <div>
-      <h3>{dataInfo.name}</h3>
-      <h4>{dataInfo.category}</h4>
-      <p>{dataInfo.description}</p>
-      <p>{dataInfo.additionalInfo}</p>
-    </div>
+    <>
+      {type === "group"
+        ? data.map((atual) => (
+            <div>
+              <h3>{atual.name}</h3>
+              <h4>{atual.category}</h4>
+              <p>{atual.description}</p>
+              <p>{atual.creator.username}</p>
+            </div>
+          ))
+        : data.map((atual) => (
+            <div>
+              <h3>{atual.title}</h3>
+              <h4>{atual.category}</h4>
+              <p>{atual.achieved}</p>
+              <p>{atual.how_much_achieved}</p>
+            </div>
+          ))}
+    </>
   );
 };
 export default DisplayCard;
