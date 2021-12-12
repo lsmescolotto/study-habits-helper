@@ -9,9 +9,10 @@ const Home = () => {
       <Header />
 
       <RedirectContainer>
-        <h2>
-          <h1>SHH...!</h1> Be quiet, we are studying here.
-        </h2>
+        <header>
+          <h1>SHH...!</h1>
+          <h2>Be quiet, we are studying here.</h2>
+        </header>
         <h3>Seja bem-vindo!</h3>
         <h4>
           Voce ja faz parte da comunidade? Faca seu
