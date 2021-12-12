@@ -1,19 +1,29 @@
 import styled from "styled-components";
 
 export const Container = styled.div`
+  background: rgb(51, 51, 51, 0.5);
+  bottom: 0;
+  left: 0;
+  position: fixed;
+  right: 0;
+  top: 0;
+  z-index: 8;
+`;
+
+export const PopUpContainer = styled.div`
   background-color: white;
   border-radius: 4px;
-  box-shadow: 0 0 5px 5000px rgb(51, 51, 51, 0.5);
+  color: black;
   left: 0;
   margin-left: auto;
   margin-right: auto;
   max-width: 300px;
   min-height: 345px;
-  right: 0;
   padding: 0 10px;
-  position: absolute;
+  position: fixed;
+  right: 0;
+  top: 80px;
   width: 90%;
-  z-index: 3;
 
   @media (min-width: 768px) {
     min-height: 400px;
