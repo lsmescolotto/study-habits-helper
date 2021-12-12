@@ -1,15 +1,15 @@
-import { createContext, useContext, useState } from "react";
+import { createContext, useState } from "react";
 import api from "../../services/api";
-import { UserContext } from "../user/user";
 
 export const HabitsContext = createContext();
 
 export const HabitsProvider = ({ children }) => {
   const [habitsList, setHabitsList] = useState([]);
-  const { token } = useContext(UserContext);
 
   const createHabit = (payload) => {
-    const Auth = { Authorization: `Bearer  ${token}` };
+    const Auth = {
+      Authorization: `Bearer  ${JSON.parse(localStorage.getItem("token"))}`,
+    };
 
     api
       .post("habits/", payload, {
@@ -28,7 +28,7 @@ export const HabitsProvider = ({ children }) => {
     api
       .get("habits/personal/", {
         headers: {
-          Authorization: `Bearer  ${JSON.parse(token)}`,
+          Authorization: `Bearer  ${JSON.parse(localStorage.getItem("token"))}`,
         },
       })
       .then((res) => {
@@ -45,7 +45,7 @@ export const HabitsProvider = ({ children }) => {
     api
       .patch(`habits/:${id}/`, payload, {
         headers: {
-          Authorization: `Bearer  ${JSON.parse(token)}`,
+          Authorization: `Bearer  ${JSON.parse(localStorage.getItem("token"))}`,
         },
       })
       .then((res) => {
@@ -60,7 +60,7 @@ export const HabitsProvider = ({ children }) => {
     api
       .delete(`habits/:${id}/`, {
         headers: {
-          Authorization: `Bearer  ${JSON.parse(token)}`,
+          Authorization: `Bearer  ${JSON.parse(localStorage.getItem("token"))}`,
         },
       })
       .then((res) => {
@@ -74,7 +74,13 @@ export const HabitsProvider = ({ children }) => {
 
   return (
     <HabitsContext.Provider
-      value={{ habitsList, createHabit, updateHabit, deleteHabit }}
+      value={{
+        habitsList,
+        createHabit,
+        updateHabit,
+        deleteHabit,
+        getHabitsAxios,
+      }}
     >
       {children}
     </HabitsContext.Provider>

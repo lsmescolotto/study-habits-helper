@@ -1,20 +1,20 @@
+import { useContext } from "react";
 import { Link } from "react-router-dom";
-import { useHistory } from "react-router-dom";
 import { useForm } from "react-hook-form";
 import * as yup from "yup";
 import { yupResolver } from "@hookform/resolvers/yup";
 
-import toast from "react-hot-toast";
-
-import api from "../../services/api";
 import Input from "../../components/input";
 import Button from "../../components/button";
 import Header from "../../components/header";
 import Footer from "../../components/footer";
+import { UserContext } from "../../providers/user/user";
 
 import { Container, Content } from "./styles";
 
 const Signup = () => {
+  const { userRegister } = useContext(UserContext);
+
   const schema = yup.object().shape({
     username: yup.string().required("Campo obrigatório"),
     email: yup.string().required("Campo obrigatório").email("Email inválido"),
@@ -37,18 +37,10 @@ const Signup = () => {
     formState: { errors },
   } = useForm({ resolver: yupResolver(schema) });
 
-  const history = useHistory();
-
   const submitFunction = ({ username, email, password }) => {
     const user = { username, email, password };
 
-    api
-      .post("/users/", user)
-      .then((_) => {
-        toast.success("Conta criada com sucesso. Agora é só fazer o login.");
-        return history.push("/login");
-      })
-      .catch((err) => toast.error("Erro ao criar a conta. Tente outro email."));
+    userRegister(user);
   };
 
   return (

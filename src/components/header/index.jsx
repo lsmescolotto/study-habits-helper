@@ -1,15 +1,22 @@
 import { Container } from "./styles";
+import Button from "../button";
 
-const Header = ({ name = "", token = "" }) => {
+const Header = ({ dashboard = false, id, group = false }) => {
   return (
     <Container>
       <figure>
         <img src="" alt="logo" />
       </figure>
-      {!!token && (
+      {!dashboard && (
         <div>
-          {!!name && <h2>{name}</h2>}
           <div>icons</div>
+        </div>
+      )}
+      {!group && (
+        <div>
+          <Button>Editar</Button>
+          {!!id && <Button>Sair do grupo</Button>}
+          <div>icon</div>
         </div>
       )}
     </Container>

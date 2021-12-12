@@ -1,20 +1,20 @@
 import { useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
-import { toast } from "react-hot-toast";
-import { useHistory, Link } from "react-router-dom";
+import { Link } from "react-router-dom";
 import * as yup from "yup";
+import { useContext } from "react";
 
-import api from "../../services/api";
 import Button from "../../components/button";
 import Input from "../../components/input";
 import Header from "../../components/header";
 import Footer from "../../components/footer";
+import { UserContext } from "../../providers/user/user";
 
 const Login = () => {
-  const history = useHistory();
+  const { userLogin } = useContext(UserContext);
 
   const schema = yup.object().shape({
-    email: yup.string().email("Email inválido").required("Campo Obrigatório"),
+    username: yup.string().required("Campo Obrigatório"),
     password: yup.string().required("Campo Obrigatório"),
   });
 
@@ -27,7 +27,7 @@ const Login = () => {
   });
 
   const onSubmitFunction = (data) => {
-    console.log(data);
+    userLogin(data);
   };
 
   return (
@@ -36,11 +36,11 @@ const Login = () => {
       <h2>Login</h2>
       <form onSubmit={handleSubmit(onSubmitFunction)}>
         <Input
-          label="Digite seu Email"
-          placeholder="E-mail"
+          label="Digite seu Username"
+          placeholder="Username"
           register={register}
-          name="email"
-          error={errors.email?.message}
+          name="username"
+          error={errors.username?.message}
         />
 
         <Input
