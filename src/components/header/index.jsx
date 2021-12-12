@@ -1,18 +1,19 @@
 import { Container } from "./styles";
 import Button from "../button";
+import Logo from "../../assets/img/logo.png";
 
 const Header = ({ dashboard = false, id, group = false }) => {
   return (
     <Container>
       <figure>
-        <img src="" alt="logo" />
+        <img src={Logo} alt="logo" />
       </figure>
-      {!dashboard && (
+      {!!dashboard && (
         <div>
           <div>icons</div>
         </div>
       )}
-      {!group && (
+      {!!group && (
         <div>
           <Button>Editar</Button>
           {!!id && <Button>Sair do grupo</Button>}
