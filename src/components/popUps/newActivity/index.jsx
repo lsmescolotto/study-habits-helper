@@ -1,16 +1,14 @@
-import React, { useContext } from "react";
+import React from "react";
 import PopUpBase from "../popUpBase";
 import Input from "../../input";
 import Button from "../../button";
 import toast from "react-hot-toast";
 import api from "../../../services/api";
-import UserContext from "../../../providers/user/user";
 import * as yup from "yup";
 import { useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
 
 const NewActivity = ({ closePopUp }) => {
-  const { token } = useContext(UserContext);
 
   let now = new Date();
 
@@ -43,7 +41,7 @@ const NewActivity = ({ closePopUp }) => {
         { ...data, realization_time: dateTime , group: groupId},
         {
           headers: {
-            Authorization: `Bearer ${token}`,
+            Authorization: `Bearer ${JSON.parse(localStorage.getItem("token"))}`,
           },
         }
       )
