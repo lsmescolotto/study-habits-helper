@@ -9,7 +9,6 @@ import { useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
 
 const UpdateActivity = ({ closePopUp, activityId }) => {
-
   const formSchema = yup.object().shape({
     title: yup.string().required("Título obrigatório"),
   });
@@ -30,11 +29,13 @@ const UpdateActivity = ({ closePopUp, activityId }) => {
           Authorization: `Bearer ${JSON.parse(localStorage.getItem("token"))}`,
         },
       })
-      .then((response) => console.log(response))
+      .then((response) => {
+        console.log(response);
+        toast.success("Atividade atualizada");
+        reset();
+        closePopUp();
+      })
       .catch((err) => toast.error("Não foi possível, atividade inexistente."));
-
-    reset();
-    closePopUp();
   };
 
   const deleteFunction = () => {
@@ -44,10 +45,12 @@ const UpdateActivity = ({ closePopUp, activityId }) => {
           Authorization: `Bearer ${JSON.parse(localStorage.getItem("token"))}`,
         },
       })
-      .then((response) => console.log(response))
+      .then((response) => {
+        console.log(response);
+        toast.success("Atividade deletada");
+        closePopUp();
+      })
       .catch((err) => toast.error("Não foi possível, grupo inexistente."));
-
-    closePopUp();
   };
 
   return (

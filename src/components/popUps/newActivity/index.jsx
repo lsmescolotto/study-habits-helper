@@ -9,7 +9,6 @@ import { useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
 
 const NewActivity = ({ closePopUp }) => {
-
   let now = new Date();
 
   const formSchema = yup.object().shape({
@@ -31,25 +30,29 @@ const NewActivity = ({ closePopUp }) => {
     resolver: yupResolver(formSchema),
   });
 
-  const onSubmitFunction = ({data, groupId}) => {
+  const onSubmitFunction = ({ data, groupId }) => {
     let dateTime =
       data.realization_time.toISOString().replace(/\..+/, "") + "Z";
 
     api
       .post(
         "/activities/",
-        { ...data, realization_time: dateTime , group: groupId},
+        { ...data, realization_time: dateTime, group: groupId },
         {
           headers: {
-            Authorization: `Bearer ${JSON.parse(localStorage.getItem("token"))}`,
+            Authorization: `Bearer ${JSON.parse(
+              localStorage.getItem("token")
+            )}`,
           },
         }
       )
-      .then((response) => console.log(response))
+      .then((response) => {
+        console.log(response);
+        toast.success('Atividade adicionada')
+        reset();
+        closePopUp();
+      })
       .catch((err) => toast.error("Não foi possível, grupo inexistente."));
-
-    reset();
-    closePopUp();
   };
 
   return (
