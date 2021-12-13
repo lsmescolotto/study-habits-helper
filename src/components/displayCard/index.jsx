@@ -2,20 +2,20 @@ const DisplayCard = ({ type = "", data }) => {
   return (
     <>
       {type === "group"
-        ? data.map((atual) => (
+        ? data.map((current) => (
             <div>
-              <h3>{atual.name}</h3>
-              <h4>{atual.category}</h4>
-              <p>{atual.description}</p>
-              <p>{atual.creator.username}</p>
+              <h3>{current.name}</h3>
+              <h4>{current.category}</h4>
+              <p>{current.description}</p>
+              <p>{current.creator.username}</p>
             </div>
           ))
-        : data.map((atual) => (
+        : data.map((current) => (
             <div>
-              <h3>{atual.title}</h3>
-              <h4>{atual.category}</h4>
-              <p>{atual.achieved}</p>
-              <p>{atual.how_much_achieved}</p>
+              <h3>{current.title}</h3>
+              <h4>{current.category}</h4>
+              <p>{current.achieved}</p>
+              <p>{current.how_much_achieved}</p>
             </div>
           ))}
     </>
