@@ -1,25 +1,23 @@
 import React from "react";
 import {
   Container,
-  HeaderContainer,
   GoalsContainer,
   ActivitiesContainer,
   MembersContainer,
-  FooterContainer,
 } from "./styles.js";
+import Header from "../../components/header";
+import Footer from "../../components/footer";
 
 const Group = () => {
   return (
     <Container>
-      <HeaderContainer>HEADER</HeaderContainer>
-
+      <Header group />
       <div className="cards-containers">
         <GoalsContainer>METAS DO GRUPO</GoalsContainer>
         <ActivitiesContainer>ATIVIDADES DO GRUPO</ActivitiesContainer>
         <MembersContainer>MEMBROS DO GRUPO</MembersContainer>
       </div>
-
-      <FooterContainer>FOOTER</FooterContainer>
+      <Footer />
     </Container>
   );
 };

@@ -7,7 +7,7 @@ const App = () => {
     <main>
       <GlobalStyle />
       <Routes />
-      <Toaster />
+      <Toaster position="top-right" reverseOrder={false} />
     </main>
   );
 };
