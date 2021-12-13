@@ -8,13 +8,6 @@ import DisplayCard from "../../displayCard";
 const FindGroups = () => {
   const { getGroups, groupList } = useContext(GroupContext);
 
-  localStorage.setItem(
-    "token",
-    JSON.stringify(
-      "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNjM5Nzk5MTY1LCJqdGkiOiI2YjU3MDdjYzdmOWM0MWE2YTZlOGJmZTRlMDE0NzNiZCIsInVzZXJfaWQiOjM0fQ.FxD2P3I24L6thOZiqxwelTnSj96IUfAco6FvJHryhbI"
-    )
-  );
-
   useEffect(() => {
     getGroups();
   }, []);

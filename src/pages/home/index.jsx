@@ -19,7 +19,6 @@ const Home = () => {
           Voce ja faz parte da comunidade? Faca seu
           <Link to="/login">Login</Link>!
         </h4>
-        <FindGroups /> {/* remover depois */}
         <h4>
           Ainda nao faz parte? Corra e faca seu{" "}
           <Link to="/signup">Cadastro</Link>!
