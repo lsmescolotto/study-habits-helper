@@ -57,7 +57,6 @@ const NewGroup = () => {
             </form>
         </PopUpBase>
     );
-
 };
 
 export default NewGroup
