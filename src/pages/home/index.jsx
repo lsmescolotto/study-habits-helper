@@ -3,6 +3,7 @@ import Footer from "../../components/footer";
 import Header from "../../components/header";
 import UpdateGroup from "../../components/popUps/updateGroup";
 import { Container, RedirectContainer } from "./styles";
+import FindGroups from "../../components/popUps/findGroups";
 
 const Home = () => {
   return (
