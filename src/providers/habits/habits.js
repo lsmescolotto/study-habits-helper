@@ -13,7 +13,7 @@ export const HabitsProvider = ({ children }) => {
 
     api
       .post("habits/", payload, {
-        headers: Auth,
+        headers: Auth.Authorization,
       })
       .then((res) => {
         console.log(res);

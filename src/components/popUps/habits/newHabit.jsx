@@ -5,7 +5,8 @@ import Input from "../../input";
 import { useContext } from "react";
 import { HabitsContext } from "../../../providers/habits/habits";
 import PopUpBase from "../popUpBase";
-const NewHabit = ({ closePopUp }) => {
+import Button from "../../button";
+const NewHabit = ({ setNewHabit, newHabit }) => {
   const { createHabit } = useContext(HabitsContext);
   const schema = yup.object().shape({
     title: yup.string().required("Campo obrigatorio"),
@@ -29,39 +30,42 @@ const NewHabit = ({ closePopUp }) => {
       how_much_achieved: 0,
       user: localStorage.getItem("userId"),
     };
-    createHabit({ fullData });
+    createHabit(fullData);
+  };
+
+  const handlePopUp = () => {
+    setNewHabit(!newHabit);
   };
 
   return (
-    <PopUpBase title={"Novo Habito"} closePopUp={closePopUp}>
-      {" "}
+    <PopUpBase title={"Novo Habito"} closePopUp={handlePopUp}>
       <form onSubmit={handleSubmit(handleHabit)}>
         <Input
           register={register}
-          name={"title"}
-          label={"titulo"}
+          name="title"
+          label="titulo"
           error={errors.title?.message}
-        ></Input>
+        />
         <Input
           register={register}
-          name={"category"}
-          label={"categoria"}
+          name="category"
+          label="categoria"
           error={errors.category?.message}
-        ></Input>
+        />
         <Input
           register={register}
-          name={"difficulty"}
-          label={"dificuldade"}
+          name="difficulty"
+          label="dificuldade"
           error={errors.difficulty?.message}
-        ></Input>
+        />
         <Input
           register={register}
-          name={"frequency"}
-          label={"frequencia"}
+          name="frequency"
+          label="frequencia"
           error={errors.frequency?.message}
-        ></Input>
+        />
 
-        <button type="submit">Criar</button>
+        <Button type="submit">Criar</Button>
       </form>
     </PopUpBase>
   );
