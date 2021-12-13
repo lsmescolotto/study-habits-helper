@@ -1,4 +1,5 @@
 import { createContext, useState } from "react";
+import toast from "react-hot-toast";
 import api from "../../services/api";
 
 export const GroupContext = createContext();
@@ -46,10 +47,12 @@ export const GroupProviders = ({ children }) => {
       })
       .then((res) => {
         console.log(res.data);
+        toast.success("Grupo atualizado");
         getGroups();
       })
       .catch((err) => {
         console.log(err.message);
+        toast.error("Erro ao atualizar grupo");
       });
   };
 

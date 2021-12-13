@@ -1,6 +1,7 @@
 import { Link } from "react-router-dom";
 import Footer from "../../components/footer";
 import Header from "../../components/header";
+import UpdateGroup from "../../components/popUps/updateGroup";
 import { Container, RedirectContainer } from "./styles";
 
 const Home = () => {
@@ -18,6 +19,7 @@ const Home = () => {
           Voce ja faz parte da comunidade? Faca seu
           <Link to="/login">Login</Link>!
         </h4>
+        <UpdateGroup /> {/*remover */}
         <h4>
           Ainda nao faz parte? Corra e faca seu{" "}
           <Link to="/signup">Cadastro</Link>!

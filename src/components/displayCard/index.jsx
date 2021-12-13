@@ -1,9 +1,9 @@
-const DisplayCard = ({ type = "", data }) => {
+const DisplayCard = ({ type = "", data, ...rest }) => {
   return (
     <>
       {type === "group"
         ? data.map((atual) => (
-            <div>
+            <div {...rest}>
               <h3>{atual.name}</h3>
               <h4>{atual.category}</h4>
               <p>{atual.description}</p>
@@ -11,7 +11,7 @@ const DisplayCard = ({ type = "", data }) => {
             </div>
           ))
         : data.map((atual) => (
-            <div>
+            <div {...rest}>
               <h3>{atual.title}</h3>
               <h4>{atual.category}</h4>
               <p>{atual.achieved}</p>
