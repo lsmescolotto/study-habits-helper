@@ -9,7 +9,7 @@ import * as yup from "yup";
 import { useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
 
-const NewActivity = ({ closePopUp, groupId }) => {
+const NewActivity = ({ closePopUp }) => {
   const { token } = useContext(UserContext);
 
   let now = new Date();
@@ -38,8 +38,8 @@ const NewActivity = ({ closePopUp, groupId }) => {
       data.realization_time.toISOString().replace(/\..+/, "") + "Z";
 
     api
-      .patch(
-        `/users/${groupId}/`,
+      .post(
+        "/activities/",
         { ...data, realization_time: dateTime },
         {
           headers: {
