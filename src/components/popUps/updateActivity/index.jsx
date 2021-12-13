@@ -58,7 +58,7 @@ const UpdateActivity = ({ closePopUp, activityId }) => {
       <form onSubmit={handleSubmit(onSubmitFunction)}>
         <Input
           label="Título:"
-          {...register("title")}
+          register={register}
           name="title"
           error={errors.title?.message}
         />

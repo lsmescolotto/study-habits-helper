@@ -6,6 +6,7 @@ import { useContext } from "react";
 import { HabitsContext } from "../../../providers/habits/habits";
 import PopUpBase from "../popUpBase";
 import Button from "../../button";
+
 const NewHabit = ({ setNewHabit, newHabit }) => {
   const { createHabit } = useContext(HabitsContext);
   const schema = yup.object().shape({
@@ -27,7 +28,7 @@ const NewHabit = ({ setNewHabit, newHabit }) => {
     const fullData = {
       ...data,
       achieved: false,
-      how_much_achieved: 0,
+      how_much_achieved: "0",
       user: localStorage.getItem("userId"),
     };
     createHabit(fullData);
