@@ -22,9 +22,9 @@ export const GroupProviders = ({ children }) => {
         console.log(err.message);
       });
   };
-  const getGroups = () => {
+  const getGroups = (data) => {
     api
-      .get("groups/", {
+      .get(`/groups/?search=${data}`, {
         headers: {
           Authorization: `Bearer  ${JSON.parse(localStorage.getItem("token"))}`,
         },
@@ -37,9 +37,9 @@ export const GroupProviders = ({ children }) => {
       });
   };
 
-  const updateGroup = (data, payload) => {
+  const updateGroup = (id, payload) => {
     api
-      .patch(`groups/${data.id}/`, payload, {
+      .patch(`groups/${id}/`, payload, {
         headers: {
           Authorization: `Bearer  ${JSON.parse(localStorage.getItem("token"))}`,
         },
@@ -53,10 +53,10 @@ export const GroupProviders = ({ children }) => {
       });
   };
 
-  const subscribeGroup = (payload) => {
+  const subscribeGroup = (id) => {
     api
       .post(
-        `groups/${payload.id}/subscribe/`,
+        `groups/${id}/subscribe/`,
         {},
         {
           headers: {
@@ -90,9 +90,9 @@ export const GroupProviders = ({ children }) => {
       });
   };
 
-  const unsubscribeGroup = (payload) => {
+  const unsubscribeGroup = (id) => {
     api
-      .delete(`groups/${payload.id}/unsubscribe/`, {
+      .delete(`groups/${id}/unsubscribe/`, {
         headers: {
           Authorization: `Bearer  ${JSON.parse(localStorage.getItem("token"))}`,
         },
