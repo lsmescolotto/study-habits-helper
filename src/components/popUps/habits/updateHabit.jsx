@@ -27,11 +27,7 @@ const HabitEditInfo = ({ closePopUp, id }) => {
   };
 
   return (
-    <PopUpBase
-      title={"Atualizar Habito"}
-      children={popUpContent}
-      closePopUp={closePopUp}
-    >
+    <PopUpBase title={"Atualizar Habito"} closePopUp={closePopUp}>
       {" "}
       <form onSubmit={handleSubmit(handleEdit)}>
         <Input

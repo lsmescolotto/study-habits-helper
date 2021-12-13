@@ -22,9 +22,9 @@ const GetHabitsSearch = ({ closePopUp }) => {
 
   const handleEdit = (data) => {
     const filteredHabits = habitsList.filter((habit) => {
-      return habit.includes(data);
+      return Object.values(habit).includes(data.search);
     });
-
+    console.log(filteredHabits);
     setSearchedHabits(filteredHabits);
   };
 
@@ -35,9 +35,7 @@ const GetHabitsSearch = ({ closePopUp }) => {
         <button type="submit">Search</button>
       </form>
 
-      {searchedHabits?.map((habit) => {
-        return <DisplayCard data={habit} />;
-      })}
+      {searchedHabits && <DisplayCard data={searchedHabits} />}
     </PopUpBase>
   );
 };
