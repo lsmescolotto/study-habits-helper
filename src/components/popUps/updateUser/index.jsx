@@ -1,18 +1,14 @@
-import { useContext } from "react";
 import { useForm } from "react-hook-form";
 import * as yup from "yup";
 import { yupResolver } from "@hookform/resolvers/yup";
 import toast from "react-hot-toast";
 
-import UserContext from "../../../providers/user/user";
 import PopUpBase from "../popUpBase";
 import Input from "../../input";
 import Button from "../../button";
 import api from "../../../services/api";
 
 const UpdateUserPopUp = () => {
-  const { token, user } = useContext(UserContext);
-
   const schema = yup.object().shape({
     username: yup.string(),
     email: yup.string().email("Email inválido"),
@@ -26,9 +22,9 @@ const UpdateUserPopUp = () => {
 
   const onSubmitFunction = () => {
     api
-      .patch(`/users/${user.id}/`, {
+      .patch(`/users/${JSON.parse(localStorage.getItem("userId"))}/`, {
         headers: {
-          Authorization: `Bearer ${token}`,
+          Authorization: `Bearer ${JSON.parse(localStorage.getItem("token"))}`,
         },
       })
       .then((response) => console.log(response))
