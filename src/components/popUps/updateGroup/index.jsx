@@ -10,14 +10,6 @@ import Input from "../../input";
 import Button from "../../button";
 
 const UpdateGroup = ({ id }) => {
-  //remover depois a parte do localstorage
-  localStorage.setItem(
-    "token",
-    JSON.stringify(
-      "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNjM5Nzk5MTY1LCJqdGkiOiI2YjU3MDdjYzdmOWM0MWE2YTZlOGJmZTRlMDE0NzNiZCIsInVzZXJfaWQiOjM0fQ.FxD2P3I24L6thOZiqxwelTnSj96IUfAco6FvJHryhbI"
-    )
-  );
-
   const { updateGroup } = useContext(GroupContext);
 
   const schema = yup.object().shape({
@@ -35,7 +27,7 @@ const UpdateGroup = ({ id }) => {
   };
 
   return (
-    <PopUpBase>
+    <PopUpBase title="Editar grupo">
       <form onSubmit={handleSubmit(onSubmitFunction)}>
         <Input name="name" label="Nome" register={register} />
         <Button type="submit">Atualizar</Button>
