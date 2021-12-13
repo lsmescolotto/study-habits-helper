@@ -33,14 +33,14 @@ const NewActivity = ({ closePopUp }) => {
     resolver: yupResolver(formSchema),
   });
 
-  const onSubmitFunction = (data) => {
+  const onSubmitFunction = ({data, groupId}) => {
     let dateTime =
       data.realization_time.toISOString().replace(/\..+/, "") + "Z";
 
     api
       .post(
         "/activities/",
-        { ...data, realization_time: dateTime },
+        { ...data, realization_time: dateTime , group: groupId},
         {
           headers: {
             Authorization: `Bearer ${token}`,
