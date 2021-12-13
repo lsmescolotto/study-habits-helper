@@ -26,7 +26,7 @@ const NewHabit = ({ closePopUp }) => {
     const fullData = {
       ...data,
       achieved: false,
-      how_much_achieved: 0,
+      how_much_achieved: "0",
       user: localStorage.getItem("userId"),
     };
     createHabit(fullData);
