@@ -1,19 +1,18 @@
-import { createContext, useContext, useState } from "react";
+import { createContext, useState } from "react";
+import toast from "react-hot-toast";
 import api from "../../services/api";
-import { UserContext } from "../user/user";
 
 export const GroupContext = createContext();
 
 export const GroupProviders = ({ children }) => {
   const [groupList, setGroupList] = useState([]);
   const [subscriptions, setSubscriptions] = useState([]);
-  const { token } = useContext(UserContext);
 
   const createGroup = (payload) => {
     api
       .post("groups/", payload, {
         headers: {
-          Authorization: `Bearer  ${JSON.parse(token)}`,
+          Authorization: `Bearer  ${JSON.parse(localStorage.getItem("token"))}`,
         },
       })
       .then((res) => {
@@ -24,11 +23,11 @@ export const GroupProviders = ({ children }) => {
         console.log(err.message);
       });
   };
-  const getGroups = () => {
+  const getGroups = (data) => {
     api
-      .get("groups/", {
+      .get(`/groups/?search=${data}`, {
         headers: {
-          Authorization: `Bearer  ${JSON.parse(token)}`,
+          Authorization: `Bearer  ${JSON.parse(localStorage.getItem("token"))}`,
         },
       })
       .then((res) => {
@@ -41,27 +40,35 @@ export const GroupProviders = ({ children }) => {
 
   const updateGroup = (id, payload) => {
     api
-      .patch(`groups/:${id}/`, payload, {
+      .patch(`groups/${id}/`, payload, {
         headers: {
-          Authorization: `Bearer  ${JSON.parse(token)}`,
+          Authorization: `Bearer  ${JSON.parse(localStorage.getItem("token"))}`,
         },
       })
       .then((res) => {
         console.log(res.data);
+        toast.success("Grupo atualizado");
         getGroups();
       })
       .catch((err) => {
         console.log(err.message);
+        toast.error("Erro ao atualizar grupo");
       });
   };
 
   const subscribeGroup = (id) => {
     api
-      .post(`groups/:${id}/subscribe/`, {
-        headers: {
-          Authorization: `Bearer  ${JSON.parse(token)}`,
-        },
-      })
+      .post(
+        `groups/${id}/subscribe/`,
+        {},
+        {
+          headers: {
+            Authorization: `Bearer  ${JSON.parse(
+              localStorage.getItem("token")
+            )}`,
+          },
+        }
+      )
       .then((res) => {
         console.log(res.data);
         getGroupsSubscriptions();
@@ -75,7 +82,7 @@ export const GroupProviders = ({ children }) => {
     api
       .get("groups/subscriptions/", {
         headers: {
-          Authorization: `Bearer  ${JSON.parse(token)}`,
+          Authorization: `Bearer  ${JSON.parse(localStorage.getItem("token"))}`,
         },
       })
       .then((res) => {
@@ -88,9 +95,9 @@ export const GroupProviders = ({ children }) => {
 
   const unsubscribeGroup = (id) => {
     api
-      .delete(`groups/:${id}/unsubscribe/`, {
+      .delete(`groups/${id}/unsubscribe/`, {
         headers: {
-          Authorization: `Bearer  ${JSON.parse(token)}`,
+          Authorization: `Bearer  ${JSON.parse(localStorage.getItem("token"))}`,
         },
       })
       .then((res) => {
@@ -111,6 +118,8 @@ export const GroupProviders = ({ children }) => {
         updateGroup,
         subscribeGroup,
         unsubscribeGroup,
+        getGroups,
+        getGroupsSubscriptions,
       }}
     >
       {children}
