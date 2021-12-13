@@ -9,6 +9,7 @@ import Button from "../../button";
 
 const NewHabit = ({ setNewHabit, newHabit }) => {
   const { createHabit } = useContext(HabitsContext);
+
   const schema = yup.object().shape({
     title: yup.string().required("Campo obrigatorio"),
     category: yup.string().required("Campo obrigatorio"),

@@ -7,13 +7,11 @@ export const HabitsProvider = ({ children }) => {
   const [habitsList, setHabitsList] = useState([]);
 
   const createHabit = (payload) => {
-    const Auth = {
-      Authorization: `Bearer  ${JSON.parse(localStorage.getItem("token"))}`,
-    };
-
     api
       .post("habits/", payload, {
-        headers: Auth.Authorization,
+        headers: {
+          Authorization: `Bearer  ${JSON.parse(localStorage.getItem("token"))}`,
+        },
       })
       .then((res) => {
         console.log(res);
