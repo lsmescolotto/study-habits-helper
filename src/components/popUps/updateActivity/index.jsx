@@ -8,18 +8,10 @@ import * as yup from "yup";
 import { useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
 
-const NewActivity = ({ closePopUp }) => {
-
-  let now = new Date();
+const UpdateActivity = ({ closePopUp, activityId }) => {
 
   const formSchema = yup.object().shape({
     title: yup.string().required("Título obrigatório"),
-    realization_time: yup
-      .date()
-      .required("Campo obrigatório")
-      .nullable()
-      .typeError("Data e hora obrigatórios")
-      .min(now, "Não pode ser no passado"),
   });
 
   const {
@@ -31,24 +23,30 @@ const NewActivity = ({ closePopUp }) => {
     resolver: yupResolver(formSchema),
   });
 
-  const onSubmitFunction = ({data, groupId}) => {
-    let dateTime =
-      data.realization_time.toISOString().replace(/\..+/, "") + "Z";
-
+  const onSubmitFunction = (data) => {
     api
-      .post(
-        "/activities/",
-        { ...data, realization_time: dateTime , group: groupId},
-        {
-          headers: {
-            Authorization: `Bearer ${JSON.parse(localStorage.getItem("token"))}`,
-          },
-        }
-      )
+      .patch(`/activities/${activityId}/`, data, {
+        headers: {
+          Authorization: `Bearer ${JSON.parse(localStorage.getItem("token"))}`,
+        },
+      })
+      .then((response) => console.log(response))
+      .catch((err) => toast.error("Não foi possível, atividade inexistente."));
+
+    reset();
+    closePopUp();
+  };
+
+  const deleteFunction = () => {
+    api
+      .delete(`/activities/${activityId}/`, {
+        headers: {
+          Authorization: `Bearer ${JSON.parse(localStorage.getItem("token"))}`,
+        },
+      })
       .then((response) => console.log(response))
       .catch((err) => toast.error("Não foi possível, grupo inexistente."));
 
-    reset();
     closePopUp();
   };
 
@@ -61,17 +59,13 @@ const NewActivity = ({ closePopUp }) => {
           name="title"
           error={errors.title?.message}
         />
-        <Input
-          label="Será concluída em:"
-          type="datetime-local"
-          {...register("realization_time")}
-          name="realization_time"
-          error={errors.realization_time?.message}
-        />
-        <Button type="submit">Criar</Button>
+        <div className="buttons_box">
+          <Button type="submit">Atualizar</Button>
+          <Button onClick={() => deleteFunction()}>Deletar</Button>
+        </div>
       </form>
     </PopUpBase>
   );
 };
 
-export default NewActivity;
+export default UpdateActivity;
