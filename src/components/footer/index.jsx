@@ -1,16 +1,12 @@
 import { Link } from "react-router-dom";
-import { Container, About, Home } from "./styles";
+import { Container } from "./styles";
 
 const Footer = () => {
   return (
     <Container>
-      <About>
-        <Link to="/about">About us</Link>
-        <Link to="/team">Developer Team</Link>
-      </About>
-      <Home>
-        <Link to="/">Home</Link>
-      </Home>
+      <Link to="/about">About us</Link>
+      <Link to="/">shh.com</Link>
+      <Link to="/team">Developer Team</Link>
     </Container>
   );
 };

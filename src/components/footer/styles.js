@@ -1,21 +1,35 @@
 import styled from "styled-components";
 
 export const Container = styled.div`
-  width: 100vw;
-  height: 10vh;
+  background-color: var(--blue-80);
 
+  height: 56px;
+  width: 100vw;
+
+  align-items: center;
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
-  align-items: center;
-`;
+  justify-content: space-around;
 
-export const About = styled.div`
-  width: 100%;
-  height: 50%;
-`;
+  a {
+    color: var(--blue-50);
+    font-family: var(--main-font);
+    font-size: 13px;
+  }
 
-export const Home = styled.div`
-  width: 100%;
-  height: 50%;
+  a:hover {
+    color: var(--blue-40);
+    text-shadow: 0 0 var(--white);
+  }
+
+  a:active {
+    color: var(--white);
+  }
+
+  @media (min-width: 768px) {
+    a {
+      font-size: 14px;
+    }
+  }
 `;
