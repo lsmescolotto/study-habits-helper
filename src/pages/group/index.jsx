@@ -34,9 +34,7 @@ const Group = () => {
           <ContainerGroup text="Atividades do Grupo" />
           {activities.results && <DisplayGroup data={activities.results} />}
         </ActivitiesContainer>
-        <MembersContainer>
-          <ContainerGroup text="Membros do Grupo" />
-        </MembersContainer>
+        <MembersContainer>Membros do Grupo</MembersContainer>
       </div>
       <Footer />
     </Container>
