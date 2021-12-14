@@ -11,7 +11,7 @@ export const Container = styled.div`
 `;
 
 export const PopUpContainer = styled.div`
-  background-color: white;
+  background-color: var(--white);
   border-radius: 4px;
   color: black;
   left: 0;
@@ -34,16 +34,18 @@ export const PopUpContainer = styled.div`
 
 export const PopUpHeader = styled.div`
   align-items: center;
-  border-bottom: 2px solid #f5f5f5;
+  border-bottom: 2px solid var(--grey-40);
   display: flex;
   flex-direction: row;
   height: 60px;
   justify-content: space-between;
   padding: 3px 5px;
-
+  
   h3 {
-    font-weight: bold;
+    color: var(--black-50);
+    font-family: var(--main-font);
     font-size: 14px;
+    font-weight: bold;
   }
 
   @media (min-width: 768px) {
