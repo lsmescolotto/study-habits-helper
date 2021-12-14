@@ -56,10 +56,7 @@ const ContainerDashboard = ({ text }) => {
         <NewGroup setNewGroup={setNewGroup} newGroupState={newGroup} />
       )}
       {searchGroup === true && (
-        <FindGroups
-          setNewSearchGroup={setNewSearchGroup}
-          searchGroupState={searchGroup}
-        />
+        <FindGroups setSearch={setNewSearchGroup} search={searchGroup} />
       )}
     </div>
   );

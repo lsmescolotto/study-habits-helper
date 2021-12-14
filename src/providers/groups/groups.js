@@ -17,7 +17,7 @@ export const GroupProviders = ({ children }) => {
       })
       .then((res) => {
         console.log(res);
-        getGroups();
+        getGroupsSubscriptions();
       })
       .catch((err) => {
         console.log(err.message);
@@ -25,7 +25,6 @@ export const GroupProviders = ({ children }) => {
   };
 
   const getGroups = (data) => {
-    console.log(data);
     api
       .get(`/groups/?search=${data}`, {
         headers: {
