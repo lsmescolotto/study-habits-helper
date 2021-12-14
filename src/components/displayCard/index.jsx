@@ -24,30 +24,30 @@ const DisplayCard = ({ type = "", data, boolean = false }) => {
   return (
     <>
       {type === "group"
-        ? data.map((atual, index) => (
+        ? data.map((group, index) => (
             <Container key={index}>
-              <h3>{atual.name}</h3>
-              <h4>{atual.category}</h4>
-              <p>{atual.description}</p>
-              <p>{atual.creator.username}</p>
-              <Button onClick={() => goPageGroups(atual.id)}>
+              <h3>{group.name}</h3>
+              <h4>{group.category}</h4>
+              <p>{group.description}</p>
+              <p>{group.creator.username}</p>
+              <Button onClick={() => goPageGroups(group.id)}>
                 Ir para Pagina
               </Button>
               {boolean && (
                 <div>
-                  <Button onClick={() => subscribeGroup(atual.id)}>
+                  <Button onClick={() => subscribeGroup(group.id)}>
                     Inscrever
                   </Button>
                 </div>
               )}
             </Container>
           ))
-        : data.map((atual, index) => (
-            <Container key={index} onClick={() => OpClEdit(atual.id)}>
-              <h3>{atual.title}</h3>
-              <h4>{atual.category}</h4>
-              <p>{atual.achieved}</p>
-              <p>{atual.how_much_achieved}</p>
+        : data.map((habit, index) => (
+            <Container key={index} onClick={() => OpClEdit(habit.id)}>
+              <h3>{habit.title}</h3>
+              <h4>{habit.category}</h4>
+              <p>{habit.achieved}</p>
+              <p>{habit.how_much_achieved}</p>
             </Container>
           ))}
       {editHabits === true && (
