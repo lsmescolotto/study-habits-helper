@@ -7,11 +7,16 @@ import { HabitsContext } from "../../../providers/habits/habits";
 import { useState } from "react/cjs/react.development";
 import PopUpBase from "../popUpBase";
 import DisplayCard from "../../displayCard";
+import Button from "../../button";
 
-const GetHabitsSearch = ({ closePopUp }) => {
-  const { habitsList, getHabitsAxios } = useContext(HabitsContext);
+const GetHabitsSearch = ({ searchHabit, setSearchHabit }) => {
+  const { habitsList } = useContext(HabitsContext);
   const [searchedHabits, setSearchedHabits] = useState([]);
-  getHabitsAxios();
+
+  const handlePopUp = () => {
+    setSearchHabit(!searchHabit);
+  };
+
   const schema = yup.object().shape({
     search: yup.string(),
   });
@@ -24,18 +29,19 @@ const GetHabitsSearch = ({ closePopUp }) => {
     const filteredHabits = habitsList.filter((habit) => {
       return Object.values(habit).includes(data.search);
     });
+
     console.log(filteredHabits);
     setSearchedHabits(filteredHabits);
   };
 
   return (
-    <PopUpBase title={"Pesquisar Habitos"}>
+    <PopUpBase title={"Pesquisar Habitos"} closePopUp={handlePopUp}>
       <form onSubmit={handleSubmit(handleEdit)}>
-        <Input register={register} name={"search"}></Input>
-        <button type="submit">Search</button>
+        <Input register={register} name="search" label="Pesquisa" />
+        <Button type="submit">Search</Button>
       </form>
 
-      {searchedHabits && <DisplayCard data={searchedHabits} />}
+      {searchedHabits[0] && <DisplayCard data={searchedHabits} />}
     </PopUpBase>
   );
 };

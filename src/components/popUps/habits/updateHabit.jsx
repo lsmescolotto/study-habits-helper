@@ -3,11 +3,17 @@ import { useContext } from "react";
 import { useForm } from "react-hook-form";
 import * as yup from "yup";
 import { HabitsContext } from "../../../providers/habits/habits";
+import Button from "../../button";
 import Input from "../../input";
 import PopUpBase from "../popUpBase";
 
-const HabitEditInfo = ({ closePopUp, id }) => {
+const HabitEditInfo = ({ setEditHabits, editHabits, id }) => {
   const { updateHabit, deleteHabit } = useContext(HabitsContext);
+
+  const OpClEdit = () => {
+    setEditHabits(!editHabits);
+  };
+
   const schema = yup.object().shape({
     how_much_achieved: yup
       .number()
@@ -17,28 +23,33 @@ const HabitEditInfo = ({ closePopUp, id }) => {
   const {
     register,
     handleSubmit,
-    formState: { error },
+    formState: { errors },
   } = useForm({
     resolver: yupResolver(schema),
   });
 
   const handleEdit = (data) => {
     updateHabit(id, data);
+    setEditHabits(!editHabits);
+  };
+
+  const deleteHabitHandle = (id) => {
+    deleteHabit(id);
+    setEditHabits(!editHabits);
   };
 
   return (
-    <PopUpBase title={"Atualizar Habito"} closePopUp={closePopUp}>
-      {" "}
+    <PopUpBase title={"Atualizar Habito"} closePopUp={OpClEdit}>
       <form onSubmit={handleSubmit(handleEdit)}>
         <Input
           register={register}
-          name={"how_much_achieved"}
-          label={"progresso"}
-          error={error.how_much_achieved?.message}
-        ></Input>
+          name="how_much_achieved"
+          label="progresso"
+          erro={errors.how_much_achieved?.message}
+        />
         <div>
-          <button type="submit">Atualizar</button>
-          <button onClick={() => deleteHabit(id)}>Deletar</button>
+          <Button type="submit">Atualizar</Button>
+          <Button onClick={() => deleteHabitHandle(id)}>Deletar</Button>
         </div>
       </form>
     </PopUpBase>

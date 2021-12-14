@@ -33,6 +33,7 @@ const NewHabit = ({ setNewHabit, newHabit }) => {
       user: localStorage.getItem("userId"),
     };
     createHabit(fullData);
+    setNewHabit(!newHabit);
   };
 
   const handlePopUp = () => {
