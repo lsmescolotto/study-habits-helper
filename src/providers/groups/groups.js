@@ -23,7 +23,9 @@ export const GroupProviders = ({ children }) => {
         console.log(err.message);
       });
   };
+
   const getGroups = (data) => {
+    console.log(data);
     api
       .get(`/groups/?search=${data}`, {
         headers: {

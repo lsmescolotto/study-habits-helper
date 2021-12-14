@@ -5,11 +5,14 @@ import { Container } from "./styles";
 const DisplayCard = ({ type = "", data }) => {
   const [editHabits, setEditHabits] = useState(false);
   const [actualId, setActualId] = useState(0);
+  const [editGroups, setEditGroups] = useState(false);
 
   const OpClEdit = (id) => {
     setEditHabits(!editHabits);
     setActualId(id);
   };
+
+  console.log(data);
 
   return (
     <>
