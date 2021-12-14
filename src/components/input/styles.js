@@ -32,7 +32,6 @@ export const Container = styled.div`
     height: 32px;
     padding: 5px;
     width: 20px;
-
   }
 
   p,
@@ -40,7 +39,6 @@ export const Container = styled.div`
   input::placeholder,
   span,
   input:placeholder-shown {
-
     font-family: var(--main-font);
   }
 
@@ -69,7 +67,6 @@ export const Container = styled.div`
   span {
     color: var(--red-20);
   }
-
 
   @media (min-width: 768px) {
     p {
