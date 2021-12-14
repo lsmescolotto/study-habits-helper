@@ -1,8 +1,12 @@
-import { useState } from "react";
+import { useState, useContext } from "react";
+import { GroupContext } from "../../providers/groups/groups";
 import HabitEditInfo from "../popUps/habits/updateHabit";
 import { Container } from "./styles";
+import Button from "../button";
 
-const DisplayCard = ({ type = "", data }) => {
+const DisplayCard = ({ type = "", data, boolean = false }) => {
+  const { subscribeGroup } = useContext(GroupContext);
+
   const [editHabits, setEditHabits] = useState(false);
   const [actualId, setActualId] = useState(0);
   const [editGroups, setEditGroups] = useState(false);
@@ -23,6 +27,13 @@ const DisplayCard = ({ type = "", data }) => {
               <h4>{atual.category}</h4>
               <p>{atual.description}</p>
               <p>{atual.creator.username}</p>
+              {boolean && (
+                <div>
+                  <Button onClick={() => subscribeGroup(atual.id)}>
+                    Inscrever
+                  </Button>
+                </div>
+              )}
             </Container>
           ))
         : data.map((atual, index) => (

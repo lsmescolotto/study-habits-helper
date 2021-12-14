@@ -2,7 +2,6 @@ import { Link } from "react-router-dom";
 import Footer from "../../components/footer";
 import Header from "../../components/header";
 import { Container, RedirectContainer } from "./styles";
-import FindGroups from "../../components/popUps/findGroups";
 
 const Home = () => {
   return (
