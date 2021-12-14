@@ -1,7 +1,7 @@
 import { Link } from "react-router-dom";
 import Footer from "../../components/footer";
 import Header from "../../components/header";
-import { Container, RedirectContainer } from "./styles";
+import { Container, RedirectContainer, ImageContainer } from "./styles";
 
 const Home = () => {
   return (
@@ -15,13 +15,14 @@ const Home = () => {
         </header>
         <h3>Seja bem-vindo!</h3>
         <h4>
-          Voce ja faz parte da comunidade? Faca seu
+          Você já faz parte da comunidade? Faça seu
           <Link to="/login">Login</Link>!
         </h4>
         <h4>
-          Ainda nao faz parte? Corra e faca seu{" "}
+          Ainda não faz parte? Corra e faça seu
           <Link to="/signup">Cadastro</Link>!
         </h4>
+        <ImageContainer></ImageContainer>
       </RedirectContainer>
       <Footer />
     </Container>
