@@ -44,8 +44,8 @@ export const ActivitiesProvider = ({ children }) => {
           Authorization: `Bearer ${JSON.parse(localStorage.getItem("token"))}`,
         },
       })
-      .then((response) => {
-        console.log(response);
+      .then((res) => {
+        console.log(res);
         renderActivities();
       })
       .catch((err) => {
