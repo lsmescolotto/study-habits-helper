@@ -1,8 +1,17 @@
-import { useState } from "react";
+import { useState, useContext } from "react";
+import { GroupContext } from "../../providers/groups/groups";
+import { GoalsContext } from "../../providers/goal/goal";
 import HabitEditInfo from "../popUps/habits/updateHabit";
 import { Container } from "./styles";
+import Button from "../button";
+import { useHistory } from "react-router-dom";
 
-const DisplayCard = ({ type = "", data }) => {
+const DisplayCard = ({ type = "", data, boolean = false }) => {
+  const { subscribeGroup } = useContext(GroupContext);
+  const { renderGoals } = useContext(GoalsContext);
+
+  const history = useHistory();
+
   const [editHabits, setEditHabits] = useState(false);
   const [actualId, setActualId] = useState(0);
 
@@ -11,23 +20,39 @@ const DisplayCard = ({ type = "", data }) => {
     setActualId(id);
   };
 
+  const goPageGroups = (id) => {
+    localStorage.setItem("GroupID", id);
+    renderGoals();
+    history.push(`/group/${id}`);
+  };
+
   return (
     <>
       {type === "group"
-        ? data.map((atual, index) => (
-            <Container key={index} onClick={(e) => console.log("click")}>
-              <h3>{atual.name}</h3>
-              <h4>{atual.category}</h4>
-              <p>{atual.description}</p>
-              <p>{atual.creator.username}</p>
+        ? data.map((group, index) => (
+            <Container key={index}>
+              <h3>{group.name}</h3>
+              <h4>{group.category}</h4>
+              <p>{group.description}</p>
+              <p>{group.creator.username}</p>
+              <Button onClick={() => goPageGroups(group.id)}>
+                Ir para Pagina
+              </Button>
+              {boolean && (
+                <div>
+                  <Button onClick={() => subscribeGroup(group.id)}>
+                    Inscrever
+                  </Button>
+                </div>
+              )}
             </Container>
           ))
-        : data.map((atual, index) => (
-            <Container key={index} onClick={() => OpClEdit(atual.id)}>
-              <h3>{atual.title}</h3>
-              <h4>{atual.category}</h4>
-              <p>{atual.achieved}</p>
-              <p>{atual.how_much_achieved}</p>
+        : data.map((habit, index) => (
+            <Container key={index} onClick={() => OpClEdit(habit.id)}>
+              <h3>{habit.title}</h3>
+              <h4>{habit.category}</h4>
+              <p>{habit.achieved}</p>
+              <p>{habit.how_much_achieved}</p>
             </Container>
           ))}
       {editHabits === true && (

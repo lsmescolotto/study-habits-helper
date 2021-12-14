@@ -2,11 +2,14 @@ import { yupResolver } from "@hookform/resolvers/yup";
 import { useContext } from "react";
 import { useForm } from "react-hook-form";
 import * as yup from "yup";
-import api from "../../../services/api";
+import Button from "../../button";
 import Input from "../../input";
 import PopUpBase from "../popUpBase";
+import { GoalsContext } from "../../../providers/goal/goal";
 
-const UpdateGoals = ({ closePopUp, id }) => {
+const UpdateGoals = ({ id, editGoals, setEditGoals }) => {
+  const { deleteGoals, updateGoals } = useContext(GoalsContext);
+
   const schema = yup.object().shape({
     how_much_achieved: yup
       .number()
@@ -16,40 +19,37 @@ const UpdateGoals = ({ closePopUp, id }) => {
   const {
     register,
     handleSubmit,
-    formState: { error },
+    formState: { errors },
   } = useForm({
     resolver: yupResolver(schema),
   });
 
   const handleEdit = (data) => {
-    updateHabit(id, data);
+    updateGoals(id, data);
+    setEditGoals(!editGoals);
   };
 
-  const deleteGoals = (id) => {
-    api.delete(`/goals/${id}/`, {
-      headers: {
-        Authorization: `Bearer ${JSON.parse(localStorage.getItem("token"))}`,
-      },
-    });
+  const handleDelete = () => {
+    deleteGoals(id);
+    setEditGoals(!editGoals);
+  };
+
+  const closePopUp = () => {
+    setEditGoals(!editGoals);
   };
 
   return (
-    <PopUpBase
-      title={"Atualizar Meta"}
-      children={popUpContent}
-      closePopUp={closePopUp}
-    >
-      {" "}
+    <PopUpBase title={"Atualizar Meta"} closePopUp={closePopUp}>
       <form onSubmit={handleSubmit(handleEdit)}>
         <Input
           register={register}
-          name={"how_much_achieved"}
-          label={"progresso"}
-          error={error.how_much_achieved?.message}
-        ></Input>
+          name="how_much_achieved"
+          label="progresso"
+          error={errors.how_much_achieved?.message}
+        />
         <div>
-          <button type="submit">Atualizar</button>
-          <button onClick={() => deleteGoals(id)}>Deletar</button>
+          <Button type="submit">Atualizar</Button>
+          <Button onClick={() => handleDelete()}>Deletar</Button>
         </div>
       </form>
     </PopUpBase>
