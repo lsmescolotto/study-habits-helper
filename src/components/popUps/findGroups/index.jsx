@@ -20,7 +20,11 @@ const FindGroups = ({ search, setSearch }) => {
     search: yup.string(),
   });
 
-  const { handleSubmit, register } = useForm({ resolver: yupResolver(schema) });
+  const {
+    handleSubmit,
+    register,
+    formState: { errors },
+  } = useForm({ resolver: yupResolver(schema) });
 
   const onSubmitFunction = (data) => {
     setSearchGroup(data.search);

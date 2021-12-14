@@ -10,12 +10,10 @@ import Footer from "../../components/footer";
 import ContainerGroup from "../../components/containerGroupPage";
 import { useContext, useEffect } from "react";
 import { GoalsContext } from "../../providers/goal/goal.js";
-import { ActivitiesContext } from "../../providers/activities/activities.js";
 import DisplayGroup from "../../components/displayGroups/index.jsx";
 
 const Group = () => {
   const { goals, renderGoals } = useContext(GoalsContext);
-  const { activities, renderActivities } = useContext(ActivitiesContext);
 
   useEffect(() => {
     renderGoals();
@@ -32,7 +30,6 @@ const Group = () => {
         </GoalsContainer>
         <ActivitiesContainer>
           <ContainerGroup text="Atividades do Grupo" />
-          {activities.results && <DisplayGroup data={activities.results} />}
         </ActivitiesContainer>
         <MembersContainer>Membros do Grupo</MembersContainer>
       </div>
