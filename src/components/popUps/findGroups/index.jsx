@@ -9,7 +9,7 @@ import Button from "../../button";
 import Input from "../../input";
 import DisplayCard from "../../displayCard";
 
-const FindGroups = () => {
+const FindGroups = ({ search, setSearch }) => {
   const [searchGroup, setSearchGroup] = useState("");
   const [searchResult, setSearchResult] = useState([]);
   const [searchInput, setSearchInput] = useState("");
@@ -37,12 +37,16 @@ const FindGroups = () => {
     setSearchInput("");
   };
 
+  const closeSearch = () => {
+    setSearch(!search);
+  };
+
   useEffect(() => {
     setSearchResult(groupList);
   }, [onSubmitFunction]);
 
   return (
-    <PopUpBase title="Pesquisar grupos">
+    <PopUpBase title="Pesquisar grupos" closePopUp={closeSearch}>
       <div>
         <form onSubmit={handleSubmit(onSubmitFunction)}>
           <Input

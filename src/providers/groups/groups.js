@@ -17,12 +17,13 @@ export const GroupProviders = ({ children }) => {
       })
       .then((res) => {
         console.log(res);
-        getGroups();
+        getGroupsSubscriptions();
       })
       .catch((err) => {
         console.log(err.message);
       });
   };
+
   const getGroups = (data) => {
     api
       .get(`/groups/?search=${data}`, {
