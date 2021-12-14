@@ -15,6 +15,7 @@ const Dashboard = () => {
   useEffect(() => {
     getHabitsAxios();
     getGroupsSubscriptions();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   return (
