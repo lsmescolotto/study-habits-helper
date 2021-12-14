@@ -2,7 +2,6 @@ import React from "react";
 import PopUpBase from "../popUpBase";
 import Input from "../../input";
 import Button from "../../button";
-import toast from "react-hot-toast";
 import * as yup from "yup";
 import { useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
