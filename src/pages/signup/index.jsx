@@ -79,7 +79,9 @@ const Signup = () => {
             register={register}
             error={errors.passwordConfirm?.message}
           />
-          <Button type="submit"> Cadastrar </Button>
+          <Button type="submit" name="button--blue">
+            Cadastrar
+          </Button>
         </form>
         <div>
           <span>Já possui conta? </span>

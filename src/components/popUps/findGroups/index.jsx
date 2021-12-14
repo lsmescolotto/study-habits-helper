@@ -52,10 +52,14 @@ const FindGroups = ({ search, setSearch }) => {
             value={searchInput}
             onChange={(event) => setSearchInput(event.target.value)}
           />
-          <Button type="submit">Pesquisar</Button>
+          <Button type="submit" name="button--blue">
+            Pesquisar
+          </Button>
         </form>
         <span>Resultado para {searchGroup}</span>
-        <Button onClick={() => cleanSearch()}>Limpar</Button>
+        <Button onClick={() => cleanSearch()} name="button--clear">
+          Limpar
+        </Button>
       </div>
 
       {searchResult.results && (
