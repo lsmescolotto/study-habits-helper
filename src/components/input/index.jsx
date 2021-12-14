@@ -1,15 +1,17 @@
+import { Container } from "./styles";
+
 const Input = ({ register, name, label, error = "", ...rest }) => {
   return (
-    <div>
+    <Container>
       <div>
         <p>
-          {label}: {!!error && <span>{error}</span>}{" "}
+          {label}: {!!error && <span>{error}</span>}
         </p>
       </div>
       <div>
         <input {...register(name)} {...rest} />
       </div>
-    </div>
+    </Container>
   );
 };
 
