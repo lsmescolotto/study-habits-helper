@@ -15,11 +15,9 @@ export const Container = styled.div`
   justify-content: space-around;
   margin-top: 20px;
   width: 100vw;
-
   .team_gif {
     display: none;
   }
-
   @media (min-width: 1024px) {
     .team_gif {
       display: flex;
@@ -39,12 +37,10 @@ export const Content = styled.div`
   display: flex;
   justify-content: center;
   margin: 15px;
-
   figure {
     height: 50px;
     width: 100px;
   }
-
   figure img {
     border-radius: 50%;
     height: 50px;
@@ -62,51 +58,41 @@ export const About = styled.div`
   justify-content: center;
   line-height: 1.25rem;
   width: 200px;
-
   a {
     cursor: pointer;
     height: 20px;
     width: 20px;
   }
-
   svg {
     color: #0a66c2;
     font-size: 20px;
   }
-
   svg:hover {
     color: var(--blue-50);
   }
-
   svg:active {
     color: var(--blue-60);
   }
-
   h4 {
     margin-right: 10px;
   }
-
   strong {
     font-weight: 500;
   }
-
   @media (min-width: 500px) {
     flex-direction: row;
     justify-content: space-between;
     width: 320px;
     align-items: center;
   }
-
   @media (min-width: 1024px) {
     font-size: 16px;
     margin: 20px 15px;
     width: 350px;
-
     a {
       height: 25px;
       width: 25px;
     }
-
     svg {
       font-size: 25px;
     }
