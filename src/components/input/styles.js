@@ -31,7 +31,6 @@ export const Container = styled.div`
     border: 1px solid transparent;
     height: 32px;
     padding: 5px;
-    width: 20px;
   }
 
   p,
