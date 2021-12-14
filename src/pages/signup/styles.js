@@ -30,7 +30,6 @@ export const Content = styled.section`
   flex-direction: column;
   align-items: center;
   justify-content: space-evenly;
-
   font-style: roboto;
 
   .backgroundImg {
