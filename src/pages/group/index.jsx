@@ -7,14 +7,29 @@ import {
 } from "./styles.js";
 import Header from "../../components/header";
 import Footer from "../../components/footer";
+import ContainerGroup from "../../components/containerGroupPage";
+import { useContext, useEffect } from "react";
+import { GoalsContext } from "../../providers/goal/goal.js";
+import DisplayGroup from "../../components/displayGroups/index.jsx";
 
 const Group = () => {
+  const { goals, renderGoals } = useContext(GoalsContext);
+
+  useEffect(() => {
+    renderGoals();
+  }, []);
+
   return (
     <Container>
       <Header group />
       <div className="cards-containers">
-        <GoalsContainer>METAS DO GRUPO</GoalsContainer>
-        <ActivitiesContainer>ATIVIDADES DO GRUPO</ActivitiesContainer>
+        <GoalsContainer>
+          <ContainerGroup text="Metas do Grupo" />
+          {goals.results && <DisplayGroup type="goals" data={goals.results} />}
+        </GoalsContainer>
+        <ActivitiesContainer>
+          <ContainerGroup text="Atividades do Grupo" />
+        </ActivitiesContainer>
         <MembersContainer>MEMBROS DO GRUPO</MembersContainer>
       </div>
       <Footer />
