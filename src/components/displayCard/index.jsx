@@ -1,5 +1,6 @@
 import { useState, useContext } from "react";
 import { GroupContext } from "../../providers/groups/groups";
+import { GoalsContext } from "../../providers/goal/goal";
 import HabitEditInfo from "../popUps/habits/updateHabit";
 import { Container } from "./styles";
 import Button from "../button";
@@ -7,6 +8,8 @@ import { useHistory } from "react-router-dom";
 
 const DisplayCard = ({ type = "", data, boolean = false }) => {
   const { subscribeGroup } = useContext(GroupContext);
+  const { renderGoals } = useContext(GoalsContext);
+
   const history = useHistory();
 
   const [editHabits, setEditHabits] = useState(false);
@@ -18,6 +21,8 @@ const DisplayCard = ({ type = "", data, boolean = false }) => {
   };
 
   const goPageGroups = (id) => {
+    localStorage.setItem("GroupID", id);
+    renderGoals();
     history.push(`/group/${id}`);
   };
 

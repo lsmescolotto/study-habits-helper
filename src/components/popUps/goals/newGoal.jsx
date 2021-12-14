@@ -3,8 +3,15 @@ import * as yup from "yup";
 import { yupResolver } from "@hookform/resolvers/yup";
 import Input from "../../input";
 import PopUpBase from "../popUpBase";
+import Button from "../../button";
+import { GoalsContext } from "../../../providers/goal/goal";
+import { useContext } from "react";
 
-const newGoal = ({ groupId }) => {
+const NewGoal = ({ newGoal, setNewGoal }) => {
+  const { createGoals } = useContext(GoalsContext);
+
+  const groupId = JSON.parse(localStorage.getItem("GroupID")) || "";
+
   const schema = yup.object().shape({
     title: yup.string().required("Campo obrigatorio"),
     difficulty: yup.string().required("Campo obrigatorio"),
@@ -25,42 +32,35 @@ const newGoal = ({ groupId }) => {
       how_much_achieved: 0,
       group: groupId,
     };
+    createGoals(fullData);
+    setNewGoal(!newGoal);
+  };
 
-    api
-      .post(`/users/${JSON.parse(localStorage.getItem("userId"))}/`, fullData, {
-        headers: {
-          Authorization: `Bearer ${JSON.parse(localStorage.getItem("token"))}`,
-        },
-      })
-      .then((response) => {
-        console.log(response);
-        setUser(response.data);
-      })
-      .catch((err) => console.log(err));
+  const ClosePopUp = () => {
+    setNewGoal(!newGoal);
   };
 
   return (
-    <PopUpBase title={"Nova Meta"} closePopUp={closePopUp}>
-      {" "}
+    <PopUpBase title={"Nova Meta"} closePopUp={ClosePopUp}>
       <form onSubmit={handleSubmit(handleGoal)}>
         <Input
           register={register}
-          name={"title"}
-          label={"titulo"}
+          name="title"
+          label="titulo"
           error={errors.title?.message}
-        ></Input>
+        />
 
         <Input
           register={register}
-          name={"difficulty"}
-          label={"dificuldade"}
+          name="difficulty"
+          label="dificuldade"
           error={errors.difficulty?.message}
-        ></Input>
+        />
 
-        <button type="submit">Criar</button>
+        <Button type="submit">Criar</Button>
       </form>
     </PopUpBase>
   );
 };
 
-export default newGoal;
+export default NewGoal;
