@@ -10,7 +10,7 @@ import Header from "../../components/header";
 import Footer from "../../components/footer";
 import { UserContext } from "../../providers/user/user";
 
-import { Container, Content } from "./styles";
+import { Container, Content, Desktop, Image, LoginRedirectBox, SignUpBox } from "./styles";
 import SignUpImage from "../../assets/img/signUpImg.gif";
 
 const Signup = () => {
@@ -47,14 +47,14 @@ const Signup = () => {
   return (
     <Container>
       <Header />
-      <div className="desktopStyle">
+      <Desktop>
       <Content>
 
 
         
         <h2> Cadastro </h2>
 
-        <div className="signUpBox">
+        <SignUpBox>
           <form onSubmit={handleSubmit(submitFunction)}>
             <Input
               placeholder="username"
@@ -88,18 +88,18 @@ const Signup = () => {
             />
             <Button type="submit"> Cadastrar </Button>
           </form>
-          </div>
+        </SignUpBox>
 
-          <div className="signUpBox-login">
+          <LoginRedirectBox>
             <span>Já possui conta? </span>
             <Link to="/login">Ir para login</Link>
-          </div>
+          </LoginRedirectBox>
 
 
 
       </Content>
-        <img src={SignUpImage} alt="SignUp" className="backgroundImg" />
-        </div>
+        <Image src={SignUpImage} alt="SignUp" />
+        </Desktop>
       <Footer />
     </Container>
   );
