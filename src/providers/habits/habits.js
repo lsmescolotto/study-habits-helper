@@ -7,13 +7,11 @@ export const HabitsProvider = ({ children }) => {
   const [habitsList, setHabitsList] = useState([]);
 
   const createHabit = (payload) => {
-    const Auth = {
-      Authorization: `Bearer  ${JSON.parse(localStorage.getItem("token"))}`,
-    };
-
     api
       .post("habits/", payload, {
-        headers: Auth,
+        headers: {
+          Authorization: `Bearer  ${JSON.parse(localStorage.getItem("token"))}`,
+        },
       })
       .then((res) => {
         console.log(res);
@@ -43,7 +41,7 @@ export const HabitsProvider = ({ children }) => {
 
   const updateHabit = (id, payload) => {
     api
-      .patch(`habits/:${id}/`, payload, {
+      .patch(`habits/${id}/`, payload, {
         headers: {
           Authorization: `Bearer  ${JSON.parse(localStorage.getItem("token"))}`,
         },
@@ -58,7 +56,7 @@ export const HabitsProvider = ({ children }) => {
   };
   const deleteHabit = (id) => {
     api
-      .delete(`habits/:${id}/`, {
+      .delete(`habits/${id}/`, {
         headers: {
           Authorization: `Bearer  ${JSON.parse(localStorage.getItem("token"))}`,
         },
