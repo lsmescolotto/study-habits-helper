@@ -39,7 +39,6 @@ const FindGroups = ({ search, setSearch }) => {
 
   useEffect(() => {
     setSearchResult(groupList);
-    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [onSubmitFunction]);
 
   return (
