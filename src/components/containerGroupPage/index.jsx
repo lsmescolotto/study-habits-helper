@@ -1,18 +1,18 @@
 import { useState } from "react";
+import api from "../../services/api";
 import Button from "../button";
 import NewGoal from "../popUps/goals/newGoal";
-import NewActivity from "../popUps/newActivity";
 
 const ContainerGroup = ({ text }) => {
   const [newGoal, setNewGoal] = useState(false);
-  const [newActivity, setNewActivity] = useState(false);
+  const [newGroup, setNewGroup] = useState(false);
 
   const OpClHabit = () => {
     setNewGoal(!newGoal);
   };
 
   const OpClGroup = () => {
-    setNewActivity(!newActivity);
+    setNewGroup(!newGroup);
   };
 
   return (
@@ -27,12 +27,6 @@ const ContainerGroup = ({ text }) => {
       </header>
       {newGoal === true && (
         <NewGoal newGoal={newGoal} setNewGoal={setNewGoal} />
-      )}
-      {newActivity === true && (
-        <NewActivity
-          newActivity={newActivity}
-          setNewActivity={setNewActivity}
-        />
       )}
     </div>
   );
