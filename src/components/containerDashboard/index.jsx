@@ -5,8 +5,9 @@ import NewHabit from "../popUps/habits/newHabit";
 import GetHabitsSearch from "../popUps/habits/habitList";
 import NewGroup from "../popUps/groups/newGroup";
 import FindGroups from "../popUps/findGroups";
+import { DashboardContainer } from "./styles";
 
-const ContainerDashboard = ({ text }) => {
+const ContainerDashboard = ({ text, children }) => {
   const [newHabit, setNewHabit] = useState(false);
   const [searchHabit, setSearchHabit] = useState(false);
   const [newGroup, setNewGroup] = useState(false);
@@ -29,7 +30,7 @@ const ContainerDashboard = ({ text }) => {
   };
 
   return (
-    <div>
+    <DashboardContainer>
       <header>
         <h3>{text}</h3>
         {text === "Habitos" ? (
@@ -43,6 +44,7 @@ const ContainerDashboard = ({ text }) => {
           <Button onClick={OpClGroup}>+</Button>
         )}
       </header>
+      {children}
       {newHabit === true && (
         <NewHabit setNewHabit={setNewHabit} newHabit={newHabit} />
       )}
@@ -58,7 +60,7 @@ const ContainerDashboard = ({ text }) => {
       {searchGroup === true && (
         <FindGroups setSearch={setNewSearchGroup} search={searchGroup} />
       )}
-    </div>
+    </DashboardContainer>
   );
 };
 
