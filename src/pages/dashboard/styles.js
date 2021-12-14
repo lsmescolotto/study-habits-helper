@@ -4,14 +4,14 @@ export const Container = styled.div`
   align-items: center;
   display: flex;
   flex-flow: column nowrap;
-  height: 100vh;
+  min-height: 100vh;
   justify-content: space-between;
   text-align: center;
 
   .cards-containers {
     display: flex;
     flex-flow: column nowrap;
-    height: 100%;
+    min-height: 100vh;
     justify-content: space-around;
     width: 95%;
   }
@@ -26,12 +26,18 @@ export const Container = styled.div`
 `;
 
 export const HabitsContainer = styled.div`
+  overflow-x: scroll;
+  width: 98%;
+  height: 240px;
   @media (min-width: 1024px) {
     width: 45%;
   }
 `;
 
 export const GroupsContainer = styled.div`
+  overflow-x: scroll;
+  width: 98%;
+  height: 240px;
   @media (min-width: 1024px) {
     width: 45%;
   }
