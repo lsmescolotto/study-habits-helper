@@ -1,7 +1,18 @@
 import styled from "styled-components";
 
 export const Container = styled.div`
-  margin: 15px;
+  margin: 15px 0;
+  width: 100%;
+
+  p,
+  input,
+  div,
+  span,
+  input::placeholder,
+  input:-webkit-autofill,
+  input:placeholder-shown {
+    width: 100%;
+  }
 
   p,
   input {
@@ -12,7 +23,6 @@ export const Container = styled.div`
     font-size: 12px;
     font-weight: 500;
     margin: 8px 2px;
-    width: 100%;
   }
 
   input {
@@ -21,13 +31,14 @@ export const Container = styled.div`
     border: 1px solid transparent;
     height: 32px;
     padding: 5px;
-    width: 100%;
+    width: 20px;
   }
 
   p,
   input,
   input::placeholder,
-  span {
+  span,
+  input:placeholder-shown {
     font-family: var(--main-font);
   }
 
@@ -44,10 +55,6 @@ export const Container = styled.div`
     border: 1px solid var(--black-50);
   }
 
-  input:placeholder-shown {
-    font-family: var(--main-font);
-  }
-
   input:-webkit-autofill {
     border: 1px solid transparent;
     box-shadow: 0 0 0px 1000px var(--grey-40) inset;
@@ -59,10 +66,6 @@ export const Container = styled.div`
 
   span {
     color: var(--red-20);
-  }
-
-  div {
-    width: auto;
   }
 
   @media (min-width: 768px) {
