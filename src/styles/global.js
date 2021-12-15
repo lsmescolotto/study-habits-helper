@@ -28,6 +28,23 @@ const GlobalStyle = createGlobalStyle`
 	--title-font: 'Anton', sans-serif;
 }
 
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+::-webkit-scrollbar-thumb {
+  background: var(--blue-60);
+  border-radius: 10px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: var(--blue-60);
+}
+::-webkit-scrollbar-track {
+  background: var(--white);
+  border-radius: 10px;
+  box-shadow: inset 0px 0px 0px 0px var(--white);
+}
+
 html, body, div, span, applet, object, iframe,
 h1, h2, h3, h4, h5, h6, p, blockquote, pre,
 a, abbr, acronym, address, big, cite, code,
