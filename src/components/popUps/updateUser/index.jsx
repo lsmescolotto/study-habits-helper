@@ -6,6 +6,7 @@ import PopUpBase from "../popUpBase";
 import Input from "../../input";
 import Button from "../../button";
 import api from "../../../services/api";
+import { Container } from "./styles";
 
 const UpdateUserPopUp = ({ closePopUp }) => {
   const schema = yup.object().shape({
@@ -27,7 +28,7 @@ const UpdateUserPopUp = ({ closePopUp }) => {
     } else if (payload.email === "") {
       payload.email = userInfo.email;
     }
-    
+
     api
       .patch(`/users/${JSON.parse(localStorage.getItem("userId"))}/`, payload, {
         headers: {
@@ -47,23 +48,27 @@ const UpdateUserPopUp = ({ closePopUp }) => {
   };
 
   return (
-    <PopUpBase title="Atualizar usuário" closePopUp={closePopUp}>
-      <form onSubmit={handleSubmit(onSubmitFunction)}>
-        <Input
-          label="Username:"
-          register={register}
-          name="username"
-          error={errors.username?.message}
-        />
-        <Input
-          label="Email:"
-          name="email"
-          error={errors.email?.message}
-          register={register}
-        />
-        <Button type="submit">Atualizar</Button>
-      </form>
-    </PopUpBase>
+    <Container>
+      <PopUpBase title="Atualizar usuário" closePopUp={closePopUp}>
+        <form onSubmit={handleSubmit(onSubmitFunction)}>
+          <Input
+            label="Username:"
+            register={register}
+            name="username"
+            error={errors.username?.message}
+          />
+          <Input
+            label="Email:"
+            name="email"
+            error={errors.email?.message}
+            register={register}
+          />
+          <Button type="submit" name="button--blue button__pop-up">
+            Atualizar
+          </Button>
+        </form>
+      </PopUpBase>
+    </Container>
   );
 };
 export default UpdateUserPopUp;
