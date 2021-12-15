@@ -12,7 +12,7 @@ const ContainerGroup = ({ text }) => {
   const { renderGoals } = useContext(GoalsContext);
   const { renderActivities } = useContext(ActivitiesContext);
   const groupId = localStorage.getItem("GroupID");
-  
+
   const OpClHabit = () => {
     setNewGoal(!newGoal);
   };
@@ -41,6 +41,12 @@ const ContainerGroup = ({ text }) => {
       </header>
       {newGoal === true && (
         <NewGoal newGoal={newGoal} setNewGoal={setNewGoal} />
+      )}
+      {newActivity === true && (
+        <NewActivity
+          newActivity={newActivity}
+          setNewActivity={setNewActivity}
+        />
       )}
     </div>
   );
