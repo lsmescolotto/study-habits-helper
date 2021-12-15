@@ -10,18 +10,25 @@ import Footer from "../../components/footer";
 import ContainerGroup from "../../components/containerGroupPage";
 import { useContext, useEffect } from "react";
 import { GoalsContext } from "../../providers/goal/goal.js";
+import { ActivitiesContext } from "../../providers/activities/activities.js";
 import DisplayGroup from "../../components/displayGroups/index.jsx";
-
+import { GroupContext } from "../../providers/groups/groups.js";
 const Group = () => {
   const { goals, renderGoals } = useContext(GoalsContext);
+  const { activities, renderActivities } = useContext(ActivitiesContext);
+  const groupId = JSON.parse(localStorage.getItem("GroupID"));
+  const { groupName } = useContext(GroupContext);
 
   useEffect(() => {
-    renderGoals();
+    renderGoals(groupId);
+    renderActivities(groupId);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   return (
     <Container>
-      <Header group />
+      <Header group id={groupId} />
+      <h1>{groupName}</h1>
       <div className="cards-containers">
         <GoalsContainer>
           <ContainerGroup text="Metas do Grupo" />
@@ -29,12 +36,21 @@ const Group = () => {
         </GoalsContainer>
         <ActivitiesContainer>
           <ContainerGroup text="Atividades do Grupo" />
+          {activities.results && (
+            <DisplayGroup type="activities" data={activities.results} />
+          )}
         </ActivitiesContainer>
-        <MembersContainer>Membros do Grupo</MembersContainer>
+        <MembersContainer>
+          {localStorage.getItem("groupContent") && (
+            <>
+              <ContainerGroup text="Membros do Grupo" />
+              <DisplayGroup type="members" />
+            </>
+          )}
+        </MembersContainer>
       </div>
       <Footer />
     </Container>
   );
 };
-
 export default Group;

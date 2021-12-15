@@ -43,7 +43,7 @@ export const Container = styled.div`
   .button__pop-up,
   .button__header {
     border-radius: 8px;
-    height: 40px;
+    min-height: 40px;
     min-width: 100px;
   }
 
@@ -58,7 +58,7 @@ export const Container = styled.div`
 
   @media (min-width: 1024px) {
     .button__pop-up {
-      height: 55px;
+      min-height: 55px;
       min-width: 150px;
     }
   }
