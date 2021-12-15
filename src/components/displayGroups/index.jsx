@@ -5,34 +5,31 @@ import UpdateActivity from "../popUps/updateActivity";
 import { useContext } from "react/cjs/react.development";
 import { GroupContext } from "../../providers/groups/groups";
 
-
 const DisplayGroup = ({ type = "", data }) => {
   const { setGroupName } = useContext(GroupContext);
+  
   const [editGoals, setEditGoals] = useState(false);
   const [editActivities, setEditActivities] = useState(false);
   const [actualId, setActualId] = useState(0);
-  
+
   const OpClEditGoals = (id) => {
     setEditGoals(!editGoals);
     setActualId(id);
   };
-  
+
   const OpClEditActivities = (id) => {
     setEditActivities(!editActivities);
     setActualId(id);
   };
-  
-  console.log(actualId);
-  
+
   const groupContent = JSON.parse(localStorage.getItem("groupContent"));
   setGroupName(groupContent.name);
-  
+
   return (
     <>
       {type === "goals"
         ? data.map((goals, index) => (
             <Container key={index} onClick={() => OpClEditGoals(goals.id)}>
-              {console.log(goals)}
               <h3>{goals.title}</h3>
               <h4>{goals.difficulty}</h4>
               <p>Status: {goals.achieved ? "Concluido" : "Em Progresso"}</p>

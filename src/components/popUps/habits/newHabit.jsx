@@ -42,7 +42,7 @@ const NewHabit = ({ setNewHabit, newHabit }) => {
   };
 
   return (
-    <PopUpBase title={"Novo Habito"} closePopUp={handlePopUp}>
+    <PopUpBase title="Novo Habito" closePopUp={handlePopUp}>
       <form onSubmit={handleSubmit(handleHabit)}>
         <Input
           register={register}

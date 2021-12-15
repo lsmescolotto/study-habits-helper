@@ -6,18 +6,28 @@ import PopUpBase from "../popUpBase";
 import Input from "../../input";
 import Button from "../../button";
 import api from "../../../services/api";
+
 const UpdateUserPopUp = ({ closePopUp }) => {
   const schema = yup.object().shape({
     username: yup.string(),
     email: yup.string().email("Email inválido"),
   });
+
   const {
     handleSubmit,
     register,
     formState: { errors },
   } = useForm({ resolver: yupResolver(schema) });
+
   const onSubmitFunction = (payload) => {
-    console.log(payload);
+    const userInfo = JSON.parse(localStorage.getItem("@Habits:user"));
+
+    if (payload.username === "") {
+      payload.username = userInfo.username;
+    } else if (payload.email === "") {
+      payload.email = userInfo.email;
+    }
+    
     api
       .patch(`/users/${JSON.parse(localStorage.getItem("userId"))}/`, payload, {
         headers: {
@@ -35,6 +45,7 @@ const UpdateUserPopUp = ({ closePopUp }) => {
         );
       });
   };
+
   return (
     <PopUpBase title="Atualizar usuário" closePopUp={closePopUp}>
       <form onSubmit={handleSubmit(onSubmitFunction)}>

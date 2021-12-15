@@ -18,12 +18,12 @@ const Group = () => {
   const { activities, renderActivities } = useContext(ActivitiesContext);
   const groupId = JSON.parse(localStorage.getItem("GroupID"));
   const { groupName } = useContext(GroupContext);
+
   useEffect(() => {
     renderGoals(groupId);
     renderActivities(groupId);
-    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
-  console.log("teste");
+
   return (
     <Container>
       <Header group id={groupId} />
