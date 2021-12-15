@@ -10,7 +10,8 @@ import Header from "../../components/header";
 import Footer from "../../components/footer";
 import { UserContext } from "../../providers/user/user";
 
-import { Container, Content } from "./styles";
+import { Container, Content, Desktop, Image, LoginRedirectBox, SignUpBox } from "./styles";
+import SignUpImage from "../../assets/img/signUpImg.gif";
 
 const Signup = () => {
   const { userRegister } = useContext(UserContext);
@@ -46,48 +47,54 @@ const Signup = () => {
   return (
     <Container>
       <Header />
+      <Desktop>
       <Content>
+        
         <h2> Cadastro </h2>
-        <form onSubmit={handleSubmit(submitFunction)}>
-          <Input
-            placeholder="username"
-            name="username"
-            label="Username"
-            register={register}
-            error={errors.username?.message}
-          />
-          <Input
-            placeholder="email"
-            name="email"
-            label="Email"
-            register={register}
-            error={errors.email?.message}
-          />
-          <Input
-            type="password"
-            placeholder="senha"
-            name="password"
-            label="Senha"
-            register={register}
-            error={errors.password?.message}
-          />
-          <Input
-            type="password"
-            placeholder="confirmar senha"
-            name="passwordConfirm"
-            label="Confirmação de senha"
-            register={register}
-            error={errors.passwordConfirm?.message}
-          />
-          <Button type="submit" name="button--blue">
-            Cadastrar
-          </Button>
-        </form>
-        <div>
-          <span>Já possui conta? </span>
-          <Link to="/login">Ir para login</Link>
-        </div>
+
+        <SignUpBox>
+          <form onSubmit={handleSubmit(submitFunction)}>
+            <Input
+              placeholder="username"
+              name="username"
+              label="Username"
+              register={register}
+              error={errors.username?.message}
+            />
+            <Input
+              placeholder="email"
+              name="email"
+              label="Email"
+              register={register}
+              error={errors.email?.message}
+            />
+            <Input
+              type="password"
+              placeholder="senha"
+              name="password"
+              label="Senha"
+              register={register}
+              error={errors.password?.message}
+            />
+            <Input
+              type="password"
+              placeholder="confirmar senha"
+              name="passwordConfirm"
+              label="Confirmação de senha"
+              register={register}
+              error={errors.passwordConfirm?.message}
+            />
+            <Button type="submit" name="button--blue">
+          </form>
+        </SignUpBox>
+
+          <LoginRedirectBox>
+            <span>Já possui conta? </span>
+            <Link to="/login">Ir para login</Link>
+          </LoginRedirectBox>
       </Content>
+        <Image src={SignUpImage} alt="SignUp" />
+        </Desktop>
       <Footer />
     </Container>
   );

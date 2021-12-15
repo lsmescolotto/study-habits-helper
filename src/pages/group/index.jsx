@@ -20,6 +20,7 @@ const Group = () => {
   useEffect(() => {
     renderGoals();
     renderActivities();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   return (

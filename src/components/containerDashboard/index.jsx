@@ -1,12 +1,12 @@
-import { BiSearchAlt2 } from "react-icons/bi";
+import { FiSearch, FiPlusSquare } from "react-icons/fi";
 import { useState } from "react/cjs/react.development";
-import Button from "../button";
 import NewHabit from "../popUps/habits/newHabit";
 import GetHabitsSearch from "../popUps/habits/habitList";
 import NewGroup from "../popUps/groups/newGroup";
 import FindGroups from "../popUps/findGroups";
+import { DashboardContainer, ContainerHeader } from "./styles";
 
-const ContainerDashboard = ({ text }) => {
+const ContainerDashboard = ({ text, children }) => {
   const [newHabit, setNewHabit] = useState(false);
   const [searchHabit, setSearchHabit] = useState(false);
   const [newGroup, setNewGroup] = useState(false);
@@ -29,20 +29,25 @@ const ContainerDashboard = ({ text }) => {
   };
 
   return (
-    <div>
-      <header>
+    <DashboardContainer>
+      <ContainerHeader>
         <h3>{text}</h3>
-        {text === "Habitos" ? (
-          <BiSearchAlt2 onClick={OpClSearchHa} />
-        ) : (
-          <BiSearchAlt2 onClick={OpClSearchGr} />
-        )}
-        {text === "Habitos" ? (
-          <Button onClick={OpClHabit}>+</Button>
-        ) : (
-          <Button onClick={OpClGroup}>+</Button>
-        )}
-      </header>
+        <div>
+          {text === "Habitos" ? (
+            <FiSearch onClick={OpClSearchHa} />
+          ) : (
+            <FiSearch onClick={OpClSearchGr} />
+          )}
+
+          {text === "Habitos" ? (
+            <FiPlusSquare onClick={OpClHabit} className="addNew" />
+          ) : (
+            <FiPlusSquare onClick={OpClGroup} className="addNew" />
+          )}
+        </div>
+      </ContainerHeader>
+
+      {children}
       {newHabit === true && (
         <NewHabit setNewHabit={setNewHabit} newHabit={newHabit} />
       )}
@@ -58,7 +63,7 @@ const ContainerDashboard = ({ text }) => {
       {searchGroup === true && (
         <FindGroups setSearch={setNewSearchGroup} search={searchGroup} />
       )}
-    </div>
+    </DashboardContainer>
   );
 };
 

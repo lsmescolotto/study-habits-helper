@@ -15,22 +15,26 @@ const Dashboard = () => {
   useEffect(() => {
     getHabitsAxios();
     getGroupsSubscriptions();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   return (
     <Container>
       <Header dashboard />
       <div className="cards-containers">
-        <HabitsContainer>
-          <ContainerDashboard text="Habitos" />
-          {habitsList[0] && <DisplayCard data={habitsList} />}
-        </HabitsContainer>
-        <GroupsContainer>
-          <ContainerDashboard text="Grupos" />
-          {subscriptions[0] && (
-            <DisplayCard type="group" data={subscriptions} />
-          )}
-        </GroupsContainer>
+        <ContainerDashboard text="Habitos">
+          <HabitsContainer>
+            {habitsList[0] && <DisplayCard data={habitsList} />}
+          </HabitsContainer>
+        </ContainerDashboard>
+
+        <ContainerDashboard text="Grupos">
+          <GroupsContainer>
+            {subscriptions[0] && (
+              <DisplayCard type="group" data={subscriptions} />
+            )}
+          </GroupsContainer>
+        </ContainerDashboard>
       </div>
       <Footer />
     </Container>
