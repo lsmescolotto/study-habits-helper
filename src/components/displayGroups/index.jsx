@@ -1,9 +1,15 @@
-import { useState, useContext } from "react";
+import { useState } from "react";
 import { Container } from "./styles";
 import UpdateGoals from "../popUps/goals/updateGoal";
+import UpdateActivity from "../popUps/updateActivity";
+import { useContext } from "react/cjs/react.development";
+import { GroupContext } from "../../providers/groups/groups";
 
 const DisplayGroup = ({ type = "", data }) => {
+  const { setGroupName } = useContext(GroupContext);
+
   const [editGoals, setEditGoals] = useState(false);
+  const [editActivities, setEditActivities] = useState(false);
   const [actualId, setActualId] = useState(0);
 
   const OpClEditGoals = (id) => {
@@ -17,7 +23,7 @@ const DisplayGroup = ({ type = "", data }) => {
   };
 
   const groupContent = JSON.parse(localStorage.getItem("groupContent"));
-  console.log(groupContent);
+  setGroupName(groupContent.name);
 
   return (
     <>
@@ -26,7 +32,8 @@ const DisplayGroup = ({ type = "", data }) => {
             <Container key={index} onClick={() => OpClEditGoals(goals.id)}>
               <h3>{goals.title}</h3>
               <h4>{goals.difficulty}</h4>
-              <p>{goals.how_much_achieved}</p>
+              <p>Status: {goals.achieved ? "Concluido" : "Em Progresso"}</p>
+              <p>Progresso: {goals.how_much_achieved}/100</p>
             </Container>
           ))
         : type === "activities"
@@ -45,11 +52,17 @@ const DisplayGroup = ({ type = "", data }) => {
               <h4>{user.email}</h4>
             </Container>
           ))}
-
       {editGoals === true && (
         <UpdateGoals
           editGoals={editGoals}
           setEditGoals={setEditGoals}
+          id={actualId}
+        />
+      )}
+      {editActivities === true && (
+        <UpdateActivity
+          editActivities={editActivities}
+          setEditActivities={setEditActivities}
           id={actualId}
         />
       )}

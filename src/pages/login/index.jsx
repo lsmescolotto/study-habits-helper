@@ -60,9 +60,13 @@ const Login = () => {
 
               <Button type="submit" name="button--pink">Login</Button>
             </form>
-            <p>
-              Não possui conta? <Link to="/signup">Cadastre-se</Link>
-            </p>
+
+            <small>
+              <p>
+                Não possui conta? <Link to="/signup"> Cadastre-se</Link>
+              </p>
+            </small>
+
           </Form>
         </Content>
         <span>
