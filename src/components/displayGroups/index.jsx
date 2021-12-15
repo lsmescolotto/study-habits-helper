@@ -1,11 +1,9 @@
-import { useState } from "react";
+import { useState, useContext } from "react";
 import { Container } from "./styles";
 import UpdateGoals from "../popUps/goals/updateGoal";
-import UpdateActivity from "../popUps/updateActivity";
 
 const DisplayGroup = ({ type = "", data }) => {
   const [editGoals, setEditGoals] = useState(false);
-  const [editActivities, setEditActivities] = useState(false);
   const [actualId, setActualId] = useState(0);
 
   const OpClEditGoals = (id) => {
@@ -20,6 +18,7 @@ const DisplayGroup = ({ type = "", data }) => {
 
   const groupContent = JSON.parse(localStorage.getItem("groupContent"));
   console.log(groupContent);
+
   return (
     <>
       {type === "goals"
@@ -51,13 +50,6 @@ const DisplayGroup = ({ type = "", data }) => {
         <UpdateGoals
           editGoals={editGoals}
           setEditGoals={setEditGoals}
-          id={actualId}
-        />
-      )}
-      {editActivities === true && (
-        <UpdateActivity
-          editActivities={editActivities}
-          setEditActivities={setEditActivities}
           id={actualId}
         />
       )}

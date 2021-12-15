@@ -5,7 +5,7 @@ const Input = ({ register, name, label, error = "", ...rest }) => {
     <Container>
       <div>
         <p>
-          {label}: {!!error && <span>{error}</span>}
+          {label} {!!error && <span>{error}</span>}
         </p>
       </div>
       <div>

@@ -68,7 +68,9 @@ const NewHabit = ({ setNewHabit, newHabit }) => {
           error={errors.frequency?.message}
         />
 
-        <Button type="submit">Criar</Button>
+        <Button type="submit" name="button--blue button__pop-up">
+          Criar
+        </Button>
       </form>
     </PopUpBase>
   );

@@ -15,8 +15,10 @@ const Header = ({ dashboard = false, id, group = false }) => {
       )}
       {!!group && (
         <div>
-          <Button>Editar</Button>
-          {!!id && <Button>Sair do grupo</Button>}
+          <Button name="button--blue button__header">Editar</Button>
+          {!!id && (
+            <Button name="button--red button__header">Sair do grupo</Button>
+          )}
           <div>icon</div>
         </div>
       )}
