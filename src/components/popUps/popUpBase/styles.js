@@ -59,7 +59,7 @@ export const PopUpBody = styled.div`
   display: flex;
   flex-flow: column nowrap;
   justify-content: space-around;
-  margin-top: 20px;
+  margin-top: 10px;
   padding: 15px 5px;
   text-align: center;
 `;
