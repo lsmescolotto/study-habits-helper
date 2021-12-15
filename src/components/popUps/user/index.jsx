@@ -1,6 +1,7 @@
 import PopUpBase from "../popUpBase";
 import api from "../../../services/api";
 import { useState } from "react";
+import Button from "../../button";
 
 const User = ({ closePopUp }) => {
   const [user, setUser] = useState([]);
@@ -22,6 +23,8 @@ const User = ({ closePopUp }) => {
       <PopUpBase title={"Usuário"} closePopUp={closePopUp}>
         <p>Username:{user.username}</p>
         <p>Email: {user.email}</p>
+        {/* falta passar pelo onClick do botão para abrir o pop up de editar o usuário */}
+        <Button children="Editar perfil" name="button--pink button__pop-up" />
       </PopUpBase>
     </>
   );

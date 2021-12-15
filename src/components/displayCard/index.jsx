@@ -35,12 +35,18 @@ const DisplayCard = ({ type = "", data, boolean = false }) => {
               <h4>{group.category}</h4>
               <p>{group.description}</p>
               <p>{group.creator.username}</p>
-              <Button onClick={() => goPageGroups(group.id)}>
+              <Button
+                onClick={() => goPageGroups(group.id)}
+                name="button--blue"
+              >
                 Ir para Pagina
               </Button>
               {boolean && (
                 <div>
-                  <Button onClick={() => subscribeGroup(group.id)}>
+                  <Button
+                    onClick={() => subscribeGroup(group.id)}
+                    name="button--pink"
+                  >
                     Inscrever
                   </Button>
                 </div>

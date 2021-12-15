@@ -62,7 +62,9 @@ const NewActivity = ({ newActivity, setNewActivity }) => {
           name="realization_time"
           error={errors.realization_time?.message}
         />
-        <Button type="submit">Criar</Button>
+        <Button type="submit" name="button--blue button__pop-up">
+          Criar
+        </Button>
       </form>
     </PopUpBase>
   );

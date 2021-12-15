@@ -8,7 +8,7 @@ import Input from "../../input";
 import Button from "../../button";
 import api from "../../../services/api";
 
-const UpdateUserPopUp = () => {
+const UpdateUserPopUp = ({ close }) => {
   const schema = yup.object().shape({
     username: yup.string(),
     email: yup.string().email("Email inválido"),
@@ -35,7 +35,7 @@ const UpdateUserPopUp = () => {
       );
   };
   return (
-    <PopUpBase title="Atualizar usuário">
+    <PopUpBase title="Atualizar usuário" closePopUp={close}>
       <form onSubmit={handleSubmit(onSubmitFunction)}>
         <Input
           label="Username:"
@@ -43,8 +43,15 @@ const UpdateUserPopUp = () => {
           name="username"
           error={errors.username?.message}
         />
-        <Input label="Email:" name="email" error={errors.email?.message} />
-        <Button type="submit">Atualizar</Button>
+        <Input
+          label="Email:"
+          name="email"
+          register={register}
+          error={errors.email?.message}
+        />
+        <Button type="submit" name="button--blue button__pop-up">
+          Atualizar
+        </Button>
       </form>
     </PopUpBase>
   );

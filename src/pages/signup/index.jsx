@@ -49,8 +49,6 @@ const Signup = () => {
       <Header />
       <Desktop>
       <Content>
-
-
         
         <h2> Cadastro </h2>
 
@@ -86,7 +84,7 @@ const Signup = () => {
               register={register}
               error={errors.passwordConfirm?.message}
             />
-            <Button type="submit"> Cadastrar </Button>
+            <Button type="submit" name="button--blue">
           </form>
         </SignUpBox>
 
@@ -94,9 +92,6 @@ const Signup = () => {
             <span>Já possui conta? </span>
             <Link to="/login">Ir para login</Link>
           </LoginRedirectBox>
-
-
-
       </Content>
         <Image src={SignUpImage} alt="SignUp" />
         </Desktop>
