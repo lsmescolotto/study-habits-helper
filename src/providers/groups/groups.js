@@ -7,7 +7,7 @@ export const GroupContext = createContext();
 export const GroupProviders = ({ children }) => {
   const [groupList, setGroupList] = useState([]);
   const [subscriptions, setSubscriptions] = useState([]);
-
+  const [groupName, setGroupName] = useState("");
   const createGroup = (payload) => {
     api
       .post("groups/", payload, {
@@ -48,8 +48,9 @@ export const GroupProviders = ({ children }) => {
       })
       .then((res) => {
         console.log(res.data);
+        localStorage.setItem("groupContent", JSON.stringify(res.data));
+        getGroups(res.data.name);
         toast.success("Grupo atualizado");
-        getGroups();
       })
       .catch((err) => {
         console.log(err.message);
@@ -122,6 +123,8 @@ export const GroupProviders = ({ children }) => {
         unsubscribeGroup,
         getGroups,
         getGroupsSubscriptions,
+        groupName,
+        setGroupName,
       }}
     >
       {children}

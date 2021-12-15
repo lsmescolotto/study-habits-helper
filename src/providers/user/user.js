@@ -26,9 +26,12 @@ export const UserProvider = ({ children }) => {
       .then((res) => {
         setToken(JSON.stringify(res.data.access));
         setAuthenticated(true);
+
         localStorage.setItem("token", JSON.stringify(res.data.access));
+
         const userDecoded = jwtDecode(res.data.access);
         localStorage.setItem("userId", userDecoded.user_id);
+
         history.push("/dashboard");
       })
       .catch((err) => {

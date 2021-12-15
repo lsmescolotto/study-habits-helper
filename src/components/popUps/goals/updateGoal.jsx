@@ -16,6 +16,9 @@ const UpdateGoals = ({ id, editGoals, setEditGoals }) => {
       .number()
       .required("Escreva a porcentagem de progresso")
       .typeError("Digite a porcentagem do progresso"),
+      .min(0, "Progresso não pode ser negativo")
+      .max(100, "Maximo deve ser 100/100"),
+
   });
 
   const {
@@ -27,8 +30,14 @@ const UpdateGoals = ({ id, editGoals, setEditGoals }) => {
   });
 
   const handleEdit = (data) => {
-    updateGoals(id, data);
+    const payload =
+      data.how_much_achieved === 100
+        ? { how_much_achieved: data.how_much_achieved, achieved: true }
+        : { how_much_achieved: data.how_much_achieved, achieved: false };
+
+    updateGoals(id, payload);
     setEditGoals(!editGoals);
+    closePopUp();
   };
 
   const handleDelete = () => {
