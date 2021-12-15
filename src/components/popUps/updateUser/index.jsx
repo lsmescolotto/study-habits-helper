@@ -8,7 +8,7 @@ import Input from "../../input";
 import Button from "../../button";
 import api from "../../../services/api";
 
-const UpdateUserPopUp = () => {
+const UpdateUserPopUp = ({ closePopUp }) => {
   const schema = yup.object().shape({
     username: yup.string(),
     email: yup.string().email("Email inválido"),
@@ -20,22 +20,27 @@ const UpdateUserPopUp = () => {
     formState: { errors },
   } = useForm({ resolver: yupResolver(schema) });
 
-  const onSubmitFunction = () => {
+  const onSubmitFunction = (payload) => {
+    console.log(payload);
     api
-      .patch(`/users/${JSON.parse(localStorage.getItem("userId"))}/`, {
+      .patch(`/users/${JSON.parse(localStorage.getItem("userId"))}/`, payload, {
         headers: {
           Authorization: `Bearer ${JSON.parse(localStorage.getItem("token"))}`,
         },
       })
-      .then((response) => console.log(response))
-      .catch((err) =>
+      .then((response) => {
+        console.log(response);
+        closePopUp();
+      })
+      .catch((err) => {
+        console.log(err);
         toast.error(
           "Não foi possível atualizar. Username ou senha já cadastrados."
-        )
-      );
+        );
+      });
   };
   return (
-    <PopUpBase title="Atualizar usuário">
+    <PopUpBase title="Atualizar usuário" closePopUp={closePopUp}>
       <form onSubmit={handleSubmit(onSubmitFunction)}>
         <Input
           label="Username:"
@@ -43,7 +48,12 @@ const UpdateUserPopUp = () => {
           name="username"
           error={errors.username?.message}
         />
-        <Input label="Email:" name="email" error={errors.email?.message} />
+        <Input
+          label="Email:"
+          name="email"
+          error={errors.email?.message}
+          register={register}
+        />
         <Button type="submit">Atualizar</Button>
       </form>
     </PopUpBase>

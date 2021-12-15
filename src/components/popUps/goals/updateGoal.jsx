@@ -6,6 +6,7 @@ import Button from "../../button";
 import Input from "../../input";
 import PopUpBase from "../popUpBase";
 import { GoalsContext } from "../../../providers/goal/goal";
+import toast from "react-hot-toast";
 
 const UpdateGoals = ({ id, editGoals, setEditGoals }) => {
   const { deleteGoals, updateGoals } = useContext(GoalsContext);
@@ -13,7 +14,9 @@ const UpdateGoals = ({ id, editGoals, setEditGoals }) => {
   const schema = yup.object().shape({
     how_much_achieved: yup
       .number()
-      .required("Escreva a porcentagem de progresso"),
+      .required("Escreva a porcentagem de progresso")
+      .min(0, "Progresso não pode ser negativo")
+      .max(100, "Maximo deve ser 100/100"),
   });
 
   const {
@@ -25,8 +28,17 @@ const UpdateGoals = ({ id, editGoals, setEditGoals }) => {
   });
 
   const handleEdit = (data) => {
+    if (data.how_much_achieved === 100) {
+      setEditGoals(!editGoals);
+      toast.success("Meta alcançada!");
+      return updateGoals(id, {
+        how_much_achieved: data.how_much_achieved,
+        achieved: true,
+      });
+    }
     updateGoals(id, data);
     setEditGoals(!editGoals);
+    closePopUp();
   };
 
   const handleDelete = () => {

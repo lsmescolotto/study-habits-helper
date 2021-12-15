@@ -17,7 +17,9 @@ const HabitEditInfo = ({ setEditHabits, editHabits, id }) => {
   const schema = yup.object().shape({
     how_much_achieved: yup
       .number()
-      .required("Escreva a porcentagem de progresso"),
+      .required("Escreva a porcentagem de progresso")
+      .min(0, "Progresso não pode ser negativo")
+      .max(100, "Progresso maximo 100"),
   });
 
   const {
@@ -29,6 +31,13 @@ const HabitEditInfo = ({ setEditHabits, editHabits, id }) => {
   });
 
   const handleEdit = (data) => {
+    if (data.how_much_achieved === 100) {
+      setEditHabits(!editHabits);
+      return updateHabit(id, {
+        how_much_achieved: data.how_much_achieved,
+        achieved: true,
+      });
+    }
     updateHabit(id, data);
     setEditHabits(!editHabits);
   };

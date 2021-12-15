@@ -1,12 +1,16 @@
-import { useState } from "react";
+import { useEffect, useState, useContext } from "react";
 import Button from "../button";
 import NewGoal from "../popUps/goals/newGoal";
 import NewActivity from "../popUps/newActivity";
+import { GoalsContext } from "../../providers/goal/goal";
+import { ActivitiesContext } from "../../providers/activities/activities";
 
 const ContainerGroup = ({ text }) => {
   const [newGoal, setNewGoal] = useState(false);
   const [newActivity, setNewActivity] = useState(false);
-
+  const { renderGoals } = useContext(GoalsContext);
+  const { renderActivities } = useContext(ActivitiesContext);
+  const groupId = localStorage.getItem("GroupID");
   const OpClHabit = () => {
     setNewGoal(!newGoal);
   };
@@ -14,6 +18,12 @@ const ContainerGroup = ({ text }) => {
   const OpClGroup = () => {
     setNewActivity(!newActivity);
   };
+
+  useEffect(() => {
+    renderGoals(groupId);
+    renderActivities(groupId);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
 
   return (
     <div>

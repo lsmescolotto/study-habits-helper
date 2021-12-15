@@ -5,10 +5,8 @@ export const GoalsContext = createContext();
 
 export const GoalsProvider = ({ children }) => {
   const [goals, setGoals] = useState([]);
-
-  const groupId = JSON.parse(localStorage.getItem("GroupID")) || "";
-
-  const renderGoals = () => {
+  const groupId = localStorage.getItem("GroupID");
+  const renderGoals = (groupId) => {
     api
       .get(`goals/?group=${groupId}`, {
         headers: {
@@ -32,7 +30,7 @@ export const GoalsProvider = ({ children }) => {
       })
       .then((response) => {
         console.log(response);
-        renderGoals();
+        renderGoals(groupId);
       })
       .catch((err) => console.log(err));
   };
@@ -46,7 +44,7 @@ export const GoalsProvider = ({ children }) => {
       })
       .then((response) => {
         console.log(response);
-        renderGoals();
+        renderGoals(groupId);
       })
       .catch((err) => {
         console.log(err);
@@ -62,13 +60,20 @@ export const GoalsProvider = ({ children }) => {
       })
       .then((response) => {
         console.log(response);
-        renderGoals();
+        renderGoals(groupId);
       });
   };
 
   return (
     <GoalsContext.Provider
-      value={{ goals, renderGoals, createGoals, updateGoals, deleteGoals }}
+      value={{
+        goals,
+        renderGoals,
+        createGoals,
+        updateGoals,
+        deleteGoals,
+        setGoals,
+      }}
     >
       {children}
     </GoalsContext.Provider>
