@@ -41,7 +41,6 @@ const DisplayCard = ({ type = "", data, boolean = false }) => {
               <p>{group.description}</p>
               <p>{group.creator.username}</p>
               <Button onClick={() => goPageGroups(group.id, group)} name="button--blue">
-
                 Ir para Pagina
               </Button>
               {boolean && (
@@ -58,7 +57,6 @@ const DisplayCard = ({ type = "", data, boolean = false }) => {
           ))
         : data.map((habit, index) => (
             <Container key={index} onClick={() => OpClEdit(habit.id)}>
-              {console.log(habit)}
               <h3>{habit.title}</h3>
               <h4>{habit.category}</h4>
               <p>{habit.frequency}</p>

@@ -20,6 +20,7 @@ const UpdateGroup = ({ id, closePopUp }) => {
 
   const onSubmitFunction = (data) => {
     updateGroup(id, data);
+    closePopUp();
   };
 
   return (

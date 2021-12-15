@@ -8,7 +8,6 @@ import { ActivitiesContext } from "../../providers/activities/activities";
 const ContainerGroup = ({ text }) => {
   const [newGoal, setNewGoal] = useState(false);
   const [newActivity, setNewActivity] = useState(false);
-  const [newGroup, setNewGroup] = useState(false);
   const { renderGoals } = useContext(GoalsContext);
   const { renderActivities } = useContext(ActivitiesContext);
   const groupId = localStorage.getItem("GroupID");
@@ -17,8 +16,8 @@ const ContainerGroup = ({ text }) => {
     setNewGoal(!newGoal);
   };
 
-  const OpClGroup = () => {
-    setNewGroup(!newGroup);
+  const OpClActivity = () => {
+    setNewActivity(!newActivity);
   };
 
   useEffect(() => {
@@ -34,7 +33,7 @@ const ContainerGroup = ({ text }) => {
         {text === "Metas do Grupo" ? (
           <Button onClick={OpClHabit}>+</Button>
         ) : text === "Atividades do Grupo" ? (
-          <Button onClick={OpClGroup}>+</Button>
+          <Button onClick={OpClActivity}>+</Button>
         ) : (
           <div></div>
         )}
