@@ -7,6 +7,7 @@ import api from "../../../services/api";
 import * as yup from "yup";
 import { useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
+import { Container } from "./styles";
 
 const NewActivity = ({ closePopUp }) => {
   let now = new Date();
@@ -47,8 +48,7 @@ const NewActivity = ({ closePopUp }) => {
         }
       )
       .then((response) => {
-        console.log(response);
-        toast.success('Atividade adicionada')
+        toast.success("Atividade adicionada");
         reset();
         closePopUp();
       })
@@ -56,26 +56,28 @@ const NewActivity = ({ closePopUp }) => {
   };
 
   return (
-    <PopUpBase title="Nova Atividade" closePopUp={closePopUp}>
-      <form onSubmit={handleSubmit(onSubmitFunction)}>
-        <Input
-          label="Título:"
-          {...register("title")}
-          name="title"
-          error={errors.title?.message}
-        />
-        <Input
-          label="Será concluída em:"
-          type="datetime-local"
-          {...register("realization_time")}
-          name="realization_time"
-          error={errors.realization_time?.message}
-        />
-        <Button type="submit" name="button--blue button__pop-up">
-          Criar
-        </Button>
-      </form>
-    </PopUpBase>
+    <Container>
+      <PopUpBase title="Nova Atividade" closePopUp={closePopUp}>
+        <form onSubmit={handleSubmit(onSubmitFunction)}>
+          <Input
+            label="Título"
+            register={register}
+            name="title"
+            error={errors.title?.message}
+          />
+          <Input
+            label="Será concluído(a) em"
+            type="datetime-local"
+            register={register}
+            name="realization_time"
+            error={errors.realization_time?.message}
+          />
+          <Button type="submit" name="button--blue button__pop-up">
+            Criar
+          </Button>
+        </form>
+      </PopUpBase>
+    </Container>
   );
 };
 

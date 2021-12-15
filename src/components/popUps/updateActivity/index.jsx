@@ -7,6 +7,7 @@ import api from "../../../services/api";
 import * as yup from "yup";
 import { useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
+import { Container } from "./styles";
 
 const UpdateActivity = ({ closePopUp, activityId }) => {
   const formSchema = yup.object().shape({
@@ -54,10 +55,11 @@ const UpdateActivity = ({ closePopUp, activityId }) => {
   };
 
   return (
+    <Container>
     <PopUpBase title="Nova Atividade" closePopUp={closePopUp}>
       <form onSubmit={handleSubmit(onSubmitFunction)}>
         <Input
-          label="Título:"
+          label="Título"
           register={register}
           name="title"
           error={errors.title?.message}
@@ -75,6 +77,7 @@ const UpdateActivity = ({ closePopUp, activityId }) => {
         </div>
       </form>
     </PopUpBase>
+    </Container>
   );
 };
 
