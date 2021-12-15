@@ -16,7 +16,7 @@ const Dashboard = () => {
     getHabitsAxios();
     getGroupsSubscriptions();
   }, []);
-
+  console.log(habitsList, subscriptions);
   return (
     <Container>
       <Header dashboard />

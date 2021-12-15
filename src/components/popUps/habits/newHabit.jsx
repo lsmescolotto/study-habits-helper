@@ -29,11 +29,12 @@ const NewHabit = ({ setNewHabit, newHabit }) => {
     const fullData = {
       ...data,
       achieved: false,
-      how_much_achieved: "0",
+      how_much_achieved: 0,
       user: localStorage.getItem("userId"),
     };
     createHabit(fullData);
     setNewHabit(!newHabit);
+    handlePopUp();
   };
 
   const handlePopUp = () => {

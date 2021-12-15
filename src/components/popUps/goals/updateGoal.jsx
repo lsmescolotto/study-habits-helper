@@ -13,7 +13,9 @@ const UpdateGoals = ({ id, editGoals, setEditGoals }) => {
   const schema = yup.object().shape({
     how_much_achieved: yup
       .number()
-      .required("Escreva a porcentagem de progresso"),
+      .required("Escreva a porcentagem de progresso")
+      .min(0, "Progresso não pode ser negativo")
+      .max(100, "Maximo deve ser 100/100"),
   });
 
   const {
@@ -25,8 +27,14 @@ const UpdateGoals = ({ id, editGoals, setEditGoals }) => {
   });
 
   const handleEdit = (data) => {
-    updateGoals(id, data);
+    const payload =
+      data.how_much_achieved === 100
+        ? { how_much_achieved: data.how_much_achieved, achieved: true }
+        : { how_much_achieved: data.how_much_achieved, achieved: false };
+
+    updateGoals(id, payload);
     setEditGoals(!editGoals);
+    closePopUp();
   };
 
   const handleDelete = () => {

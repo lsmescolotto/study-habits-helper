@@ -34,6 +34,7 @@ const NewGoal = ({ newGoal, setNewGoal }) => {
     };
     createGoals(fullData);
     setNewGoal(!newGoal);
+    ClosePopUp();
   };
 
   const ClosePopUp = () => {
