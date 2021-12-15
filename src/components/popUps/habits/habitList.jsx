@@ -30,15 +30,16 @@ const GetHabitsSearch = ({ searchHabit, setSearchHabit }) => {
       return Object.values(habit).includes(data.search);
     });
 
-    console.log(filteredHabits);
     setSearchedHabits(filteredHabits);
   };
 
   return (
-    <PopUpBase title={"Pesquisar Habitos"} closePopUp={handlePopUp}>
+    <PopUpBase title="Pesquisar Habitos" closePopUp={handlePopUp}>
       <form onSubmit={handleSubmit(handleEdit)}>
         <Input register={register} name="search" label="Pesquisa" />
-        <Button type="submit">Search</Button>
+        <Button type="submit" name="button--blue">
+          Pesquisar
+        </Button>
       </form>
 
       {searchedHabits[0] && <DisplayCard data={searchedHabits} />}

@@ -29,11 +29,12 @@ const NewHabit = ({ setNewHabit, newHabit }) => {
     const fullData = {
       ...data,
       achieved: false,
-      how_much_achieved: "0",
+      how_much_achieved: 0,
       user: localStorage.getItem("userId"),
     };
     createHabit(fullData);
     setNewHabit(!newHabit);
+    handlePopUp();
   };
 
   const handlePopUp = () => {
@@ -41,7 +42,7 @@ const NewHabit = ({ setNewHabit, newHabit }) => {
   };
 
   return (
-    <PopUpBase title={"Novo Habito"} closePopUp={handlePopUp}>
+    <PopUpBase title="Novo Habito" closePopUp={handlePopUp}>
       <form onSubmit={handleSubmit(handleHabit)}>
         <Input
           register={register}
@@ -68,7 +69,9 @@ const NewHabit = ({ setNewHabit, newHabit }) => {
           error={errors.frequency?.message}
         />
 
-        <Button type="submit">Criar</Button>
+        <Button type="submit" name="button--blue button__pop-up">
+          Criar
+        </Button>
       </form>
     </PopUpBase>
   );

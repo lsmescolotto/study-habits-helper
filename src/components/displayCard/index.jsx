@@ -5,11 +5,12 @@ import HabitEditInfo from "../popUps/habits/updateHabit";
 import { Container } from "./styles";
 import Button from "../button";
 import { useHistory } from "react-router-dom";
+import { ActivitiesContext } from "../../providers/activities/activities";
 
 const DisplayCard = ({ type = "", data, boolean = false }) => {
   const { subscribeGroup } = useContext(GroupContext);
-  const { renderGoals } = useContext(GoalsContext);
-
+  const { renderGoals, setGoals } = useContext(GoalsContext);
+  const { renderActivities, setActivities } = useContext(ActivitiesContext);
   const history = useHistory();
 
   const [editHabits, setEditHabits] = useState(false);
@@ -20,9 +21,13 @@ const DisplayCard = ({ type = "", data, boolean = false }) => {
     setActualId(id);
   };
 
-  const goPageGroups = (id) => {
+  const goPageGroups = (id, group) => {
     localStorage.setItem("GroupID", id);
-    renderGoals();
+    localStorage.setItem("groupContent", JSON.stringify(group));
+    setGoals([]);
+    setActivities([]);
+    renderActivities(id);
+    renderGoals(id);
     history.push(`/group/${id}`);
   };
 
@@ -35,12 +40,15 @@ const DisplayCard = ({ type = "", data, boolean = false }) => {
               <h4>{group.category}</h4>
               <p>{group.description}</p>
               <p>{group.creator.username}</p>
-              <Button onClick={() => goPageGroups(group.id)}>
+              <Button onClick={() => goPageGroups(group.id, group)} name="button--blue">
                 Ir para Pagina
               </Button>
               {boolean && (
                 <div>
-                  <Button onClick={() => subscribeGroup(group.id)}>
+                  <Button
+                    onClick={() => subscribeGroup(group.id)}
+                    name="button--pink"
+                  >
                     Inscrever
                   </Button>
                 </div>
@@ -51,8 +59,10 @@ const DisplayCard = ({ type = "", data, boolean = false }) => {
             <Container key={index} onClick={() => OpClEdit(habit.id)}>
               <h3>{habit.title}</h3>
               <h4>{habit.category}</h4>
-              <p>{habit.achieved}</p>
-              <p>{habit.how_much_achieved}</p>
+              <p>{habit.frequency}</p>
+              <p>{habit.difficulty}</p>
+              <p>Status: {habit.achieved ? "Concluido" : "Em Progresso"}</p>
+              <p>Progresso: {habit.how_much_achieved}/100</p>
             </Container>
           ))}
       {editHabits === true && (
