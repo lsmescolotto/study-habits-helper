@@ -2,14 +2,16 @@ import React from "react";
 import PopUpBase from "../popUpBase";
 import Input from "../../input";
 import Button from "../../button";
-import toast from "react-hot-toast";
-import api from "../../../services/api";
 import * as yup from "yup";
 import { useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
+import { useContext } from "react";
+import { ActivitiesContext } from "../../../providers/activities/activities";
 import { Container } from "./styles";
 
-const UpdateActivity = ({ closePopUp, activityId }) => {
+const UpdateActivity = ({ id, editActivities, setEditActivities }) => {
+  const { updateActivities, deleteActivities } = useContext(ActivitiesContext);
+
   const formSchema = yup.object().shape({
     title: yup.string().required("Título obrigatório"),
   });
@@ -18,40 +20,22 @@ const UpdateActivity = ({ closePopUp, activityId }) => {
     register,
     handleSubmit,
     formState: { errors },
-    reset,
   } = useForm({
     resolver: yupResolver(formSchema),
   });
 
   const onSubmitFunction = (data) => {
-    api
-      .patch(`/activities/${activityId}/`, data, {
-        headers: {
-          Authorization: `Bearer ${JSON.parse(localStorage.getItem("token"))}`,
-        },
-      })
-      .then((response) => {
-        console.log(response);
-        toast.success("Atividade atualizada");
-        reset();
-        closePopUp();
-      })
-      .catch((err) => toast.error("Não foi possível, atividade inexistente."));
+    updateActivities(id, data);
+    setEditActivities(!editActivities);
   };
 
   const deleteFunction = () => {
-    api
-      .delete(`/activities/${activityId}/`, {
-        headers: {
-          Authorization: `Bearer ${JSON.parse(localStorage.getItem("token"))}`,
-        },
-      })
-      .then((response) => {
-        console.log(response);
-        toast.success("Atividade deletada");
-        closePopUp();
-      })
-      .catch((err) => toast.error("Não foi possível, grupo inexistente."));
+    deleteActivities(id);
+    setEditActivities(!editActivities);
+  };
+
+  const closePopUp = () => {
+    setEditActivities(!editActivities);
   };
 
   return (

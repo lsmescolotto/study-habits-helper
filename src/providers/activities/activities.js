@@ -5,10 +5,8 @@ export const ActivitiesContext = createContext();
 
 export const ActivitiesProvider = ({ children }) => {
   const [activities, setActivities] = useState([]);
-
-  const groupId = JSON.parse(localStorage.getItem("GroupID")) || "";
-
-  const renderActivities = () => {
+  const groupId = localStorage.getItem("GroupID");
+  const renderActivities = (groupId) => {
     api
       .get(`activities/?group=${groupId}`, {
         headers: {
@@ -32,7 +30,7 @@ export const ActivitiesProvider = ({ children }) => {
       })
       .then((response) => {
         console.log(response);
-        renderActivities();
+        renderActivities(groupId);
       })
       .catch((err) => console.log(err));
   };
@@ -46,7 +44,7 @@ export const ActivitiesProvider = ({ children }) => {
       })
       .then((res) => {
         console.log(res);
-        renderActivities();
+        renderActivities(groupId);
       })
       .catch((err) => {
         console.log(err);
@@ -62,7 +60,7 @@ export const ActivitiesProvider = ({ children }) => {
       })
       .then((response) => {
         console.log(response);
-        renderActivities();
+        renderActivities(groupId);
       });
   };
 
@@ -74,6 +72,7 @@ export const ActivitiesProvider = ({ children }) => {
         createActivities,
         updateActivities,
         deleteActivities,
+        setActivities,
       }}
     >
       {children}

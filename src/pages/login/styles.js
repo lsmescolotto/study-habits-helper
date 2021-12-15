@@ -13,7 +13,7 @@ export const Container = styled.div`
 `;
 
 export const Background = styled.div`
-  @media (min-width: 1024px) {
+  @media (min-width: 768px) {
     flex: 1;
     background: url(${loginImage}) no-repeat center;
     background-size: contain;
@@ -23,7 +23,14 @@ export const Background = styled.div`
 export const Content = styled.div`
   display: flex;
   justify-content: space-between;
+  margin-top: 40px;
   height: 60%;
+  width: 100vw;
+
+  @media (max-width: 768px) {
+    display: flex;
+    justify-content: center;
+  }
 `;
 
 export const Form = styled.div`
@@ -51,5 +58,26 @@ export const Form = styled.div`
     padding: 30px;
     -webkit-box-shadow: 4px 5px 11px -5px #000000;
     box-shadow: 4px 5px 11px -5px #000000;
+
+    @media (max-width: 768px) {
+      width: 300px;
+    }
+  }
+
+  small {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 10px;
+    width: 350px;
+    height: 13%;
+    border-radius: 5px;
+    padding: 10px;
+    -webkit-box-shadow: 4px 5px 11px -5px #000000;
+    box-shadow: 4px 5px 11px -5px #000000;
+
+    @media (max-width: 768px) {
+      width: 300px;
+    }
   }
 `;

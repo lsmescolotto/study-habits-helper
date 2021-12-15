@@ -43,6 +43,7 @@ const FindGroups = ({ search, setSearch }) => {
 
   useEffect(() => {
     setSearchResult(groupList);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [onSubmitFunction]);
 
   return (
@@ -50,6 +51,7 @@ const FindGroups = ({ search, setSearch }) => {
       <div>
         <form onSubmit={handleSubmit(onSubmitFunction)}>
           <Input
+            error={errors.search?.message}
             placeholder="Pesquisar grupos"
             register={register}
             name="search"
