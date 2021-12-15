@@ -9,25 +9,22 @@ import PopUpBase from "../popUpBase";
 import Input from "../../input";
 import Button from "../../button";
 
-const UpdateGroup = ({ id }) => {
+const UpdateGroup = ({ id, closePopUp }) => {
   const { updateGroup } = useContext(GroupContext);
 
   const schema = yup.object().shape({
     name: yup.string(),
   });
 
-  const {
-    handleSubmit,
-    register,
-    formState: { errors },
-  } = useForm({ resolver: yupResolver(schema) });
+  const { handleSubmit, register } = useForm({ resolver: yupResolver(schema) });
 
   const onSubmitFunction = (data) => {
     updateGroup(id, data);
+    closePopUp();
   };
 
   return (
-    <PopUpBase title="Editar grupo">
+    <PopUpBase title="Editar grupo" closePopUp={closePopUp}>
       <form onSubmit={handleSubmit(onSubmitFunction)}>
         <Input name="name" label="Nome" register={register} />
         <Button type="submit" name="button--blue button__pop-up">

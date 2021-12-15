@@ -2,13 +2,12 @@ import { useForm } from "react-hook-form";
 import * as yup from "yup";
 import { yupResolver } from "@hookform/resolvers/yup";
 import toast from "react-hot-toast";
-
 import PopUpBase from "../popUpBase";
 import Input from "../../input";
 import Button from "../../button";
 import api from "../../../services/api";
 
-const UpdateUserPopUp = ({ close }) => {
+const UpdateUserPopUp = ({ closePopUp }) => {
   const schema = yup.object().shape({
     username: yup.string(),
     email: yup.string().email("Email inválido"),
@@ -20,22 +19,35 @@ const UpdateUserPopUp = ({ close }) => {
     formState: { errors },
   } = useForm({ resolver: yupResolver(schema) });
 
-  const onSubmitFunction = () => {
+  const onSubmitFunction = (payload) => {
+    const userInfo = JSON.parse(localStorage.getItem("@Habits:user"));
+
+    if (payload.username === "") {
+      payload.username = userInfo.username;
+    } else if (payload.email === "") {
+      payload.email = userInfo.email;
+    }
+    
     api
-      .patch(`/users/${JSON.parse(localStorage.getItem("userId"))}/`, {
+      .patch(`/users/${JSON.parse(localStorage.getItem("userId"))}/`, payload, {
         headers: {
           Authorization: `Bearer ${JSON.parse(localStorage.getItem("token"))}`,
         },
       })
-      .then((response) => console.log(response))
-      .catch((err) =>
+      .then((response) => {
+        console.log(response);
+        closePopUp();
+      })
+      .catch((err) => {
+        console.log(err);
         toast.error(
           "Não foi possível atualizar. Username ou senha já cadastrados."
-        )
-      );
+        );
+      });
   };
+
   return (
-    <PopUpBase title="Atualizar usuário" closePopUp={close}>
+    <PopUpBase title="Atualizar usuário" closePopUp={closePopUp}>
       <form onSubmit={handleSubmit(onSubmitFunction)}>
         <Input
           label="Username:"
@@ -46,15 +58,12 @@ const UpdateUserPopUp = ({ close }) => {
         <Input
           label="Email:"
           name="email"
-          register={register}
           error={errors.email?.message}
+          register={register}
         />
-        <Button type="submit" name="button--blue button__pop-up">
-          Atualizar
-        </Button>
+        <Button type="submit">Atualizar</Button>
       </form>
     </PopUpBase>
   );
 };
-
 export default UpdateUserPopUp;
