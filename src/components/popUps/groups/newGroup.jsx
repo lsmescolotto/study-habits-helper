@@ -6,7 +6,7 @@ import { GroupContext } from "../../../providers/groups/groups"
 
 import Input from "../../input";
 import PopUpBase from "../popUpBase";
-import { Form } from "./newGroupStyles";
+import { Form } from "./styles";
 
 const NewGroup = ({ setNewGroup, newGroupState }) => {
   const { createGroup } = useContext(GroupContext);
