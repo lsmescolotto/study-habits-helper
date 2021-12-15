@@ -1,20 +1,13 @@
-import { useState } from "react";
+import { useState, useContext } from "react";
 import { Container } from "./styles";
 import UpdateGoals from "../popUps/goals/updateGoal";
-import UpdateActivity from "../popUps/updateActivity";
 
 const DisplayGroup = ({ type = "", data }) => {
   const [editGoals, setEditGoals] = useState(false);
-  const [editActivities, setEditActivities] = useState(false);
   const [actualId, setActualId] = useState(0);
 
   const OpClEditGoals = (id) => {
     setEditGoals(!editGoals);
-    setActualId(id);
-  };
-
-  const OpClEditActivities = (id) => {
-    setEditActivities(!editActivities);
     setActualId(id);
   };
 
@@ -28,26 +21,18 @@ const DisplayGroup = ({ type = "", data }) => {
               <p>{goals.how_much_achieved}</p>
             </Container>
           ))
-        : data.map((activities, index) => (
-            <Container
-              key={index}
-              onClick={() => OpClEditActivities(activities.id)}
-            >
-              <h3>{activities.title}</h3>
-              <h4>{activities.realization_time}</h4>
+        : data.map((habit, index) => (
+            <Container key={index}>
+              <h3>{habit.title}</h3>
+              <h4>{habit.category}</h4>
+              <p>{habit.achieved}</p>
+              <p>{habit.how_much_achieved}</p>
             </Container>
           ))}
       {editGoals === true && (
         <UpdateGoals
           editGoals={editGoals}
           setEditGoals={setEditGoals}
-          id={actualId}
-        />
-      )}
-      {editActivities === true && (
-        <UpdateActivity
-          editActivities={editActivities}
-          setEditActivities={setEditActivities}
           id={actualId}
         />
       )}
