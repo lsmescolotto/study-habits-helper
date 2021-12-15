@@ -10,7 +10,6 @@ import { ActivitiesContext } from "../../../providers/activities/activities";
 
 const NewActivity = ({ newActivity, setNewActivity }) => {
   const { createActivities } = useContext(ActivitiesContext);
-
   let now = new Date();
 
   const formSchema = yup.object().shape({
@@ -62,7 +61,9 @@ const NewActivity = ({ newActivity, setNewActivity }) => {
           name="realization_time"
           error={errors.realization_time?.message}
         />
-        <Button type="submit">Criar</Button>
+        <Button type="submit" name="button--blue button__pop-up">
+          Criar
+        </Button>
       </form>
     </PopUpBase>
   );

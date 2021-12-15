@@ -17,16 +17,16 @@ const Dashboard = () => {
     getGroupsSubscriptions();
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
-
+  console.log(habitsList, subscriptions);
   return (
     <Container>
       <Header dashboard />
       <div className="cards-containers">
-        <HabitsContainer>
-          <ContainerDashboard text="Habitos">
+        <ContainerDashboard text="Habitos">
+          <HabitsContainer>
             {habitsList[0] && <DisplayCard data={habitsList} />}
-          </ContainerDashboard>
-        </HabitsContainer>
+          </HabitsContainer>
+        </ContainerDashboard>
 
         <ContainerDashboard text="Grupos">
           <GroupsContainer>

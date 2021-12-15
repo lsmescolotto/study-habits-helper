@@ -58,7 +58,7 @@ const Login = () => {
                 error={errors.password?.message}
               />
 
-              <Button type="submit">Login</Button>
+              <Button type="submit" name="button--pink">Login</Button>
             </form>
 
             <small>
@@ -66,6 +66,7 @@ const Login = () => {
                 Não possui conta? <Link to="/signup"> Cadastre-se</Link>
               </p>
             </small>
+
           </Form>
         </Content>
         <span>

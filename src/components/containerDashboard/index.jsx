@@ -1,11 +1,10 @@
-import { BiSearchAlt2 } from "react-icons/bi";
+import { FiSearch, FiPlusSquare } from "react-icons/fi";
 import { useState } from "react/cjs/react.development";
-import Button from "../button";
 import NewHabit from "../popUps/habits/newHabit";
 import GetHabitsSearch from "../popUps/habits/habitList";
 import NewGroup from "../popUps/groups/newGroup";
 import FindGroups from "../popUps/findGroups";
-import { DashboardContainer } from "./styles";
+import { DashboardContainer, ContainerHeader } from "./styles";
 
 const ContainerDashboard = ({ text, children }) => {
   const [newHabit, setNewHabit] = useState(false);
@@ -30,20 +29,24 @@ const ContainerDashboard = ({ text, children }) => {
   };
 
   return (
-    <DashboardContainer>
-      <header>
+    <DashboardContainer className={text === "Habitos" ? "Habitos" : ""}>
+      <ContainerHeader>
         <h3>{text}</h3>
-        {text === "Habitos" ? (
-          <BiSearchAlt2 onClick={OpClSearchHa} />
-        ) : (
-          <BiSearchAlt2 onClick={OpClSearchGr} />
-        )}
-        {text === "Habitos" ? (
-          <Button onClick={OpClHabit}>+</Button>
-        ) : (
-          <Button onClick={OpClGroup}>+</Button>
-        )}
-      </header>
+        <div>
+          {text === "Habitos" ? (
+            <FiSearch onClick={OpClSearchHa} />
+          ) : (
+            <FiSearch onClick={OpClSearchGr} />
+          )}
+
+          {text === "Habitos" ? (
+            <FiPlusSquare onClick={OpClHabit} className="addNew" />
+          ) : (
+            <FiPlusSquare onClick={OpClGroup} className="addNew" />
+          )}
+        </div>
+      </ContainerHeader>
+
       {children}
       {newHabit === true && (
         <NewHabit setNewHabit={setNewHabit} newHabit={newHabit} />

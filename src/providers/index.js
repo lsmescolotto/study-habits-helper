@@ -4,6 +4,8 @@ import { UserProvider } from "./user/user";
 import { GoalsProvider } from "./goal/goal";
 import { ActivitiesProvider } from "./activities/activities";
 
+
+// segundo teste 
 const Providers = ({ children }) => {
   return (
     <UserProvider>
