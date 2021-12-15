@@ -1,10 +1,10 @@
+import { useHistory } from "react-router-dom";
 import { useState, useContext } from "react";
 import { GroupContext } from "../../providers/groups/groups";
 import { GoalsContext } from "../../providers/goal/goal";
+import { Container, DisplayContainer } from "./styles";
 import HabitEditInfo from "../popUps/habits/updateHabit";
-import { Container } from "./styles";
 import Button from "../button";
-import { useHistory } from "react-router-dom";
 
 const DisplayCard = ({ type = "", data, boolean = false }) => {
   const { subscribeGroup } = useContext(GroupContext);
@@ -27,7 +27,7 @@ const DisplayCard = ({ type = "", data, boolean = false }) => {
   };
 
   return (
-    <>
+    <DisplayContainer>
       {type === "group"
         ? data.map((group, index) => (
             <Container key={index}>
@@ -35,26 +35,33 @@ const DisplayCard = ({ type = "", data, boolean = false }) => {
               <h4>{group.category}</h4>
               <p>{group.description}</p>
               <p>{group.creator.username}</p>
-              <Button
-                onClick={() => goPageGroups(group.id)}
-                name="button--blue"
-              >
-                Ir para Pagina
-              </Button>
-              {boolean && (
-                <div>
-                  <Button
-                    onClick={() => subscribeGroup(group.id)}
-                    name="button--pink"
-                  >
-                    Inscrever
-                  </Button>
-                </div>
-              )}
+
+              <div className="buttons">
+                <Button
+                  onClick={() => goPageGroups(group.id)}
+                  name="button--blue"
+                >
+                  Ir para Pagina
+                </Button>
+                {boolean && (
+                  <div>
+                    <Button
+                      onClick={() => subscribeGroup(group.id)}
+                      name="button--pink"
+                    >
+                      Inscrever
+                    </Button>
+                  </div>
+                )}
+              </div>
             </Container>
           ))
         : data.map((habit, index) => (
-            <Container key={index} onClick={() => OpClEdit(habit.id)}>
+            <Container
+              key={index}
+              onClick={() => OpClEdit(habit.id)}
+              className="habits"
+            >
               <h3>{habit.title}</h3>
               <h4>{habit.category}</h4>
               <p>{habit.achieved}</p>
@@ -68,7 +75,7 @@ const DisplayCard = ({ type = "", data, boolean = false }) => {
           id={actualId}
         />
       )}
-    </>
+    </DisplayContainer>
   );
 };
 export default DisplayCard;
