@@ -21,8 +21,10 @@ const ContainerGroup = ({ text }) => {
         <h3>{text}</h3>
         {text === "Metas do Grupo" ? (
           <Button onClick={OpClHabit}>+</Button>
-        ) : (
+        ) : text === "Atividades do Grupo" ? (
           <Button onClick={OpClGroup}>+</Button>
+        ) : (
+          <div></div>
         )}
       </header>
       {newGoal === true && (

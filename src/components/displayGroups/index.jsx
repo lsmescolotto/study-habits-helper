@@ -18,6 +18,8 @@ const DisplayGroup = ({ type = "", data }) => {
     setActualId(id);
   };
 
+  const groupContent = JSON.parse(localStorage.getItem("groupContent"));
+  console.log(groupContent);
   return (
     <>
       {type === "goals"
@@ -28,7 +30,8 @@ const DisplayGroup = ({ type = "", data }) => {
               <p>{goals.how_much_achieved}</p>
             </Container>
           ))
-        : data.map((activities, index) => (
+        : type === "activities"
+        ? data.map((activities, index) => (
             <Container
               key={index}
               onClick={() => OpClEditActivities(activities.id)}
@@ -36,7 +39,14 @@ const DisplayGroup = ({ type = "", data }) => {
               <h3>{activities.title}</h3>
               <h4>{activities.realization_time}</h4>
             </Container>
+          ))
+        : groupContent.users_on_group.map((user) => (
+            <Container key={user.id}>
+              <h3>{user.username}</h3>
+              <h4>{user.email}</h4>
+            </Container>
           ))}
+
       {editGoals === true && (
         <UpdateGoals
           editGoals={editGoals}

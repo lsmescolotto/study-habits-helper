@@ -33,9 +33,18 @@ const Group = () => {
         </GoalsContainer>
         <ActivitiesContainer>
           <ContainerGroup text="Atividades do Grupo" />
-          {activities.results && <DisplayGroup data={activities.results} />}
+          {activities.results && (
+            <DisplayGroup type="activities" data={activities.results} />
+          )}
         </ActivitiesContainer>
-        <MembersContainer>Membros do Grupo</MembersContainer>
+        <MembersContainer>
+          {localStorage.getItem("groupContent") && (
+            <>
+              <ContainerGroup text="Membros do Grupo" />
+              <DisplayGroup type="members" />
+            </>
+          )}
+        </MembersContainer>
       </div>
       <Footer />
     </Container>

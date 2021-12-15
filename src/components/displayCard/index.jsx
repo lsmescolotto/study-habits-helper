@@ -20,8 +20,9 @@ const DisplayCard = ({ type = "", data, boolean = false }) => {
     setActualId(id);
   };
 
-  const goPageGroups = (id) => {
+  const goPageGroups = (id, group) => {
     localStorage.setItem("GroupID", id);
+    localStorage.setItem("groupContent", JSON.stringify(group));
     renderGoals();
     history.push(`/group/${id}`);
   };
@@ -35,7 +36,7 @@ const DisplayCard = ({ type = "", data, boolean = false }) => {
               <h4>{group.category}</h4>
               <p>{group.description}</p>
               <p>{group.creator.username}</p>
-              <Button onClick={() => goPageGroups(group.id)}>
+              <Button onClick={() => goPageGroups(group.id, group)}>
                 Ir para Pagina
               </Button>
               {boolean && (
