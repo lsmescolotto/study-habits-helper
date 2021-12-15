@@ -9,6 +9,7 @@ import { useContext } from "react";
 import { ActivitiesContext } from "../../../providers/activities/activities";
 import { Container } from "./styles";
 
+// resolve merging conflicts
 
 const NewActivity = ({ newActivity, setNewActivity }) => {
   const { createActivities } = useContext(ActivitiesContext);
