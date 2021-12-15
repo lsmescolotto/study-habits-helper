@@ -58,7 +58,7 @@ export const Container = styled.div`
 
   @media (min-width: 1024px) {
     .button__pop-up {
-      height: 55px;
+      min-height: 55px;
       min-width: 150px;
     }
   }
