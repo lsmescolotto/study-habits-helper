@@ -1,10 +1,12 @@
 import * as yup from "yup";
 import { useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
-import Input from "../../input";
 import { useContext } from "react";
-import { GroupContext } from "../../../providers/groups/groups";
+import { GroupContext } from "../../../providers/groups/groups"
+
+import Input from "../../input";
 import PopUpBase from "../popUpBase";
+import { Form } from "./newGroupStyles";
 
 const NewGroup = ({ setNewGroup, newGroupState }) => {
   const { createGroup } = useContext(GroupContext);
@@ -34,7 +36,8 @@ const NewGroup = ({ setNewGroup, newGroupState }) => {
 
   return (
     <PopUpBase title={"Novo grupo"} closePopUp={handlePopUp}>
-      <form onSubmit={handleSubmit(newGroup)}>
+      <Form onSubmit={handleSubmit(newGroup)}>
+        
         <Input
           register={register}
           name={"name"}
@@ -54,10 +57,10 @@ const NewGroup = ({ setNewGroup, newGroupState }) => {
           name={"category"}
           label={"Categoria"}
           error={errors.category?.message}
-        />
-
+          />
+        
         <button type="submit">Criar novo grupo</button>
-      </form>
+      </Form>
     </PopUpBase>
   );
 };
