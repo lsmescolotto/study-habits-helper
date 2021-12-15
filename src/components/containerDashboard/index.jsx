@@ -29,7 +29,7 @@ const ContainerDashboard = ({ text, children }) => {
   };
 
   return (
-    <DashboardContainer>
+    <DashboardContainer className={text === "Habitos" ? "Habitos" : ""}>
       <ContainerHeader>
         <h3>{text}</h3>
         <div>

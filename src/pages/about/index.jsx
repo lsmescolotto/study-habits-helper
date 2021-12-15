@@ -1,26 +1,29 @@
 import Header from "../../components/header";
 import Footer from "../../components/footer";
-import { Container } from "./styles";
+import { Container, Content, ImageContainer, TextContainer } from "./styles";
 
 const AboutUs = () => {
   return (
-    <>
+    <Container>
       <Header />
-      <Container>
-        <h2>SHH... ! Be quiet, we are studying here.</h2>
+      <Content>
+        <TextContainer>
+          <h2>SHH... ! Be quiet, we are studying here.</h2>
 
-        <h4>
-          Ola! Somos a Study Habits Helper, e estamos aqui para ajudar a voce
-          criar novos habitos, e aprimorar os antigos!
-        </h4>
-        <p>
-          Projeto feito a partir da proposta da Kenzie Academy Brasil, no curso
-          de Full Stack Developer. Agradecemos a colaboracao de todos os
-          envolvidos.
-        </p>
-      </Container>
+          <h4>
+            Olá! Somos a Study Habits Helper, e estamos aqui para ajudar você a
+            criar novos hábitos e aprimorar os antigos!
+          </h4>
+          <p>
+            Projeto feito a partir da proposta da Kenzie Academy Brasil, no
+            curso de Full Stack Developer. Agradecemos a colaboração de todos os
+            envolvidos.
+          </p>
+        </TextContainer>
+        <ImageContainer />
+      </Content>
       <Footer />
-    </>
+    </Container>
   );
 };
 

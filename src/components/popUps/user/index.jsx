@@ -5,6 +5,7 @@ import Button from "../../button";
 import { useEffect } from "react/cjs/react.development";
 import UpdateUserPopUp from "../updateUser";
 
+
 const User = ({ closePopUp }) => {
   const [user, setUser] = useState([]);
   const [editUser, setEditUser] = useState(false);
@@ -40,7 +41,8 @@ const User = ({ closePopUp }) => {
       <PopUpBase title={"Usuário"} closePopUp={closePopUp}>
         <p>Username:{user.username}</p>
         <p>Email: {user.email}</p>
-        <Button onClick={() => handleClick()}>Editar</Button>
+        <Button onClick={() => handleClick()} name="button--pink button__pop-up" >Editar</Button>
+
       </PopUpBase>
       {editUser && <UpdateUserPopUp closePopUp={closePopUp} />}
     </>

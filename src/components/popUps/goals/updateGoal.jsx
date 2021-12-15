@@ -56,8 +56,15 @@ const UpdateGoals = ({ id, editGoals, setEditGoals }) => {
           error={errors.how_much_achieved?.message}
         />
         <div>
-          <Button type="submit">Atualizar</Button>
-          <Button onClick={() => handleDelete()}>Deletar</Button>
+          <Button type="submit" name="button--blue button__pop-up">
+            Atualizar
+          </Button>
+          <Button
+            onClick={() => handleDelete()}
+            name="button--red button__pop-up"
+          >
+            Deletar
+          </Button>
         </div>
       </form>
     </PopUpBase>

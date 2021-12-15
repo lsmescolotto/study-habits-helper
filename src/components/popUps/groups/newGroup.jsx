@@ -1,10 +1,11 @@
 import * as yup from "yup";
 import { useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
-import Input from "../../input";
 import { useContext } from "react";
 import { GroupContext } from "../../../providers/groups/groups";
+import Input from "../../input";
 import PopUpBase from "../popUpBase";
+import Button from "../../button";
 
 const NewGroup = ({ setNewGroup, newGroupState }) => {
   const { createGroup } = useContext(GroupContext);
@@ -56,7 +57,9 @@ const NewGroup = ({ setNewGroup, newGroupState }) => {
           error={errors.category?.message}
         />
 
-        <button type="submit">Criar novo grupo</button>
+        <Button type="submit" name="button--blue button__pop-up">
+          Criar novo grupo
+        </Button>
       </form>
     </PopUpBase>
   );
