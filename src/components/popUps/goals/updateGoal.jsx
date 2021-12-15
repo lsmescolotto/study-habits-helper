@@ -15,7 +15,7 @@ const UpdateGoals = ({ id, editGoals, setEditGoals }) => {
     how_much_achieved: yup
       .number()
       .required("Escreva a porcentagem de progresso")
-      .typeError("Digite a porcentagem do progresso"),
+      .typeError("Digite a porcentagem do progresso")
       .min(0, "Progresso não pode ser negativo")
       .max(100, "Maximo deve ser 100/100"),
 
