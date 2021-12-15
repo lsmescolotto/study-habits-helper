@@ -13,14 +13,11 @@ import { GoalsContext } from "../../providers/goal/goal.js";
 import { ActivitiesContext } from "../../providers/activities/activities.js";
 import DisplayGroup from "../../components/displayGroups/index.jsx";
 import { GroupContext } from "../../providers/groups/groups.js";
-
 const Group = () => {
   const { goals, renderGoals } = useContext(GoalsContext);
   const { activities, renderActivities } = useContext(ActivitiesContext);
   const groupId = JSON.parse(localStorage.getItem("GroupID"));
-
   const { groupName } = useContext(GroupContext);
-
   useEffect(() => {
     renderGoals(groupId);
     renderActivities(groupId);
@@ -30,7 +27,6 @@ const Group = () => {
   return (
     <Container>
       <Header group id={groupId} />
-
       <h1>{groupName}</h1>
       <div className="cards-containers">
         <GoalsContainer>
@@ -56,5 +52,4 @@ const Group = () => {
     </Container>
   );
 };
-
 export default Group;

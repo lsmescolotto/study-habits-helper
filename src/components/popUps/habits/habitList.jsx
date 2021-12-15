@@ -38,7 +38,9 @@ const GetHabitsSearch = ({ searchHabit, setSearchHabit }) => {
     <PopUpBase title={"Pesquisar Habitos"} closePopUp={handlePopUp}>
       <form onSubmit={handleSubmit(handleEdit)}>
         <Input register={register} name="search" label="Pesquisa" />
-        <Button type="submit">Search</Button>
+        <Button type="submit" name="button--blue">
+          Pesquisar
+        </Button>
       </form>
 
       {searchedHabits[0] && <DisplayCard data={searchedHabits} />}

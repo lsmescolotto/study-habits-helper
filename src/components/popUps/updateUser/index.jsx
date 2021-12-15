@@ -2,24 +2,20 @@ import { useForm } from "react-hook-form";
 import * as yup from "yup";
 import { yupResolver } from "@hookform/resolvers/yup";
 import toast from "react-hot-toast";
-
 import PopUpBase from "../popUpBase";
 import Input from "../../input";
 import Button from "../../button";
 import api from "../../../services/api";
-
 const UpdateUserPopUp = ({ closePopUp }) => {
   const schema = yup.object().shape({
     username: yup.string(),
     email: yup.string().email("Email inválido"),
   });
-
   const {
     handleSubmit,
     register,
     formState: { errors },
   } = useForm({ resolver: yupResolver(schema) });
-
   const onSubmitFunction = (payload) => {
     console.log(payload);
     api
@@ -59,5 +55,4 @@ const UpdateUserPopUp = ({ closePopUp }) => {
     </PopUpBase>
   );
 };
-
 export default UpdateUserPopUp;

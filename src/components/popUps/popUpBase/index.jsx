@@ -11,7 +11,7 @@ const PopUpBase = ({ title, children, closePopUp }) => {
           <Button
             onClick={closePopUp}
             children="X"
-            className="closePopUP-button"
+            name="button__close-pop-up"
           />
         </PopUpHeader>
         <PopUpBody>{children}</PopUpBody>

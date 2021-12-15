@@ -20,7 +20,11 @@ const FindGroups = ({ search, setSearch }) => {
     search: yup.string(),
   });
 
-  const { handleSubmit, register } = useForm({ resolver: yupResolver(schema) });
+  const {
+    handleSubmit,
+    register,
+    formState: { errors },
+  } = useForm({ resolver: yupResolver(schema) });
 
   const onSubmitFunction = (data) => {
     setSearchGroup(data.search);
@@ -39,7 +43,6 @@ const FindGroups = ({ search, setSearch }) => {
 
   useEffect(() => {
     setSearchResult(groupList);
-    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [onSubmitFunction]);
 
   return (
@@ -53,10 +56,14 @@ const FindGroups = ({ search, setSearch }) => {
             value={searchInput}
             onChange={(event) => setSearchInput(event.target.value)}
           />
-          <Button type="submit">Pesquisar</Button>
+          <Button type="submit" name="button--blue">
+            Pesquisar
+          </Button>
         </form>
         <span>Resultado para {searchGroup}</span>
-        <Button onClick={() => cleanSearch()}>Limpar</Button>
+        <Button onClick={() => cleanSearch()} name="button--clear">
+          Limpar
+        </Button>
       </div>
 
       {searchResult.results && (

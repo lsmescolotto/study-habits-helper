@@ -5,24 +5,28 @@ import UpdateActivity from "../popUps/updateActivity";
 import { useContext } from "react/cjs/react.development";
 import { GroupContext } from "../../providers/groups/groups";
 
+
 const DisplayGroup = ({ type = "", data }) => {
   const { setGroupName } = useContext(GroupContext);
   const [editGoals, setEditGoals] = useState(false);
   const [editActivities, setEditActivities] = useState(false);
   const [actualId, setActualId] = useState(0);
-
+  
   const OpClEditGoals = (id) => {
     setEditGoals(!editGoals);
     setActualId(id);
   };
-
+  
   const OpClEditActivities = (id) => {
     setEditActivities(!editActivities);
     setActualId(id);
   };
+  
   console.log(actualId);
+  
   const groupContent = JSON.parse(localStorage.getItem("groupContent"));
   setGroupName(groupContent.name);
+  
   return (
     <>
       {type === "goals"
@@ -51,7 +55,6 @@ const DisplayGroup = ({ type = "", data }) => {
               <h4>{user.email}</h4>
             </Container>
           ))}
-
       {editGoals === true && (
         <UpdateGoals
           editGoals={editGoals}

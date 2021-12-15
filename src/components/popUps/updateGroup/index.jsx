@@ -26,7 +26,9 @@ const UpdateGroup = ({ id, closePopUp }) => {
     <PopUpBase title="Editar grupo" closePopUp={closePopUp}>
       <form onSubmit={handleSubmit(onSubmitFunction)}>
         <Input name="name" label="Nome" register={register} />
-        <Button type="submit">Atualizar</Button>
+        <Button type="submit" name="button--blue button__pop-up">
+          Atualizar
+        </Button>
       </form>
     </PopUpBase>
   );
