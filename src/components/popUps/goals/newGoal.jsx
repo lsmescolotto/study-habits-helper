@@ -6,6 +6,7 @@ import PopUpBase from "../popUpBase";
 import Button from "../../button";
 import { GoalsContext } from "../../../providers/goal/goal";
 import { useContext } from "react";
+import { ContainerNewGoal } from "./styles.js";
 
 const NewGoal = ({ newGoal, setNewGoal }) => {
   const { createGoals } = useContext(GoalsContext);
@@ -41,27 +42,29 @@ const NewGoal = ({ newGoal, setNewGoal }) => {
   };
 
   return (
-    <PopUpBase title={"Nova Meta"} closePopUp={ClosePopUp}>
-      <form onSubmit={handleSubmit(handleGoal)}>
-        <Input
-          register={register}
-          name="title"
-          label="titulo"
-          error={errors.title?.message}
-        />
+    <ContainerNewGoal>
+      <PopUpBase title={"Nova Meta"} closePopUp={ClosePopUp}>
+        <form onSubmit={handleSubmit(handleGoal)}>
+          <Input
+            register={register}
+            name="title"
+            label="Título"
+            error={errors.title?.message}
+          />
 
-        <Input
-          register={register}
-          name="difficulty"
-          label="dificuldade"
-          error={errors.difficulty?.message}
-        />
+          <Input
+            register={register}
+            name="difficulty"
+            label="Dificuldade"
+            error={errors.difficulty?.message}
+          />
 
-        <Button type="submit" name="button--blue button__pop-up">
-          Criar
-        </Button>
-      </form>
-    </PopUpBase>
+          <Button type="submit" name="button--blue button__pop-up">
+            Criar
+          </Button>
+        </form>
+      </PopUpBase>
+    </ContainerNewGoal>
   );
 };
 
