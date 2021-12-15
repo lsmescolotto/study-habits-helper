@@ -8,6 +8,7 @@ import PopUpBase from "../popUpBase";
 import Button from "../../button";
 import Input from "../../input";
 import DisplayCard from "../../displayCard";
+import { Container, Content, CardsContainer } from "./styles";
 
 const FindGroups = ({ search, setSearch }) => {
   const [searchGroup, setSearchGroup] = useState("");
@@ -47,7 +48,7 @@ const FindGroups = ({ search, setSearch }) => {
 
   return (
     <PopUpBase title="Pesquisar grupos" closePopUp={closeSearch}>
-      <div>
+      <Container>
         <form onSubmit={handleSubmit(onSubmitFunction)}>
           <Input
             placeholder="Pesquisar grupos"
@@ -60,15 +61,18 @@ const FindGroups = ({ search, setSearch }) => {
             Pesquisar
           </Button>
         </form>
-        <span>Resultado para {searchGroup}</span>
-        <Button onClick={() => cleanSearch()} name="button--clear">
-          Limpar
-        </Button>
-      </div>
-
-      {searchResult.results && (
-        <DisplayCard type="group" data={searchResult.results} boolean />
-      )}
+        <Content>
+          <span>Resultado para: {searchGroup}</span>
+          <Button onClick={() => cleanSearch()} name="button--clear">
+            Limpar
+          </Button>
+        </Content>
+      </Container>
+      <CardsContainer>
+        {searchResult.results && (
+          <DisplayCard type="group" data={searchResult.results} boolean />
+        )}
+      </CardsContainer>
     </PopUpBase>
   );
 };
