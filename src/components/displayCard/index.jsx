@@ -5,7 +5,6 @@ import { GoalsContext } from "../../providers/goal/goal";
 import { Container, DisplayContainer } from "./styles";
 import HabitEditInfo from "../popUps/habits/updateHabit";
 import Button from "../button";
-import { useHistory } from "react-router-dom";
 import { ActivitiesContext } from "../../providers/activities/activities";
 
 const DisplayCard = ({ type = "", data, boolean = false }) => {
