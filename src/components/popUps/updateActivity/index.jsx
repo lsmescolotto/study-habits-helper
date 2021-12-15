@@ -7,6 +7,7 @@ import { useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
 import { useContext } from "react";
 import { ActivitiesContext } from "../../../providers/activities/activities";
+import { Container } from "./styles";
 
 const UpdateActivity = ({ id, editActivities, setEditActivities }) => {
   const { updateActivities, deleteActivities } = useContext(ActivitiesContext);
@@ -38,10 +39,11 @@ const UpdateActivity = ({ id, editActivities, setEditActivities }) => {
   };
 
   return (
+    <Container>
     <PopUpBase title="Nova Atividade" closePopUp={closePopUp}>
       <form onSubmit={handleSubmit(onSubmitFunction)}>
         <Input
-          label="Título:"
+          label="Título"
           register={register}
           name="title"
           error={errors.title?.message}
@@ -59,6 +61,7 @@ const UpdateActivity = ({ id, editActivities, setEditActivities }) => {
         </div>
       </form>
     </PopUpBase>
+    </Container>
   );
 };
 

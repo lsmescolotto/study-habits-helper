@@ -7,6 +7,9 @@ import { useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
 import { useContext } from "react";
 import { ActivitiesContext } from "../../../providers/activities/activities";
+import { Container } from "./styles";
+
+// resolve merging conflicts
 
 const NewActivity = ({ newActivity, setNewActivity }) => {
   const { createActivities } = useContext(ActivitiesContext);
@@ -44,28 +47,31 @@ const NewActivity = ({ newActivity, setNewActivity }) => {
   const closePopUp = () => {
     setNewActivity(!newActivity);
   };
-
+  
   return (
-    <PopUpBase title="Nova Atividade" closePopUp={closePopUp}>
-      <form onSubmit={handleSubmit(onSubmitFunction)}>
-        <Input
-          label="Título:"
-          name="title"
-          register={register}
-          error={errors.title?.message}
-        />
-        <Input
-          label="Será concluída em:"
-          type="datetime-local"
-          register={register}
-          name="realization_time"
-          error={errors.realization_time?.message}
-        />
-        <Button type="submit" name="button--blue button__pop-up">
-          Criar
-        </Button>
-      </form>
-    </PopUpBase>
+    <Container>
+      <PopUpBase title="Nova Atividade" closePopUp={closePopUp}>
+        <form onSubmit={handleSubmit(onSubmitFunction)}>
+          <Input
+            label="Título"
+            register={register}
+            name="title"
+            error={errors.title?.message}
+          />
+          <Input
+            label="Será concluído(a) em"
+            type="datetime-local"
+            register={register}
+            name="realization_time"
+            error={errors.realization_time?.message}
+          />
+          <Button type="submit" name="button--blue button__pop-up">
+            Criar
+          </Button>
+        </form>
+      </PopUpBase>
+    </Container>
+
   );
 };
 
