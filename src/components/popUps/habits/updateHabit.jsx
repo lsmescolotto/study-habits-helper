@@ -31,14 +31,12 @@ const HabitEditInfo = ({ setEditHabits, editHabits, id }) => {
   });
 
   const handleEdit = (data) => {
-    if (data.how_much_achieved === 100) {
-      setEditHabits(!editHabits);
-      return updateHabit(id, {
-        how_much_achieved: data.how_much_achieved,
-        achieved: true,
-      });
-    }
-    updateHabit(id, data);
+    const payload =
+      data.how_much_achieved === 100
+        ? { how_much_achieved: data.how_much_achieved, achieved: true }
+        : { how_much_achieved: data.how_much_achieved, achieved: false };
+
+    updateHabit(id, payload);
     setEditHabits(!editHabits);
   };
 

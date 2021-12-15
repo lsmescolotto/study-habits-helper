@@ -8,6 +8,7 @@ import UpdateUserPopUp from "../updateUser";
 const User = ({ closePopUp }) => {
   const [user, setUser] = useState([]);
   const [editUser, setEditUser] = useState(false);
+
   const getUserInfo = () => {
     api
       .get(`/users/${JSON.parse(localStorage.getItem("userId"))}/`, {
@@ -16,17 +17,24 @@ const User = ({ closePopUp }) => {
         },
       })
       .then((response) => {
-        console.log(response);
+        localStorage.setItem(
+          "@Habits:user",
+          JSON.stringify(response.data || "")
+        );
+
         setUser(response.data);
       })
       .catch((err) => console.log(err));
   };
+
   const handleClick = () => {
     setEditUser(!editUser);
   };
+
   useEffect(() => {
     getUserInfo();
   }, []);
+
   return (
     <>
       <PopUpBase title={"Usuário"} closePopUp={closePopUp}>

@@ -6,7 +6,6 @@ import Button from "../../button";
 import Input from "../../input";
 import PopUpBase from "../popUpBase";
 import { GoalsContext } from "../../../providers/goal/goal";
-import toast from "react-hot-toast";
 
 const UpdateGoals = ({ id, editGoals, setEditGoals }) => {
   const { deleteGoals, updateGoals } = useContext(GoalsContext);
@@ -28,15 +27,12 @@ const UpdateGoals = ({ id, editGoals, setEditGoals }) => {
   });
 
   const handleEdit = (data) => {
-    if (data.how_much_achieved === 100) {
-      setEditGoals(!editGoals);
-      toast.success("Meta alcançada!");
-      return updateGoals(id, {
-        how_much_achieved: data.how_much_achieved,
-        achieved: true,
-      });
-    }
-    updateGoals(id, data);
+    const payload =
+      data.how_much_achieved === 100
+        ? { how_much_achieved: data.how_much_achieved, achieved: true }
+        : { how_much_achieved: data.how_much_achieved, achieved: false };
+
+    updateGoals(id, payload);
     setEditGoals(!editGoals);
     closePopUp();
   };

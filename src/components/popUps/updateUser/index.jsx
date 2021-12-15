@@ -9,6 +9,8 @@ import Button from "../../button";
 import api from "../../../services/api";
 
 const UpdateUserPopUp = ({ closePopUp }) => {
+  const locale = JSON.parse(localStorage.getItem("@Habits:user")) || [];
+
   const schema = yup.object().shape({
     username: yup.string(),
     email: yup.string().email("Email inválido"),
@@ -21,15 +23,18 @@ const UpdateUserPopUp = ({ closePopUp }) => {
   } = useForm({ resolver: yupResolver(schema) });
 
   const onSubmitFunction = (payload) => {
-    console.log(payload);
+    const user = {
+      username: payload.username ? payload.username : locale.username,
+      email: payload.email ? payload.email : locale.email,
+    };
+
     api
-      .patch(`/users/${JSON.parse(localStorage.getItem("userId"))}/`, payload, {
+      .patch(`/users/${JSON.parse(localStorage.getItem("userId"))}/`, user, {
         headers: {
           Authorization: `Bearer ${JSON.parse(localStorage.getItem("token"))}`,
         },
       })
-      .then((response) => {
-        console.log(response);
+      .then((_) => {
         closePopUp();
       })
       .catch((err) => {
@@ -39,17 +44,18 @@ const UpdateUserPopUp = ({ closePopUp }) => {
         );
       });
   };
+
   return (
     <PopUpBase title="Atualizar usuário" closePopUp={closePopUp}>
       <form onSubmit={handleSubmit(onSubmitFunction)}>
         <Input
-          label="Username:"
+          label="Username"
           register={register}
           name="username"
           error={errors.username?.message}
         />
         <Input
-          label="Email:"
+          label="Email"
           name="email"
           error={errors.email?.message}
           register={register}
