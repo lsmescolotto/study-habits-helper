@@ -1,20 +1,26 @@
 import { Container } from "./styles";
 import Button from "../button";
 import Logo from "../../assets/img/logo.png";
-import { useHistory } from "react-router-dom";
 import { useContext } from "react";
 import { GroupContext } from "../../providers/groups/groups";
 import UpdateGroup from "../popUps/updateGroup";
 import User from "../popUps/user";
 import { useState } from "react";
+import { FiUser, FiLogOut, FiArrowLeftCircle } from "react-icons/fi";
+import { Link, useHistory } from "react-router-dom";
 
 const Header = ({ dashboard = false, id, group = false }) => {
   const { unsubscribeGroup } = useContext(GroupContext);
   const [updatePopUp, setUpdatePopUp] = useState(false);
   const [userPopUP, setUserPopUp] = useState(false);
   const history = useHistory();
-
-  const handleUnsubscribe = (id) => {
+  
+  const logout = () => {
+    localStorage.clear();
+    history.push("/");
+  };
+  
+   const handleUnsubscribe = (id) => {
     unsubscribeGroup(id);
     history.push("/dashboard");
   };
@@ -27,40 +33,42 @@ const Header = ({ dashboard = false, id, group = false }) => {
     setUpdatePopUp(!updatePopUp);
   };
 
+  const GoToDashboard = () => {
+    history.push("/dashboard");
+  };
+
   return (
     <>
-      <Container>
+       <Container>
         <figure>
           <img src={Logo} alt="logo" />
         </figure>
         {!!dashboard && (
-          <div>
-            <div onClick={() => handleUser()}>icons</div>
+          <div onClick={() => handleUser()}>
+            <span>
+              <FiUser />
+            </span>
+            <span onClick={logout}>
+              <FiLogOut />
+            </span>
           </div>
         )}
         {!!group && (
-          <div>
-            <Button
-              onClick={() => handleEdit(id)}
-              name="button--blue button__header"
-            >
-              Editar
-            </Button>
+          <section>
+            <Button onClick={() => handleEdit(id)} name="button--blue button__header">Editar</Button>
             {!!id && (
-              <Button
-                onClick={() => handleUnsubscribe(id)}
-                name="button--red button__header"
-              >
-                Sair do grupo
-              </Button>
+              <Button onClick={() => handleUnsubscribe(id)} name="button--red button__header">Sair do grupo</Button>
             )}
-            <div onClick={() => history.push("/dashboard")}>Back</div>
-          </div>
+            <span onClick={GoToDashboard}>
+              <FiArrowLeftCircle />
+            </span>
+          </section>
         )}
-      </Container>
-      {updatePopUp && <UpdateGroup id={id} closePopUp={handleEdit} />}
-      {userPopUP && <User closePopUp={handleUser} />}
-    </>
+        </Container>
+        {updatePopUp && <UpdateGroup id={id} closePopUp={handleEdit} />}
+        {userPopUP && <User closePopUp={handleUser} />}
+      </>
+
   );
 };
 
