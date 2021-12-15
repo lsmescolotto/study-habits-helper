@@ -1,5 +1,4 @@
 import { Route, Switch } from "react-router-dom";
-
 import Home from "../pages/home";
 import Login from "../pages/login";
 import Signup from "../pages/signup";
@@ -10,6 +9,7 @@ import AboutUs from "../pages/about";
 import { useContext } from "react/cjs/react.development";
 import { UserContext } from "../providers/user/user";
 import { Redirect } from "react-router-dom";
+
 const Routes = () => {
   const { authenticated, setAuthenticated } = useContext(UserContext);
 

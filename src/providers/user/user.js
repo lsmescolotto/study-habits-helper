@@ -27,15 +27,15 @@ export const UserProvider = ({ children }) => {
         setToken(JSON.stringify(res.data.access));
         setAuthenticated(true);
 
-        localStorage.setItem("token", JSON.stringify(res.data.access));
-
         const userDecoded = jwtDecode(res.data.access);
+
         localStorage.setItem("userId", userDecoded.user_id);
+        localStorage.setItem("token", JSON.stringify(res.data.access));
 
         history.push("/dashboard");
       })
       .catch((err) => {
-        console.log(err.message);
+        toast.error(err.message);
       });
   };
 

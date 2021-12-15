@@ -36,11 +36,9 @@ const UpdateUserPopUp = ({ closePopUp }) => {
         },
       })
       .then((response) => {
-        console.log(response);
         closePopUp();
       })
       .catch((err) => {
-        console.log(err);
         toast.error(
           "Não foi possível atualizar. Username ou senha já cadastrados."
         );
