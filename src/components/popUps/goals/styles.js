@@ -1,6 +1,6 @@
 import styled from "styled-components";
 
-export const ContainerNewGoal = styled.form`
+export const ContainerNewGoal = styled.div`
   form {
     display: flex;
     flex-direction: column;
