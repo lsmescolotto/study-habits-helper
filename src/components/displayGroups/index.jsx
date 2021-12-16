@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { Container } from "./styles";
 import UpdateGoals from "../popUps/goals/updateGoal";
 import UpdateActivity from "../popUps/updateActivity";
@@ -10,6 +10,11 @@ const DisplayGroup = ({ type = "", data }) => {
   const [editGoals, setEditGoals] = useState(false);
   const [editActivities, setEditActivities] = useState(false);
   const [actualId, setActualId] = useState(0);
+
+  useEffect(() => {
+    setEditGoals(false);
+    setEditActivities(false);
+  }, []);
 
   const OpClEditGoals = (id) => {
     setEditGoals(!editGoals);

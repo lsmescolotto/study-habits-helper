@@ -1,5 +1,5 @@
 import { useHistory } from "react-router-dom";
-import { useState, useContext } from "react";
+import { useState, useContext, useEffect } from "react";
 import { GroupContext } from "../../providers/groups/groups";
 import { GoalsContext } from "../../providers/goal/goal";
 import { Container, DisplayContainer } from "./styles";
@@ -16,6 +16,10 @@ const DisplayCard = ({ type = "", data, boolean = false }) => {
   const { renderActivities, setActivities } = useContext(ActivitiesContext);
 
   const history = useHistory();
+
+  useEffect(() => {
+    setEditHabits(false);
+  }, []);
 
   const OpClEdit = (id) => {
     setEditHabits(!editHabits);
@@ -45,14 +49,12 @@ const DisplayCard = ({ type = "", data, boolean = false }) => {
               <p>{group.description}</p>
               <p>{group.creator.username}</p>
               <div className="group-card-button">
-
                 <Button
                   onClick={() => goPageGroups(group.id, group)}
                   name="button--blue"
                 >
                   Ir para Pagina
                 </Button>
-
               </div>
               {boolean && (
                 <div className="join-group-button">
@@ -64,7 +66,6 @@ const DisplayCard = ({ type = "", data, boolean = false }) => {
                   </Button>
                 </div>
               )}
-
             </Container>
           ))
         : data.map((habit, index) => (
