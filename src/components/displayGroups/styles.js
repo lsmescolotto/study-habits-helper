@@ -28,6 +28,13 @@ export const Container = styled.div`
     transform: scale(1.02);
   }
 
+  .buttons {
+    display: flex;
+    flex-direction: row nowrap;
+    justify-content: space-evenly;
+    margin-top: 8px;
+  }
+
   @media (min-width: 1024px) {
     font-size: 12px;
 

@@ -43,7 +43,7 @@ const DisplayGroup = ({ type = "", data }) => {
               onClick={() => OpClEditActivities(activities.id)}
             >
               <h3>{activities.title}</h3>
-              <h4>{activities.realization_time}</h4>
+              <h4>{new Date(activities.realization_time).toUTCString()}</h4>
             </Container>
           ))
         : groupContent.users_on_group.map((user) => (
@@ -52,14 +52,14 @@ const DisplayGroup = ({ type = "", data }) => {
               <h4>{user.email}</h4>
             </Container>
           ))}
-      {editGoals === true && (
+      {editGoals && (
         <UpdateGoals
           editGoals={editGoals}
           setEditGoals={setEditGoals}
           id={actualId}
         />
       )}
-      {editActivities === true && (
+      {editActivities && (
         <UpdateActivity
           editActivities={editActivities}
           setEditActivities={setEditActivities}

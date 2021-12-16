@@ -24,7 +24,7 @@ export const Container = styled.div`
   }
 
   section {
-    display: flex;
+    display: none; //trocar pra flex
     margin-right: 20px;
     align-items: center;
     cursor: pointer;
