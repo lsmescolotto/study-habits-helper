@@ -11,59 +11,63 @@ export const HabitsProvider = ({ children }) => {
     api
       .post("habits/", payload, {
         headers: {
-          Authorization: `Bearer  ${JSON.parse(localStorage.getItem("token"))}`,
+          Authorization: `Bearer  ${JSON.parse(
+            localStorage.getItem("@Habits:token")
+          )}`,
         },
       })
-      .then((res) => {
+      .then((_) => {
+        toast.success("Hábito criado com sucesso!");
         getHabitsAxios();
       })
-      .catch((err) => {
-        toast.error(err.message);
-      });
+      .catch((_) => toast.error("Favor reveja os campos e tente novamente!"));
   };
 
   const getHabitsAxios = () => {
     api
       .get("habits/personal/", {
         headers: {
-          Authorization: `Bearer  ${JSON.parse(localStorage.getItem("token"))}`,
+          Authorization: `Bearer  ${JSON.parse(
+            localStorage.getItem("@Habits:token")
+          )}`,
         },
       })
       .then((res) => {
         setHabitsList(res.data);
       })
-      .catch((err) => {
-        toast.error(err.message);
-      });
+      .catch((_) => toast.error("Algo aconteceu, favor tente novamente!"));
   };
 
   const updateHabit = (id, payload) => {
     api
       .patch(`habits/${id}/`, payload, {
         headers: {
-          Authorization: `Bearer  ${JSON.parse(localStorage.getItem("token"))}`,
+          Authorization: `Bearer  ${JSON.parse(
+            localStorage.getItem("@Habits:token")
+          )}`,
         },
       })
-      .then((res) => {
+      .then((_) => {
+        toast.success("Hábito atualizado com sucesso!");
         getHabitsAxios();
       })
-      .catch((err) => {
-        toast.error(err.message);
-      });
+      .catch((_) => toast.error("Favor reveja os campos e tente novamente"));
   };
+
   const deleteHabit = (id) => {
     api
       .delete(`habits/${id}/`, {
         headers: {
-          Authorization: `Bearer  ${JSON.parse(localStorage.getItem("token"))}`,
+          Authorization: `Bearer  ${JSON.parse(
+            localStorage.getItem("@Habits:token")
+          )}`,
         },
       })
-      .then((res) => {
+      .then((_) => {
+        toast.success("Hábito deletado com sucesso!");
         getHabitsAxios();
       })
-      .catch((err) => {
-        toast.error(err.message);
-      });
+      .catch((_) => toast.error("Algo aconteceu, favor tente novamente!"));
   };
 
   return (

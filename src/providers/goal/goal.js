@@ -6,59 +6,66 @@ export const GoalsContext = createContext();
 
 export const GoalsProvider = ({ children }) => {
   const [goals, setGoals] = useState([]);
-  const groupId = localStorage.getItem("GroupID");
+  const groupId = localStorage.getItem("@Habits:groupID");
 
   const renderGoals = (groupId) => {
     api
       .get(`goals/?group=${groupId}`, {
         headers: {
-          Authorization: `Bearer  ${JSON.parse(localStorage.getItem("token"))}`,
+          Authorization: `Bearer  ${JSON.parse(
+            localStorage.getItem("@Habits:token")
+          )}`,
         },
       })
       .then((res) => {
         setGoals(res.data);
       })
-      .catch((err) => {
-        toast.error(err);
-      });
+      .catch((_) => toast.error("Algo aconteceu, favor tente novamente!"));
   };
 
   const createGoals = (payload) => {
     api
       .post(`goals/`, payload, {
         headers: {
-          Authorization: `Bearer ${JSON.parse(localStorage.getItem("token"))}`,
+          Authorization: `Bearer ${JSON.parse(
+            localStorage.getItem("@Habits:token")
+          )}`,
         },
       })
-      .then((response) => {
+      .then((_) => {
+        toast.success("Meta criada com sucesso!");
         renderGoals(groupId);
       })
-      .catch((err) => toast.error(err));
+      .catch((_) => toast.error("Favor reveja os campos e tente novamente!"));
   };
 
   const updateGoals = (id, payload) => {
     api
       .patch(`goals/${id}/`, payload, {
         headers: {
-          Authorization: `Bearer ${JSON.parse(localStorage.getItem("token"))}`,
+          Authorization: `Bearer ${JSON.parse(
+            localStorage.getItem("@Habits:token")
+          )}`,
         },
       })
-      .then((response) => {
+      .then((_) => {
+        toast.success("Meta atualizada com sucesso!");
         renderGoals(groupId);
       })
-      .catch((err) => {
-        toast.error(err);
-      });
+      .catch((_) => toast.error("Favor reveja os campos e tente novamente!"));
   };
 
   const deleteGoals = (id) => {
     api
       .delete(`goals/${id}/`, {
         headers: {
-          Authorization: `Bearer ${JSON.parse(localStorage.getItem("token"))}`,
+          Authorization: `Bearer ${JSON.parse(
+            localStorage.getItem("@Habits:token")
+          )}`,
         },
       })
-      .then((response) => {
+      .then((_) => {
+        toast.success("Meta deletada com sucesso!");
         renderGoals(groupId);
       });
   };

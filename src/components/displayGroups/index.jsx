@@ -7,7 +7,6 @@ import { GroupContext } from "../../providers/groups/groups";
 
 const DisplayGroup = ({ type = "", data }) => {
   const { setGroupName } = useContext(GroupContext);
-
   const [editGoals, setEditGoals] = useState(false);
   const [editActivities, setEditActivities] = useState(false);
   const [actualId, setActualId] = useState(0);
@@ -22,7 +21,7 @@ const DisplayGroup = ({ type = "", data }) => {
     setActualId(id);
   };
 
-  const groupContent = JSON.parse(localStorage.getItem("groupContent"));
+  const groupContent = JSON.parse(localStorage.getItem("@Habits:groupContent"));
   setGroupName(groupContent.name);
 
   const formatDate = (dateTime) => {

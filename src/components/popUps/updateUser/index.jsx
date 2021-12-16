@@ -30,17 +30,23 @@ const UpdateUserPopUp = ({ closePopUp }) => {
     }
 
     api
-      .patch(`/users/${JSON.parse(localStorage.getItem("userId"))}/`, payload, {
-        headers: {
-          Authorization: `Bearer ${JSON.parse(localStorage.getItem("token"))}`,
-        },
-      })
+      .patch(
+        `/users/${JSON.parse(localStorage.getItem("@Habits:userID"))}/`,
+        payload,
+        {
+          headers: {
+            Authorization: `Bearer ${JSON.parse(
+              localStorage.getItem("@Habits:token")
+            )}`,
+          },
+        }
+      )
       .then((response) => {
         closePopUp();
       })
-      .catch((err) => {
+      .catch((_) => {
         toast.error(
-          "Não foi possível atualizar. Username ou senha já cadastrados."
+          "Não foi possível atualizar. Username ou email já cadastrados."
         );
       });
   };

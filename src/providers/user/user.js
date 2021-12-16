@@ -17,7 +17,7 @@ export const UserProvider = ({ children }) => {
         toast.success("Conta criada com sucesso. Agora é só fazer o login.");
         return history.push("/login");
       })
-      .catch((err) => toast.error("Erro ao criar a conta. Tente outro email."));
+      .catch((_) => toast.error("Erro ao criar a conta. Tente outro email."));
   };
 
   const userLogin = (payload) => {
@@ -29,14 +29,15 @@ export const UserProvider = ({ children }) => {
 
         const userDecoded = jwtDecode(res.data.access);
 
-        localStorage.setItem("userId", userDecoded.user_id);
-        localStorage.setItem("token", JSON.stringify(res.data.access));
+        localStorage.setItem("@Habits:userID", userDecoded.user_id);
+        localStorage.setItem("@Habits:token", JSON.stringify(res.data.access));
 
+        toast.success("Login aprovado!");
         history.push("/dashboard");
       })
-      .catch((err) => {
-        toast.error(err.message);
-      });
+      .catch(() =>
+        toast.error("Usuário ou senha errados, favor tente novamente!")
+      );
   };
 
   return (

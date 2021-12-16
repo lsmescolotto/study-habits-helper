@@ -15,10 +15,11 @@ import DisplayGroup from "../../components/displayGroups/index.jsx";
 import { GroupContext } from "../../providers/groups/groups.js";
 
 const Group = () => {
+  const { groupName } = useContext(GroupContext);
   const { goals, renderGoals } = useContext(GoalsContext);
   const { activities, renderActivities } = useContext(ActivitiesContext);
-  const groupId = JSON.parse(localStorage.getItem("GroupID"));
-  const { groupName } = useContext(GroupContext);
+
+  const groupId = JSON.parse(localStorage.getItem("@Habits:groupID"));
 
   useEffect(() => {
     renderGoals(groupId);
@@ -41,8 +42,10 @@ const Group = () => {
             <DisplayGroup type="activities" data={activities.results} />
           )}
         </ActivitiesContainer>
+
         <MembersContainer className="container__box">
-          {localStorage.getItem("groupContent") && (
+          {localStorage.getItem("@Habits:groupContent") && (
+
             <>
               <ContainerGroup text="Membros do Grupo" />
               <DisplayGroup type="members" />

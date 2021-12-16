@@ -11,7 +11,7 @@ import { ContainerNewGoal } from "./styles.js";
 const NewGoal = ({ newGoal, setNewGoal }) => {
   const { createGoals } = useContext(GoalsContext);
 
-  const groupId = JSON.parse(localStorage.getItem("GroupID")) || "";
+  const groupId = JSON.parse(localStorage.getItem("@Habits:groupID")) || "";
 
   const schema = yup.object().shape({
     title: yup.string().required("Campo obrigatorio"),

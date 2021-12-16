@@ -12,9 +12,11 @@ const User = ({ closePopUp }) => {
 
   const getUserInfo = () => {
     api
-      .get(`/users/${JSON.parse(localStorage.getItem("userId"))}/`, {
+      .get(`/users/${JSON.parse(localStorage.getItem("@Habits:userID"))}/`, {
         headers: {
-          Authorization: `Bearer ${JSON.parse(localStorage.getItem("token"))}`,
+          Authorization: `Bearer ${JSON.parse(
+            localStorage.getItem("@Habits:token")
+          )}`,
         },
       })
       .then((response) => {
@@ -25,7 +27,7 @@ const User = ({ closePopUp }) => {
 
         setUser(response.data);
       })
-      .catch((err) => toast.error(""));
+      .catch((_) => toast.error("Tente novamente mais tarde"));
   };
 
   const handleClick = () => {
