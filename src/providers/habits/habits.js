@@ -16,12 +16,11 @@ export const HabitsProvider = ({ children }) => {
           )}`,
         },
       })
-      .then((res) => {
+      .then((_) => {
+        toast.success("Hábito criado com sucesso!");
         getHabitsAxios();
       })
-      .catch((err) => {
-        toast.error(err.message);
-      });
+      .catch((_) => toast.error("Favor reveja os campos e tente novamente!"));
   };
 
   const getHabitsAxios = () => {
@@ -36,9 +35,7 @@ export const HabitsProvider = ({ children }) => {
       .then((res) => {
         setHabitsList(res.data);
       })
-      .catch((err) => {
-        toast.error(err.message);
-      });
+      .catch((_) => toast.error("Algo aconteceu, favor tente novamente!"));
   };
 
   const updateHabit = (id, payload) => {
@@ -50,13 +47,13 @@ export const HabitsProvider = ({ children }) => {
           )}`,
         },
       })
-      .then((res) => {
+      .then((_) => {
+        toast.success("Hábito atualizado com sucesso!");
         getHabitsAxios();
       })
-      .catch((err) => {
-        toast.error(err.message);
-      });
+      .catch((_) => toast.error("Favor reveja os campos e tente novamente"));
   };
+
   const deleteHabit = (id) => {
     api
       .delete(`habits/${id}/`, {
@@ -66,12 +63,11 @@ export const HabitsProvider = ({ children }) => {
           )}`,
         },
       })
-      .then((res) => {
+      .then((_) => {
+        toast.success("Hábito deletado com sucesso!");
         getHabitsAxios();
       })
-      .catch((err) => {
-        toast.error(err.message);
-      });
+      .catch((_) => toast.error("Algo aconteceu, favor tente novamente!"));
   };
 
   return (

@@ -15,9 +15,9 @@ import DisplayGroup from "../../components/displayGroups/index.jsx";
 import { GroupContext } from "../../providers/groups/groups.js";
 
 const Group = () => {
+  const { groupName } = useContext(GroupContext);
   const { goals, renderGoals } = useContext(GoalsContext);
   const { activities, renderActivities } = useContext(ActivitiesContext);
-  const { groupName } = useContext(GroupContext);
 
   const groupId = JSON.parse(localStorage.getItem("@Habits:groupID"));
 

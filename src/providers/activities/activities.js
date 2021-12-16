@@ -20,9 +20,7 @@ export const ActivitiesProvider = ({ children }) => {
       .then((res) => {
         setActivities(res.data);
       })
-      .catch((err) => {
-        toast.error(err);
-      });
+      .catch((_) => toast.error("Algo aconteceu, favor tente novamente!"));
   };
 
   const createActivities = (payload) => {
@@ -34,10 +32,11 @@ export const ActivitiesProvider = ({ children }) => {
           )}`,
         },
       })
-      .then((response) => {
+      .then((_) => {
+        toast.success("Atividade adicionada com sucesso!");
         renderActivities(groupId);
       })
-      .catch((err) => toast.error(err));
+      .catch((_) => toast.error("Favor reveja os campos e tente novamente!!"));
   };
 
   const updateActivities = (id, payload) => {
@@ -49,12 +48,11 @@ export const ActivitiesProvider = ({ children }) => {
           )}`,
         },
       })
-      .then((res) => {
+      .then((_) => {
+        toast.success("Atividade atualizada com sucesso!");
         renderActivities(groupId);
       })
-      .catch((err) => {
-        toast.error(err);
-      });
+      .catch((_) => toast.error("Algo aconteceu, favor tente novamente!"));
   };
 
   const deleteActivities = (id) => {
@@ -66,7 +64,8 @@ export const ActivitiesProvider = ({ children }) => {
           )}`,
         },
       })
-      .then((response) => {
+      .then((_) => {
+        toast.success("Atividade excluida com sucesso!");
         renderActivities(groupId);
       });
   };

@@ -44,9 +44,9 @@ const UpdateUserPopUp = ({ closePopUp }) => {
       .then((response) => {
         closePopUp();
       })
-      .catch((err) => {
+      .catch((_) => {
         toast.error(
-          "Não foi possível atualizar. Username ou senha já cadastrados."
+          "Não foi possível atualizar. Username ou email já cadastrados."
         );
       });
   };

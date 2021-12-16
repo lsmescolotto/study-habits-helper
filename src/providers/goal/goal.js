@@ -20,9 +20,7 @@ export const GoalsProvider = ({ children }) => {
       .then((res) => {
         setGoals(res.data);
       })
-      .catch((err) => {
-        toast.error(err);
-      });
+      .catch((_) => toast.error("Algo aconteceu, favor tente novamente!"));
   };
 
   const createGoals = (payload) => {
@@ -34,10 +32,11 @@ export const GoalsProvider = ({ children }) => {
           )}`,
         },
       })
-      .then((response) => {
+      .then((_) => {
+        toast.success("Meta criada com sucesso!");
         renderGoals(groupId);
       })
-      .catch((err) => toast.error(err));
+      .catch((_) => toast.error("Favor reveja os campos e tente novamente!"));
   };
 
   const updateGoals = (id, payload) => {
@@ -49,12 +48,11 @@ export const GoalsProvider = ({ children }) => {
           )}`,
         },
       })
-      .then((response) => {
+      .then((_) => {
+        toast.success("Meta atualizada com sucesso!");
         renderGoals(groupId);
       })
-      .catch((err) => {
-        toast.error(err);
-      });
+      .catch((_) => toast.error("Favor reveja os campos e tente novamente!"));
   };
 
   const deleteGoals = (id) => {
@@ -66,7 +64,8 @@ export const GoalsProvider = ({ children }) => {
           )}`,
         },
       })
-      .then((response) => {
+      .then((_) => {
+        toast.success("Meta deletada com sucesso!");
         renderGoals(groupId);
       });
   };
