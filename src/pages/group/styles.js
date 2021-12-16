@@ -4,11 +4,12 @@ export const Container = styled.div`
   align-items: center;
   display: flex;
   flex-flow: column nowrap;
+  height: 100vh;
   justify-content: space-between;
   text-align: center;
 
   h2 {
-    font-size: 30px;
+    font-size: 25px;
     font-family: var(--title-font);
     margin: 30px 0 15px 0;
   }
@@ -40,6 +41,10 @@ export const Container = styled.div`
   }
 
   @media (min-width: 1024px) {
+    h2{
+      font-size: 38px;
+    }
+
     .container__box {
       height: 422px;
       margin: 0;
