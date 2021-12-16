@@ -110,5 +110,6 @@ export const LoginRedirectBox = styled.div`
   @media only screen and (min-width: 900px) {
     font-size: 16px;
     padding: 20px 30px;
+    width: 400px;
   }
 `;
