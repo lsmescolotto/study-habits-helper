@@ -34,10 +34,13 @@ const NewActivity = ({ newActivity, setNewActivity }) => {
   const onSubmitFunction = (data) => {
     const groupId = localStorage.getItem("GroupID");
 
-    let dateTime =
-      data.realization_time.toISOString().replace(/\..+/, "") + "Z";
+    let dateTime = new Date(data.realization_time);
+    let convert =
+      new Date(dateTime.getTime() - dateTime.getTimezoneOffset() * 60000)
+        .toISOString()
+        .replace(/\..+/, "") + "Z";
 
-    const payload = { ...data, realization_time: dateTime, group: groupId };
+    const payload = { ...data, realization_time: convert, group: groupId };
     createActivities(payload);
     setNewActivity(!newActivity);
   };
@@ -45,19 +48,19 @@ const NewActivity = ({ newActivity, setNewActivity }) => {
   const closePopUp = () => {
     setNewActivity(!newActivity);
   };
-  
+
   return (
     <Container>
       <PopUpBase title="Nova Atividade" closePopUp={closePopUp}>
         <form onSubmit={handleSubmit(onSubmitFunction)}>
           <Input
-            label="Título"
+            label="Título:"
             register={register}
             name="title"
             error={errors.title?.message}
           />
           <Input
-            label="Será concluído(a) em"
+            label="Será concluído(a) em:"
             type="datetime-local"
             register={register}
             name="realization_time"
@@ -69,7 +72,6 @@ const NewActivity = ({ newActivity, setNewActivity }) => {
         </form>
       </PopUpBase>
     </Container>
-
   );
 };
 
