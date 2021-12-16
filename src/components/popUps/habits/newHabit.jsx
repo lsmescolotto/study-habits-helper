@@ -30,7 +30,7 @@ const NewHabit = ({ setNewHabit, newHabit }) => {
       ...data,
       achieved: false,
       how_much_achieved: 0,
-      user: localStorage.getItem("userId"),
+      user: localStorage.getItem("@Habits:userID"),
     };
     createHabit(fullData);
     setNewHabit(!newHabit);

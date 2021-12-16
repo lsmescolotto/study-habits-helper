@@ -1,16 +1,19 @@
 import { useEffect, useState, useContext } from "react";
-import Button from "../button";
 import NewGoal from "../popUps/goals/newGoal";
 import NewActivity from "../popUps/newActivity";
 import { GoalsContext } from "../../providers/goal/goal";
 import { ActivitiesContext } from "../../providers/activities/activities";
+import { FiPlusSquare } from "react-icons/fi";
+import { ContainerHeader } from "./styles";
 
 const ContainerGroup = ({ text }) => {
   const [newGoal, setNewGoal] = useState(false);
   const [newActivity, setNewActivity] = useState(false);
+  
   const { renderGoals } = useContext(GoalsContext);
   const { renderActivities } = useContext(ActivitiesContext);
-  const groupId = localStorage.getItem("GroupID");
+  
+  const groupId = localStorage.getItem("@Habits:groupID");
 
   const OpClHabit = () => {
     setNewGoal(!newGoal);
@@ -27,27 +30,27 @@ const ContainerGroup = ({ text }) => {
   }, []);
 
   return (
-    <div>
-      <header>
+    <>
+      <ContainerHeader>
         <h3>{text}</h3>
-        {text === "Metas do Grupo" ? (
-          <Button onClick={OpClHabit}>+</Button>
-        ) : text === "Atividades do Grupo" ? (
-          <Button onClick={OpClActivity}>+</Button>
-        ) : (
-          <div></div>
-        )}
-      </header>
-      {newGoal === true && (
-        <NewGoal newGoal={newGoal} setNewGoal={setNewGoal} />
-      )}
-      {newActivity === true && (
+        <div>
+          {text === "Metas do Grupo" ? (
+            <FiPlusSquare onClick={OpClHabit} className="addNew" />
+          ) : text === "Atividades do Grupo" ? (
+            <FiPlusSquare onClick={OpClActivity} className="addNew" />
+          ) : (
+            <div></div>
+          )}
+        </div>
+      </ContainerHeader>
+      {newGoal && <NewGoal newGoal={newGoal} setNewGoal={setNewGoal} />}
+      {newActivity && (
         <NewActivity
           newActivity={newActivity}
           setNewActivity={setNewActivity}
         />
       )}
-    </div>
+    </>
   );
 };
 

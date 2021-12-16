@@ -1,46 +1,28 @@
 import styled from "styled-components";
 
-export const DashboardContainer = styled.div`
-  align-items: center;
-  border-radius: 5px;
-  box-shadow: 0px 4px 4px var(--black-60);
-  color: var(--black-50);
-  display: flex;
-  flex-direction: column;
-  font-family: var(--main-font);
-  height: 290px;
-  margin: 15px 0;
-  max-width: 350px;
-  width: 80%;
-
-  @media (min-width: 1024px) {
-    height: 572px;
-    margin: 0;
-    min-width: 401px;
-  }
-`;
-
 export const ContainerHeader = styled.div`
-  align-items: center;
   display: flex;
-  height: 55px;
   justify-content: space-between;
+  align-items: center;
+  height: 55px;
   width: 100%;
 
   h3 {
-    font-size: 22px;
+    font-family: var(--main-font);
+    font-size: 18px;
     font-weight: 500;
     margin-left: 10px;
   }
 
   div {
-    align-items: center;
+    width: 75px;
     display: flex;
     justify-content: space-around;
-    width: 75px;
+    align-items: center;
 
     svg {
       font-size: 25px;
+
       &:hover {
         cursor: pointer;
       }
@@ -56,6 +38,10 @@ export const ContainerHeader = styled.div`
 
   @media (min-width: 1024px) {
     height: 65px;
+
+    h3 {
+      font-size: 22px;
+    }
 
     div {
       width: 100px;
