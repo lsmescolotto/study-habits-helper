@@ -17,12 +17,13 @@ export const Background = styled.div`
     background-size: contain;
     background: url(${loginImage}) no-repeat center;
     flex: 1;
+    object-fit: cover;
   }
 `;
 
 export const Content = styled.div`
   display: flex;
-  height: 60%;
+  height: 70%;
   justify-content: space-between;
   margin-top: 40px;
   width: 100vw;
