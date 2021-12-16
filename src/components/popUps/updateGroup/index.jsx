@@ -9,6 +9,8 @@ import PopUpBase from "../popUpBase";
 import Input from "../../input";
 import Button from "../../button";
 
+import { Form } from "./styles";
+
 const UpdateGroup = ({ id, closePopUp }) => {
   const { updateGroup } = useContext(GroupContext);
 
@@ -25,12 +27,12 @@ const UpdateGroup = ({ id, closePopUp }) => {
 
   return (
     <PopUpBase title="Editar grupo" closePopUp={closePopUp}>
-      <form onSubmit={handleSubmit(onSubmitFunction)}>
-        <Input name="name" label="Nome" register={register} />
+      <Form onSubmit={handleSubmit(onSubmitFunction)}>
+        <Input name="name" label="Nome:" register={register} />
         <Button type="submit" name="button--blue button__pop-up">
           Atualizar
         </Button>
-      </form>
+      </Form>
     </PopUpBase>
   );
 };

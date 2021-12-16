@@ -1,13 +1,14 @@
 import * as yup from "yup";
 import { useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
-import Input from "../../input";
 import { useContext } from "react";
 import { HabitsContext } from "../../../providers/habits/habits";
 import { useState } from "react/cjs/react.development";
-import PopUpBase from "../popUpBase";
-import DisplayCard from "../../displayCard";
+import { ContainerSearchHabit } from "./styles";
 import Button from "../../button";
+import DisplayCard from "../../displayCard";
+import Input from "../../input";
+import PopUpBase from "../popUpBase";
 
 const GetHabitsSearch = ({ searchHabit, setSearchHabit }) => {
   const [searchedHabits, setSearchedHabits] = useState([]);
@@ -35,16 +36,18 @@ const GetHabitsSearch = ({ searchHabit, setSearchHabit }) => {
   };
 
   return (
-    <PopUpBase title="Pesquisar Habitos" closePopUp={handlePopUp}>
-      <form onSubmit={handleSubmit(handleEdit)}>
-        <Input register={register} name="search" label="Pesquisa" />
-        <Button type="submit" name="button--blue">
-          Pesquisar
-        </Button>
-      </form>
+    <ContainerSearchHabit>
+      <PopUpBase title="Pesquisar Habitos" closePopUp={handlePopUp}>
+        <form onSubmit={handleSubmit(handleEdit)}>
+          <Input register={register} name="search" placeholder="Pesquisar" />
+          <Button type="submit" name="button--blue">
+            Pesquisar
+          </Button>
+        </form>
 
-      {searchedHabits[0] && <DisplayCard data={searchedHabits} />}
-    </PopUpBase>
+        {searchedHabits[0] && <DisplayCard data={searchedHabits} />}
+      </PopUpBase>
+    </ContainerSearchHabit>
   );
 };
 export default GetHabitsSearch;

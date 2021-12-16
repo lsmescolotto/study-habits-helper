@@ -59,6 +59,7 @@ const FindGroups = ({ search, setSearch }) => {
             value={searchInput}
             onChange={(event) => setSearchInput(event.target.value)}
           />
+
           <Button type="submit" name="button--blue">
             Pesquisar
           </Button>

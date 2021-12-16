@@ -56,7 +56,7 @@ const UpdateGoals = ({ id, editGoals, setEditGoals }) => {
           <Input
             register={register}
             name="how_much_achieved"
-            label="Progresso"
+            label="Progresso:"
             error={errors.how_much_achieved?.message}
           />
           <div className="buttons_box">
@@ -75,4 +75,5 @@ const UpdateGoals = ({ id, editGoals, setEditGoals }) => {
     </ContainerUpdateGoal>
   );
 };
+
 export default UpdateGoals;

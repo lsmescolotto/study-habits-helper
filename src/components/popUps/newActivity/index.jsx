@@ -52,13 +52,13 @@ const NewActivity = ({ newActivity, setNewActivity }) => {
       <PopUpBase title="Nova Atividade" closePopUp={closePopUp}>
         <form onSubmit={handleSubmit(onSubmitFunction)}>
           <Input
-            label="Título"
+            label="Título:"
             register={register}
             name="title"
             error={errors.title?.message}
           />
           <Input
-            label="Será concluído(a) em"
+            label="Será concluído(a) em:"
             type="datetime-local"
             register={register}
             name="realization_time"

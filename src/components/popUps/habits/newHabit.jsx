@@ -1,11 +1,12 @@
 import * as yup from "yup";
 import { useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
-import Input from "../../input";
-import { useContext } from "react";
 import { HabitsContext } from "../../../providers/habits/habits";
-import PopUpBase from "../popUpBase";
+import { useContext } from "react";
+import { NewHabitForm } from "./styles";
 import Button from "../../button";
+import Input from "../../input";
+import PopUpBase from "../popUpBase";
 
 const NewHabit = ({ setNewHabit, newHabit }) => {
   const { createHabit } = useContext(HabitsContext);
@@ -43,36 +44,35 @@ const NewHabit = ({ setNewHabit, newHabit }) => {
 
   return (
     <PopUpBase title="Novo Habito" closePopUp={handlePopUp}>
-      <form onSubmit={handleSubmit(handleHabit)}>
+      <NewHabitForm onSubmit={handleSubmit(handleHabit)}>
         <Input
           register={register}
           name="title"
-          label="titulo"
+          label="Titulo:"
           error={errors.title?.message}
         />
         <Input
           register={register}
           name="category"
-          label="categoria"
+          label="Categoria:"
           error={errors.category?.message}
         />
         <Input
           register={register}
           name="difficulty"
-          label="dificuldade"
+          label="Dificuldade:"
           error={errors.difficulty?.message}
         />
         <Input
           register={register}
           name="frequency"
-          label="frequencia"
+          label="Frequencia:"
           error={errors.frequency?.message}
         />
-
         <Button type="submit" name="button--blue button__pop-up">
           Criar
         </Button>
-      </form>
+      </NewHabitForm>
     </PopUpBase>
   );
 };
