@@ -1,9 +1,9 @@
 import styled from "styled-components";
 
-export const Container = styled.div`
+export const Container = styled.footer`
   background-color: var(--blue-80);
 
-  height: 56px;
+  height: 10vh;
   width: 100vw;
 
   align-items: center;

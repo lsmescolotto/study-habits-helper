@@ -63,14 +63,14 @@ const Signup = () => {
               <Input
                 placeholder="username"
                 name="username"
-                label="Username"
+                label="Username:"
                 register={register}
                 error={errors.username?.message}
               />
               <Input
                 placeholder="email"
                 name="email"
-                label="Email"
+                label="Email:"
                 register={register}
                 error={errors.email?.message}
               />
@@ -78,7 +78,7 @@ const Signup = () => {
                 type="password"
                 placeholder="senha"
                 name="password"
-                label="Senha"
+                label="Senha:"
                 register={register}
                 error={errors.password?.message}
               />
@@ -86,7 +86,7 @@ const Signup = () => {
                 type="password"
                 placeholder="confirmar senha"
                 name="passwordConfirm"
-                label="Confirmação de senha"
+                label="Confirmação de senha:"
                 register={register}
                 error={errors.passwordConfirm?.message}
               />
