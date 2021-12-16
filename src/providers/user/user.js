@@ -29,8 +29,8 @@ export const UserProvider = ({ children }) => {
 
         const userDecoded = jwtDecode(res.data.access);
 
-        localStorage.setItem("userId", userDecoded.user_id);
-        localStorage.setItem("token", JSON.stringify(res.data.access));
+        localStorage.setItem("@Habits:userID", userDecoded.user_id);
+        localStorage.setItem("@Habits:token", JSON.stringify(res.data.access));
 
         toast.success("Login aprovado!");
         history.push("/dashboard");

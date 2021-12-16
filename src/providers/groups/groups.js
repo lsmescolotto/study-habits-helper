@@ -13,7 +13,9 @@ export const GroupProviders = ({ children }) => {
     api
       .post("groups/", payload, {
         headers: {
-          Authorization: `Bearer  ${JSON.parse(localStorage.getItem("token"))}`,
+          Authorization: `Bearer  ${JSON.parse(
+            localStorage.getItem("@Habits:token")
+          )}`,
         },
       })
       .then((_) => {
@@ -27,7 +29,9 @@ export const GroupProviders = ({ children }) => {
     api
       .get(`/groups/?search=${data}`, {
         headers: {
-          Authorization: `Bearer  ${JSON.parse(localStorage.getItem("token"))}`,
+          Authorization: `Bearer  ${JSON.parse(
+            localStorage.getItem("@Habits:token")
+          )}`,
         },
       })
       .then((res) => {
@@ -40,11 +44,13 @@ export const GroupProviders = ({ children }) => {
     api
       .patch(`groups/${id}/`, payload, {
         headers: {
-          Authorization: `Bearer  ${JSON.parse(localStorage.getItem("token"))}`,
+          Authorization: `Bearer  ${JSON.parse(
+            localStorage.getItem("@Habits:token")
+          )}`,
         },
       })
       .then((res) => {
-        localStorage.setItem("groupContent", JSON.stringify(res.data));
+        localStorage.setItem("@Habits:groupContent", JSON.stringify(res.data));
         getGroups(res.data.name);
         toast.success("Grupo atualizado com sucesso!");
       })
@@ -61,7 +67,7 @@ export const GroupProviders = ({ children }) => {
         {
           headers: {
             Authorization: `Bearer  ${JSON.parse(
-              localStorage.getItem("token")
+              localStorage.getItem("@Habits:token")
             )}`,
           },
         }
@@ -79,7 +85,9 @@ export const GroupProviders = ({ children }) => {
     api
       .get("groups/subscriptions/", {
         headers: {
-          Authorization: `Bearer  ${JSON.parse(localStorage.getItem("token"))}`,
+          Authorization: `Bearer  ${JSON.parse(
+            localStorage.getItem("@Habits:token")
+          )}`,
         },
       })
       .then((res) => {
@@ -92,7 +100,9 @@ export const GroupProviders = ({ children }) => {
     api
       .delete(`groups/${id}/unsubscribe/`, {
         headers: {
-          Authorization: `Bearer  ${JSON.parse(localStorage.getItem("token"))}`,
+          Authorization: `Bearer  ${JSON.parse(
+            localStorage.getItem("@Habits:token")
+          )}`,
         },
       })
       .then((_) => {

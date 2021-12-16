@@ -30,13 +30,18 @@ const UpdateUserPopUp = ({ closePopUp }) => {
     }
 
     api
-      .patch(`/users/${JSON.parse(localStorage.getItem("userId"))}/`, payload, {
-        headers: {
-          Authorization: `Bearer ${JSON.parse(localStorage.getItem("token"))}`,
-        },
-      })
-      .then((_) => {
-        toast.success("Informações do usuário, alteradas com sucesso!");
+      .patch(
+        `/users/${JSON.parse(localStorage.getItem("@Habits:userID"))}/`,
+        payload,
+        {
+          headers: {
+            Authorization: `Bearer ${JSON.parse(
+              localStorage.getItem("@Habits:token")
+            )}`,
+          },
+        }
+      )
+      .then((response) => {
         closePopUp();
       })
       .catch((_) => {

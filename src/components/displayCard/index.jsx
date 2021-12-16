@@ -8,13 +8,14 @@ import Button from "../button";
 import { ActivitiesContext } from "../../providers/activities/activities";
 
 const DisplayCard = ({ type = "", data, boolean = false }) => {
+  const [actualId, setActualId] = useState(0);
+  const [editHabits, setEditHabits] = useState(false);
+
   const { subscribeGroup } = useContext(GroupContext);
   const { renderGoals, setGoals } = useContext(GoalsContext);
   const { renderActivities, setActivities } = useContext(ActivitiesContext);
-  const history = useHistory();
 
-  const [editHabits, setEditHabits] = useState(false);
-  const [actualId, setActualId] = useState(0);
+  const history = useHistory();
 
   const OpClEdit = (id) => {
     setEditHabits(!editHabits);
@@ -22,12 +23,15 @@ const DisplayCard = ({ type = "", data, boolean = false }) => {
   };
 
   const goPageGroups = (id, group) => {
-    localStorage.setItem("GroupID", id);
-    localStorage.setItem("groupContent", JSON.stringify(group));
+    localStorage.setItem("@Habits:groupID", id);
+    localStorage.setItem("@Habits:groupContent", JSON.stringify(group));
+
     setGoals([]);
     setActivities([]);
+
     renderActivities(id);
     renderGoals(id);
+
     history.push(`/group/${id}`);
   };
 
@@ -42,21 +46,23 @@ const DisplayCard = ({ type = "", data, boolean = false }) => {
               <p>{group.creator.username}</p>
 
               <div className="buttons">
-                 <Button onClick={() => goPageGroups(group.id, group)} name="button--blue">
-                    Ir para Pagina
-                  </Button>
-                  {boolean && (
-                    <div>
-                      <Button
-                        onClick={() => subscribeGroup(group.id)}
-                        name="button--pink"
-                      >
-                        Inscrever
-                      </Button>
-                    </div>
-                  )}
+                <Button
+                  onClick={() => goPageGroups(group.id, group)}
+                  name="button--blue"
+                >
+                  Ir para Pagina
+                </Button>
+                {boolean && (
+                  <div>
+                    <Button
+                      onClick={() => subscribeGroup(group.id)}
+                      name="button--pink"
+                    >
+                      Inscrever
+                    </Button>
+                  </div>
+                )}
               </div>
-
             </Container>
           ))
         : data.map((habit, index) => (

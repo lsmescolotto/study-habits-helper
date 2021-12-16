@@ -11,6 +11,7 @@ import { Container } from "./styles";
 
 const NewActivity = ({ newActivity, setNewActivity }) => {
   const { createActivities } = useContext(ActivitiesContext);
+
   let now = new Date();
 
   const formSchema = yup.object().shape({
@@ -32,7 +33,7 @@ const NewActivity = ({ newActivity, setNewActivity }) => {
   });
 
   const onSubmitFunction = (data) => {
-    const groupId = localStorage.getItem("GroupID");
+    const groupId = localStorage.getItem("@Habits:groupID");
 
     let dateTime =
       data.realization_time.toISOString().replace(/\..+/, "") + "Z";
@@ -45,7 +46,7 @@ const NewActivity = ({ newActivity, setNewActivity }) => {
   const closePopUp = () => {
     setNewActivity(!newActivity);
   };
-  
+
   return (
     <Container>
       <PopUpBase title="Nova Atividade" closePopUp={closePopUp}>
@@ -69,7 +70,6 @@ const NewActivity = ({ newActivity, setNewActivity }) => {
         </form>
       </PopUpBase>
     </Container>
-
   );
 };
 
