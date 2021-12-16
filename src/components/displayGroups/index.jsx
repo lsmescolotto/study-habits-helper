@@ -7,7 +7,7 @@ import { GroupContext } from "../../providers/groups/groups";
 
 const DisplayGroup = ({ type = "", data }) => {
   const { setGroupName } = useContext(GroupContext);
-  
+
   const [editGoals, setEditGoals] = useState(false);
   const [editActivities, setEditActivities] = useState(false);
   const [actualId, setActualId] = useState(0);
@@ -25,6 +25,11 @@ const DisplayGroup = ({ type = "", data }) => {
   const groupContent = JSON.parse(localStorage.getItem("groupContent"));
   setGroupName(groupContent.name);
 
+  const formatDate = (dateTime) => {
+    let current = new Date(dateTime.slice(0, -1));
+    return current.toLocaleString();
+  };
+
   return (
     <>
       {type === "goals"
@@ -32,18 +37,28 @@ const DisplayGroup = ({ type = "", data }) => {
             <Container key={index} onClick={() => OpClEditGoals(goals.id)}>
               <h3>{goals.title}</h3>
               <h4>{goals.difficulty}</h4>
-              <p>Status: {goals.achieved ? "Concluido" : "Em Progresso"}</p>
-              <p>Progresso: {goals.how_much_achieved}/100</p>
+              <p>
+                Status:{" "}
+                {goals.achieved ? (
+                  <span className="achievied">Concluído</span>
+                ) : (
+                  <span className="in-progress">Em Progresso</span>
+                )}
+              </p>
+              <p>
+                Progresso: <span>{goals.how_much_achieved}/100</span>
+              </p>
             </Container>
           ))
         : type === "activities"
         ? data.map((activities, index) => (
             <Container
+              className="activity"
               key={index}
               onClick={() => OpClEditActivities(activities.id)}
             >
               <h3>{activities.title}</h3>
-              <h4>{activities.realization_time}</h4>
+              <h4>{formatDate(activities.realization_time)}</h4>
             </Container>
           ))
         : groupContent.users_on_group.map((user) => (
@@ -52,14 +67,14 @@ const DisplayGroup = ({ type = "", data }) => {
               <h4>{user.email}</h4>
             </Container>
           ))}
-      {editGoals === true && (
+      {editGoals && (
         <UpdateGoals
           editGoals={editGoals}
           setEditGoals={setEditGoals}
           id={actualId}
         />
       )}
-      {editActivities === true && (
+      {editActivities && (
         <UpdateActivity
           editActivities={editActivities}
           setEditActivities={setEditActivities}

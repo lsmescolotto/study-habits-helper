@@ -29,19 +29,19 @@ const Group = () => {
   return (
     <Container>
       <Header group id={groupId} />
-      <h1>{groupName}</h1>
+      <h2>{groupName}</h2>
       <div className="cards-containers">
-        <GoalsContainer>
+        <GoalsContainer className="container__box">
           <ContainerGroup text="Metas do Grupo" />
           {goals.results && <DisplayGroup type="goals" data={goals.results} />}
         </GoalsContainer>
-        <ActivitiesContainer>
+        <ActivitiesContainer className="container__box">
           <ContainerGroup text="Atividades do Grupo" />
           {activities.results && (
             <DisplayGroup type="activities" data={activities.results} />
           )}
         </ActivitiesContainer>
-        <MembersContainer>
+        <MembersContainer className="container__box">
           {localStorage.getItem("groupContent") && (
             <>
               <ContainerGroup text="Membros do Grupo" />

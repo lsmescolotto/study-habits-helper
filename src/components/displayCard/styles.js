@@ -19,18 +19,19 @@ export const DisplayContainer = styled.div`
 `;
 
 export const Container = styled.div`
+  background-color: var(--grey-40);
   border-radius: 4px;
   border: 2px solid transparent;
-  background-color: var(--grey-40);
+  box-shadow: 0 0 4px 1px var(--grey-40);
+  cursor: pointer;
   font-family: var(--main-font);
   font-size: 11px;
   height: auto;
-  line-height: 15px;
+  line-height: 18px;
   margin: 10px;
   padding: 8px;
   text-align: start;
   width: 90%;
-  cursor: pointer;
 
   h3 {
     font-weight: 600;
@@ -46,11 +47,21 @@ export const Container = styled.div`
     transform: scale(1.02);
   }
 
-  .buttons {
-    display: flex;
-    flex-direction: row nowrap;
-    justify-content: space-evenly;
-    margin-top: 8px;
+  span {
+    font-weight: 500;
+  }
+
+  .group-card-button {
+    margin-block: 5px;
+    margin: 0 auto;
+    width: 90px;
+  }
+
+  .join-group-button {
+    div {
+      margin: 0 auto;
+      width: 80px;
+    }
   }
 
   @media (min-width: 1024px) {
@@ -62,6 +73,16 @@ export const Container = styled.div`
 
     h4 {
       font-size: 13px;
+    }
+
+    .group-card-button {
+      width: 110px;
+    }
+
+    .join-group-button {
+      div {
+        width: 100px;
+      }
     }
   }
 `;
