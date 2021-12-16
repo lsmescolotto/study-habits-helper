@@ -2,10 +2,13 @@ import styled from "styled-components";
 
 export const Container = styled.div`
   form {
-    align-items: center;
+    height: 280px;
+
     display: flex;
     flex-direction: column;
+    align-items: center;
     justify-content: flex-start;
+
     text-align: left;
 
     div {
