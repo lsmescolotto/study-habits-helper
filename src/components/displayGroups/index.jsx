@@ -1,21 +1,14 @@
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import { Container } from "./styles";
 import UpdateGoals from "../popUps/goals/updateGoal";
 import UpdateActivity from "../popUps/updateActivity";
-import { useContext } from "react/cjs/react.development";
-import { GroupContext } from "../../providers/groups/groups";
 
 const DisplayGroup = ({ type = "", data }) => {
-  const { setGroupName } = useContext(GroupContext);
-
   const [editGoals, setEditGoals] = useState(false);
   const [editActivities, setEditActivities] = useState(false);
   const [actualId, setActualId] = useState(0);
 
-  useEffect(() => {
-    setEditGoals(false);
-    setEditActivities(false);
-  }, []);
+  const groupContent = JSON.parse(localStorage.getItem("@Habits:groupContent"));
 
   const OpClEditGoals = (id) => {
     setEditGoals(!editGoals);
@@ -27,13 +20,11 @@ const DisplayGroup = ({ type = "", data }) => {
     setActualId(id);
   };
 
-  const groupContent = JSON.parse(localStorage.getItem("@Habits:groupContent"));
-  setGroupName(groupContent.name);
-
   const formatDate = (dateTime) => {
     let current = new Date(dateTime.slice(0, -1));
     return current.toLocaleString();
   };
+
   const handleAchieved = (percentage) => {
     return percentage === 100 ? true : false;
   };

@@ -18,7 +18,7 @@ export const PopUpContainer = styled.div`
   margin-left: auto;
   margin-right: auto;
   max-width: 300px;
-  min-height: 345px;
+  height: auto;
   padding: 0 10px;
   position: fixed;
   right: 0;
@@ -26,9 +26,8 @@ export const PopUpContainer = styled.div`
   width: 90%;
 
   @media (min-width: 768px) {
-    min-height: 400px;
+    height: auto;
     max-width: 400px;
-    padding: 0 15px;
   }
 `;
 
@@ -59,7 +58,5 @@ export const PopUpBody = styled.div`
   display: flex;
   flex-flow: column nowrap;
   justify-content: space-around;
-  margin-top: 10px;
-  padding: 15px 5px;
   text-align: center;
 `;
