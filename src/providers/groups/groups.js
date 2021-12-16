@@ -16,12 +16,11 @@ export const GroupProviders = ({ children }) => {
           Authorization: `Bearer  ${JSON.parse(localStorage.getItem("token"))}`,
         },
       })
-      .then((res) => {
+      .then((_) => {
+        toast.success("Grupo criado com sucesso!");
         getGroupsSubscriptions();
       })
-      .catch((err) => {
-        toast.error(err.message);
-      });
+      .catch((_) => toast.error("Favor reveja os campos e tente novamente!"));
   };
 
   const getGroups = (data) => {
@@ -34,9 +33,7 @@ export const GroupProviders = ({ children }) => {
       .then((res) => {
         setGroupList(res.data);
       })
-      .catch((err) => {
-        toast.error(err.message);
-      });
+      .catch((_) => toast.error("Grupo não encontrado, tente novamente!"));
   };
 
   const updateGroup = (id, payload) => {
@@ -49,11 +46,11 @@ export const GroupProviders = ({ children }) => {
       .then((res) => {
         localStorage.setItem("groupContent", JSON.stringify(res.data));
         getGroups(res.data.name);
-        toast.success("Grupo atualizado");
+        toast.success("Grupo atualizado com sucesso!");
       })
-      .catch((err) => {
-        toast.error("Erro ao atualizar grupo");
-      });
+      .catch((_) =>
+        toast.error("Erro ao atualizar grupo, favor tente novamente")
+      );
   };
 
   const subscribeGroup = (id) => {
@@ -69,12 +66,13 @@ export const GroupProviders = ({ children }) => {
           },
         }
       )
-      .then((res) => {
+      .then((_) => {
+        toast.success("Você se inscreveu no grupo!");
         getGroupsSubscriptions();
       })
-      .catch((err) => {
-        toast.error(err.message);
-      });
+      .catch((_) =>
+        toast.error("Erro ao se inscrever no grupo, favor tente novamente")
+      );
   };
 
   const getGroupsSubscriptions = () => {
@@ -87,9 +85,7 @@ export const GroupProviders = ({ children }) => {
       .then((res) => {
         setSubscriptions(res.data);
       })
-      .catch((err) => {
-        toast.error(err.message);
-      });
+      .catch((_) => toast.error("Algo aconteceu, favor tente novamente!"));
   };
 
   const unsubscribeGroup = (id) => {
@@ -99,12 +95,11 @@ export const GroupProviders = ({ children }) => {
           Authorization: `Bearer  ${JSON.parse(localStorage.getItem("token"))}`,
         },
       })
-      .then((res) => {
+      .then((_) => {
+        toast.success("Você saiu do grupo!");
         getGroupsSubscriptions();
       })
-      .catch((err) => {
-        toast.error(err.message);
-      });
+      .catch((_) => toast.error("Algo aconteceu, favor tente novamente!"));
   };
 
   return (

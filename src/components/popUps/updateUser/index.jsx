@@ -35,12 +35,13 @@ const UpdateUserPopUp = ({ closePopUp }) => {
           Authorization: `Bearer ${JSON.parse(localStorage.getItem("token"))}`,
         },
       })
-      .then((response) => {
+      .then((_) => {
+        toast.success("Informações do usuário, alteradas com sucesso!");
         closePopUp();
       })
-      .catch((err) => {
+      .catch((_) => {
         toast.error(
-          "Não foi possível atualizar. Username ou senha já cadastrados."
+          "Não foi possível atualizar. Username ou email já cadastrados."
         );
       });
   };

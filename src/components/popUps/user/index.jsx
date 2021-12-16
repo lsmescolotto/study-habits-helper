@@ -25,7 +25,7 @@ const User = ({ closePopUp }) => {
 
         setUser(response.data);
       })
-      .catch((err) => toast.error(""));
+      .catch((_) => toast.error("Tente novamente mais tarde"));
   };
 
   const handleClick = () => {
