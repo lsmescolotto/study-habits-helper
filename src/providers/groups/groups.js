@@ -12,7 +12,7 @@ export const GroupProviders = ({ children }) => {
   const groupContent = JSON.parse(localStorage.getItem("@Habits:groupContent"));
 
   useEffect(() => {
-    setGroupName(groupContent.name);
+    setGroupName(groupContent?.name);
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
