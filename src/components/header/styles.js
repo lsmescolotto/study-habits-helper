@@ -1,6 +1,6 @@
 import styled from "styled-components";
 
-export const Container = styled.div`
+export const Container = styled.header`
   align-items: center;
   box-shadow: 0 0 10px 0px var(--black-60);
   display: flex;
