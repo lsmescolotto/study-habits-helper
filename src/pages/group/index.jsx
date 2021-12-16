@@ -15,10 +15,11 @@ import DisplayGroup from "../../components/displayGroups/index.jsx";
 import { GroupContext } from "../../providers/groups/groups.js";
 
 const Group = () => {
+  const { groupName } = useContext(GroupContext);
   const { goals, renderGoals } = useContext(GoalsContext);
   const { activities, renderActivities } = useContext(ActivitiesContext);
+  
   const groupId = JSON.parse(localStorage.getItem("GroupID"));
-  const { groupName } = useContext(GroupContext);
 
   useEffect(() => {
     renderGoals(groupId);
