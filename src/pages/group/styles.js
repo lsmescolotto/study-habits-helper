@@ -4,32 +4,24 @@ export const Container = styled.div`
   align-items: center;
   display: flex;
   flex-flow: column nowrap;
-  min-height: 100vh;
   justify-content: space-between;
   text-align: center;
 
-<<<<<<< HEAD
-  header {
-    div {
-      display: none;
-    }
-  }
-
-=======
->>>>>>> b7e13dc11df16858c962def5832a96130e700345
   h2 {
     font-size: 30px;
     font-family: var(--title-font);
-    margin-top: 30px;
+    margin: 30px 0 15px 0;
   }
 
   .cards-containers {
     align-items: center;
     display: flex;
     flex-flow: column nowrap;
-    justify-content: space-around;
+    justify-content: flex-start;
     width: 95%;
     align-items: center;
+    height: calc(100vh - 189px);
+    overflow-y: scroll;
   }
 
   .container__box {
@@ -40,21 +32,7 @@ export const Container = styled.div`
     display: flex;
     flex-direction: column;
     font-family: var(--main-font);
-    height: 100px;
-    margin: 15px 0;
-    min-width: 260px;
-    padding: 5px;
-    width: 50%;
-  }
-
-  .container__box {
-    align-items: center;
-    border-radius: 5px;
-    box-shadow: 0px 4px 4px var(--black-60);
-    color: var(--black-50);
-    display: flex;
-    flex-direction: column;
-    font-family: var(--main-font);
+    height: 290px;
     margin: 15px 0;
     min-width: 260px;
     padding: 5px;
@@ -63,7 +41,7 @@ export const Container = styled.div`
 
   @media (min-width: 1024px) {
     .container__box {
-      height: 572px;
+      height: 422px;
       margin: 0;
       max-width: 330px;
     }
@@ -71,6 +49,7 @@ export const Container = styled.div`
     .cards-containers {
       align-items: center;
       flex-flow: row nowrap;
+      height: calc(100vh - 209px);
       justify-content: space-between;
     }
   }
@@ -93,12 +72,13 @@ export const MembersContainer = styled.div`
     width: 30%;
   }
 `;
-<<<<<<< HEAD
 
 export const Content = styled.div`
   height: 75%;
   overflow: hidden scroll;
   width: 98%;
+
+  @media (min-width: 768px) {
+    height: 80%;
+  }
 `;
-=======
->>>>>>> b7e13dc11df16858c962def5832a96130e700345

@@ -58,11 +58,7 @@ const DisplayGroup = ({ type = "", data }) => {
               onClick={() => OpClEditActivities(activities.id)}
             >
               <h3>{activities.title}</h3>
-<<<<<<< HEAD
-              <h4>{new Date(activities.realization_time).toUTCString()}</h4>
-=======
               <h4>{formatDate(activities.realization_time)}</h4>
->>>>>>> b7e13dc11df16858c962def5832a96130e700345
             </Container>
           ))
         : groupContent.users_on_group.map((user) => (
