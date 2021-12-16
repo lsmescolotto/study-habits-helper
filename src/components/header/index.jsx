@@ -1,13 +1,19 @@
-import { Container } from "./styles";
+import { useState, useContext } from "react";
+import { useHistory } from "react-router-dom";
 import Button from "../button";
 import Logo from "../../assets/img/logo.png";
-import { useContext } from "react";
 import { GroupContext } from "../../providers/groups/groups";
 import UpdateGroup from "../popUps/updateGroup";
 import User from "../popUps/user";
-import { useState } from "react";
-import { FiUser, FiLogOut, FiArrowLeftCircle } from "react-icons/fi";
-import { useHistory } from "react-router-dom";
+import {
+  FiUser,
+  FiLogOut,
+  FiArrowLeftCircle,
+  FiEdit,
+  FiUserX,
+} from "react-icons/fi";
+import { Container } from "./styles";
+
 
 const Header = ({ dashboard = false, id, group = false }) => {
   const [updatePopUp, setUpdatePopUp] = useState(false);
@@ -58,22 +64,36 @@ const Header = ({ dashboard = false, id, group = false }) => {
         )}
         {!!group && (
           <section>
-            <Button
-              onClick={() => handleEdit(id)}
-              name="button--blue button__header"
-            >
-              Editar
-            </Button>
-            {!!id && (
+            <p>
+              <FiEdit onClick={() => handleEdit(id)} />
+            </p>
+            <span>
               <Button
-                onClick={() => handleUnsubscribe(id)}
-                name="button--red button__header"
+                onClick={() => handleEdit(id)}
+                name="button--blue button__header"
               >
-                Sair do grupo
+                Editar
               </Button>
+            </span>
+            {!!id && (
+              <span>
+                <Button
+                  onClick={() => handleUnsubscribe(id)}
+                  name="button--red button__header"
+                >
+                  Sair do grupo
+                </Button>
+              </span>
+
             )}
-            <span onClick={GoToDashboard}>
-              <FiArrowLeftCircle />
+            <p>
+              <FiUserX onClick={() => handleUnsubscribe(id)} />
+            </p>
+            <p>
+              <FiArrowLeftCircle onClick={GoToDashboard} />
+            </p>
+            <span>
+              <FiArrowLeftCircle onClick={GoToDashboard} />
             </span>
           </section>
         )}
