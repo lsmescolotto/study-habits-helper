@@ -101,6 +101,7 @@ export const ImageContainer = styled.div`
       min-width: 429px;
       height: 30vh;
       width: 30vw;
+      max-width: 530px;
     }
   }
 `;
