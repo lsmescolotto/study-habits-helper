@@ -4,6 +4,7 @@ export const ButtonBox = styled.div`
   display: flex;
   flex-direction: row;
   justify-content: space-around;
+  width: 100%;
 `;
 
 export const NewHabitForm = styled.form`
@@ -20,7 +21,16 @@ export const UpdateHabitForm = styled.form`
   text-transform: capitalize;
 `;
 
+export const searchHabitForm = styled.form`
+  display: flex;
+  flex-direction: row;
+`;
+
 export const ContainerSearchHabit = styled.div`
+  form:second-of-type {
+    flex-direction: colum;
+  }
+
   form {
     align-items: baseline;
     display: flex;
@@ -32,4 +42,26 @@ export const ContainerSearchHabit = styled.div`
       margin-left: 5px;
     }
   }
+  .habitList {
+    height: 170px;
+    overflow-x: scroll;
+
+    @media (min-width: 1024px) {
+      height: 215px;
+    }
+  }
+
+  .updateHabit {
+    flex-direction: column;
+    @media (min-width: 1024px) {
+      height: 300px;
+    }
+  }
+`;
+
+export const UpdateHabitContainer = styled.div`
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  align-items: center;
 `;
