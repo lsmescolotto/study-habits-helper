@@ -45,14 +45,12 @@ const DisplayCard = ({ type = "", data, boolean = false }) => {
               <p>{group.description}</p>
               <p>{group.creator.username}</p>
               <div className="group-card-button">
-
                 <Button
                   onClick={() => goPageGroups(group.id, group)}
                   name="button--blue"
                 >
                   Ir para Pagina
                 </Button>
-
               </div>
               {boolean && (
                 <div className="join-group-button">
@@ -64,7 +62,6 @@ const DisplayCard = ({ type = "", data, boolean = false }) => {
                   </Button>
                 </div>
               )}
-
             </Container>
           ))
         : data.map((habit, index) => (

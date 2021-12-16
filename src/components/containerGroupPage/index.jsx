@@ -9,10 +9,10 @@ import { ContainerHeader } from "./styles";
 const ContainerGroup = ({ text }) => {
   const [newGoal, setNewGoal] = useState(false);
   const [newActivity, setNewActivity] = useState(false);
-  
+
   const { renderGoals } = useContext(GoalsContext);
   const { renderActivities } = useContext(ActivitiesContext);
-  
+
   const groupId = localStorage.getItem("@Habits:groupID");
 
   const OpClHabit = () => {

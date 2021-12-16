@@ -7,6 +7,7 @@ import { GroupContext } from "../../providers/groups/groups";
 
 const DisplayGroup = ({ type = "", data }) => {
   const { setGroupName } = useContext(GroupContext);
+
   const [editGoals, setEditGoals] = useState(false);
   const [editActivities, setEditActivities] = useState(false);
   const [actualId, setActualId] = useState(0);
