@@ -33,3 +33,10 @@ export const ContainerSearchHabit = styled.div`
     }
   }
 `;
+
+export const UpdateHabitContainer = styled.div`
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  align-items: center;
+`;

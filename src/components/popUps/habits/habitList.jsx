@@ -10,7 +10,7 @@ import DisplayCard from "../../displayCard";
 import Input from "../../input";
 import PopUpBase from "../popUpBase";
 
-const GetHabitsSearch = ({ searchHabit, setSearchHabit }) => {
+const GetHabitsSearch = ({ searchHabit, setSearchHabit, search = true }) => {
   const [searchedHabits, setSearchedHabits] = useState([]);
 
   const { habitsList } = useContext(HabitsContext);
@@ -29,25 +29,37 @@ const GetHabitsSearch = ({ searchHabit, setSearchHabit }) => {
 
   const handleEdit = (data) => {
     const filteredHabits = habitsList.filter((habit) => {
-      return Object.values(habit).includes(data.search);
+      return Object.values(habit).some((value) => {
+        return JSON.stringify(value)
+          .toLowerCase()
+          .includes(data.search.toLowerCase());
+      });
     });
 
     setSearchedHabits(filteredHabits);
   };
 
   return (
-    <ContainerSearchHabit>
-      <PopUpBase title="Pesquisar Habitos" closePopUp={handlePopUp}>
-        <form onSubmit={handleSubmit(handleEdit)}>
-          <Input register={register} name="search" placeholder="Pesquisar" />
-          <Button type="submit" name="button--blue">
-            Pesquisar
-          </Button>
-        </form>
+    <>
+      {search && (
+        <ContainerSearchHabit>
+          <PopUpBase title="Pesquisar Habitos" closePopUp={handlePopUp}>
+            <form onSubmit={handleSubmit(handleEdit)}>
+              <Input
+                register={register}
+                name="search"
+                placeholder="Pesquisar"
+              />
+              <Button type="submit" name="button--blue">
+                Pesquisar
+              </Button>
+            </form>
 
-        {searchedHabits[0] && <DisplayCard data={searchedHabits} />}
-      </PopUpBase>
-    </ContainerSearchHabit>
+            {searchedHabits[0] && <DisplayCard data={searchedHabits} />}
+          </PopUpBase>
+        </ContainerSearchHabit>
+      )}
+    </>
   );
 };
 export default GetHabitsSearch;

@@ -7,6 +7,7 @@ import { UpdateHabitForm, ButtonBox } from "./styles";
 import Button from "../../button";
 import Input from "../../input";
 import PopUpBase from "../popUpBase";
+import { ContainerUpdateGoal } from "../goals/styles";
 
 const HabitEditInfo = ({ setEditHabits, editHabits, id }) => {
   const { updateHabit, deleteHabit } = useContext(HabitsContext);
@@ -47,27 +48,29 @@ const HabitEditInfo = ({ setEditHabits, editHabits, id }) => {
   };
 
   return (
-    <PopUpBase title="Atualizar Habito" closePopUp={OpClEdit}>
-      <UpdateHabitForm onSubmit={handleSubmit(handleEdit)}>
-        <Input
-          register={register}
-          name="how_much_achieved"
-          label="Progresso:"
-          erro={errors.how_much_achieved?.message}
-        />
-        <ButtonBox>
-          <Button type="submit" name="button--blue button__pop-up">
-            Atualizar
-          </Button>
-          <Button
-            onClick={() => deleteHabitHandle(id)}
-            name="button--red button__pop-up"
-          >
-            Deletar
-          </Button>
-        </ButtonBox>
-      </UpdateHabitForm>
-    </PopUpBase>
+    <ContainerUpdateGoal>
+      <PopUpBase title="Atualizar Habito" closePopUp={OpClEdit}>
+        <UpdateHabitForm onSubmit={handleSubmit(handleEdit)}>
+          <Input
+            register={register}
+            name="how_much_achieved"
+            label="Progresso:"
+            erro={errors.how_much_achieved?.message}
+          />
+          <ButtonBox>
+            <Button type="submit" name="button--blue button__pop-up">
+              Atualizar
+            </Button>
+            <Button
+              onClick={() => deleteHabitHandle(id)}
+              name="button--red button__pop-up"
+            >
+              Deletar
+            </Button>
+          </ButtonBox>
+        </UpdateHabitForm>
+      </PopUpBase>
+    </ContainerUpdateGoal>
   );
 };
 export default HabitEditInfo;
