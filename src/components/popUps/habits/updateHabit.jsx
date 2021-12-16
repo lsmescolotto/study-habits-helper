@@ -1,9 +1,9 @@
-import { yupResolver } from "@hookform/resolvers/yup";
-import { useContext } from "react";
-import { useForm } from "react-hook-form";
 import * as yup from "yup";
+import { yupResolver } from "@hookform/resolvers/yup";
+import { useForm } from "react-hook-form";
 import { HabitsContext } from "../../../providers/habits/habits";
-import { ButtonBox } from "./styles";
+import { useContext } from "react";
+import { UpdateHabitForm, ButtonBox } from "./styles";
 import Button from "../../button";
 import Input from "../../input";
 import PopUpBase from "../popUpBase";
@@ -48,11 +48,11 @@ const HabitEditInfo = ({ setEditHabits, editHabits, id }) => {
 
   return (
     <PopUpBase title="Atualizar Habito" closePopUp={OpClEdit}>
-      <form onSubmit={handleSubmit(handleEdit)}>
+      <UpdateHabitForm onSubmit={handleSubmit(handleEdit)}>
         <Input
           register={register}
           name="how_much_achieved"
-          label="progresso"
+          label="Progresso:"
           erro={errors.how_much_achieved?.message}
         />
         <ButtonBox>
@@ -66,7 +66,7 @@ const HabitEditInfo = ({ setEditHabits, editHabits, id }) => {
             Deletar
           </Button>
         </ButtonBox>
-      </form>
+      </UpdateHabitForm>
     </PopUpBase>
   );
 };

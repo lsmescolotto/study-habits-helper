@@ -42,21 +42,21 @@ const NewGoal = ({ newGoal, setNewGoal }) => {
     setNewGoal(!newGoal);
   };
 
-  return (
+    return (
     <ContainerNewGoal>
       <PopUpBase title={"Nova Meta"} closePopUp={ClosePopUp}>
         <form onSubmit={handleSubmit(handleGoal)}>
           <Input
             register={register}
             name="title"
-            label="Título"
+            label="Título:"
             error={errors.title?.message}
           />
 
           <Input
             register={register}
             name="difficulty"
-            label="Dificuldade"
+            label="Dificuldade:"
             error={errors.difficulty?.message}
           />
 

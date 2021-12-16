@@ -6,11 +6,11 @@ export const Container = styled.div`
   padding: 0;
 
   form {
-    display: flex;
     align-items: center;
+    display: flex;
     justify-content: space-between;
-    width: 100%;
     margin: 0;
+    width: 100%;
 
     div {
       margin: 0 0 5px 0;
@@ -39,5 +39,5 @@ export const CardsContainer = styled.div`
 
   @media (min-width: 1024px) {
     height: 215px;
-  } ;
+  }
 `;

@@ -40,27 +40,27 @@ const UpdateActivity = ({ id, editActivities, setEditActivities }) => {
 
   return (
     <Container>
-    <PopUpBase title="Nova Atividade" closePopUp={closePopUp}>
-      <form onSubmit={handleSubmit(onSubmitFunction)}>
-        <Input
-          label="Título"
-          register={register}
-          name="title"
-          error={errors.title?.message}
-        />
-        <div className="buttons_box">
-          <Button type="submit" name="button--blue button__pop-up">
-            Atualizar
-          </Button>
-          <Button
-            onClick={() => deleteFunction()}
-            name="button--red button__pop-up"
-          >
-            Deletar
-          </Button>
-        </div>
-      </form>
-    </PopUpBase>
+      <PopUpBase title="Atualizar Atividade" closePopUp={closePopUp}>
+        <form onSubmit={handleSubmit(onSubmitFunction)}>
+          <Input
+            label="Título:"
+            register={register}
+            name="title"
+            error={errors.title?.message}
+          />
+          <div className="buttons_box">
+            <Button type="submit" name="button--blue button__pop-up">
+              Atualizar
+            </Button>
+            <Button
+              onClick={() => deleteFunction()}
+              name="button--red button__pop-up"
+            >
+              Deletar
+            </Button>
+          </div>
+        </form>
+      </PopUpBase>
     </Container>
   );
 };

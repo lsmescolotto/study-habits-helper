@@ -8,7 +8,6 @@ import Input from "../../input";
 import PopUpBase from "../popUpBase";
 import Button from "../../button";
 
-
 const NewGroup = ({ setNewGroup, newGroupState }) => {
   const { createGroup } = useContext(GroupContext);
 
@@ -38,33 +37,31 @@ const NewGroup = ({ setNewGroup, newGroupState }) => {
   return (
     <PopUpBase title={"Novo grupo"} closePopUp={handlePopUp}>
       <Form onSubmit={handleSubmit(newGroup)}>
-        
         <Input
           register={register}
           name="name"
-          label="Nome"
+          label="Nome:"
           error={errors.name?.message}
         />
 
         <Input
           register={register}
           name="description"
-          label="Descrição"
+          label="Descrição:"
           error={errors.description?.message}
         />
 
         <Input
           register={register}
           name="category"
-          label="Categoria"
+          label="Categoria:"
           error={errors.category?.message}
         />
 
         <Button type="submit" name="button--blue button__pop-up">
           Criar novo grupo
         </Button>
-       </Form>
-
+      </Form>
     </PopUpBase>
   );
 };
