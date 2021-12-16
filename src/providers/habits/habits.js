@@ -11,7 +11,9 @@ export const HabitsProvider = ({ children }) => {
     api
       .post("habits/", payload, {
         headers: {
-          Authorization: `Bearer  ${JSON.parse(localStorage.getItem("token"))}`,
+          Authorization: `Bearer  ${JSON.parse(
+            localStorage.getItem("@Habits:token")
+          )}`,
         },
       })
       .then((res) => {
@@ -26,7 +28,9 @@ export const HabitsProvider = ({ children }) => {
     api
       .get("habits/personal/", {
         headers: {
-          Authorization: `Bearer  ${JSON.parse(localStorage.getItem("token"))}`,
+          Authorization: `Bearer  ${JSON.parse(
+            localStorage.getItem("@Habits:token")
+          )}`,
         },
       })
       .then((res) => {
@@ -41,7 +45,9 @@ export const HabitsProvider = ({ children }) => {
     api
       .patch(`habits/${id}/`, payload, {
         headers: {
-          Authorization: `Bearer  ${JSON.parse(localStorage.getItem("token"))}`,
+          Authorization: `Bearer  ${JSON.parse(
+            localStorage.getItem("@Habits:token")
+          )}`,
         },
       })
       .then((res) => {
@@ -55,7 +61,9 @@ export const HabitsProvider = ({ children }) => {
     api
       .delete(`habits/${id}/`, {
         headers: {
-          Authorization: `Bearer  ${JSON.parse(localStorage.getItem("token"))}`,
+          Authorization: `Bearer  ${JSON.parse(
+            localStorage.getItem("@Habits:token")
+          )}`,
         },
       })
       .then((res) => {

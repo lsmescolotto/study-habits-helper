@@ -13,7 +13,7 @@ import { Redirect } from "react-router-dom";
 const Routes = () => {
   const { authenticated, setAuthenticated } = useContext(UserContext);
 
-  const token = localStorage.getItem("token");
+  const token = localStorage.getItem("@Habits:token");
   if (token !== null) {
     setAuthenticated(true);
   }

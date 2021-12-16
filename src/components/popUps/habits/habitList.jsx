@@ -10,8 +10,9 @@ import DisplayCard from "../../displayCard";
 import Button from "../../button";
 
 const GetHabitsSearch = ({ searchHabit, setSearchHabit }) => {
-  const { habitsList } = useContext(HabitsContext);
   const [searchedHabits, setSearchedHabits] = useState([]);
+
+  const { habitsList } = useContext(HabitsContext);
 
   const handlePopUp = () => {
     setSearchHabit(!searchHabit);

@@ -17,8 +17,9 @@ import { GroupContext } from "../../providers/groups/groups.js";
 const Group = () => {
   const { goals, renderGoals } = useContext(GoalsContext);
   const { activities, renderActivities } = useContext(ActivitiesContext);
-  const groupId = JSON.parse(localStorage.getItem("GroupID"));
   const { groupName } = useContext(GroupContext);
+
+  const groupId = JSON.parse(localStorage.getItem("@Habits:groupID"));
 
   useEffect(() => {
     renderGoals(groupId);
@@ -42,7 +43,7 @@ const Group = () => {
           )}
         </ActivitiesContainer>
         <MembersContainer>
-          {localStorage.getItem("groupContent") && (
+          {localStorage.getItem("@Habits:groupContent") && (
             <>
               <ContainerGroup text="Membros do Grupo" />
               <DisplayGroup type="members" />

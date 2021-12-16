@@ -6,13 +6,15 @@ export const ActivitiesContext = createContext();
 
 export const ActivitiesProvider = ({ children }) => {
   const [activities, setActivities] = useState([]);
-  const groupId = localStorage.getItem("GroupID");
+  const groupId = localStorage.getItem("@Habits:groupID");
 
   const renderActivities = (groupId) => {
     api
       .get(`activities/?group=${groupId}`, {
         headers: {
-          Authorization: `Bearer  ${JSON.parse(localStorage.getItem("token"))}`,
+          Authorization: `Bearer  ${JSON.parse(
+            localStorage.getItem("@Habits:token")
+          )}`,
         },
       })
       .then((res) => {
@@ -27,7 +29,9 @@ export const ActivitiesProvider = ({ children }) => {
     api
       .post(`activities/`, payload, {
         headers: {
-          Authorization: `Bearer ${JSON.parse(localStorage.getItem("token"))}`,
+          Authorization: `Bearer ${JSON.parse(
+            localStorage.getItem("@Habits:token")
+          )}`,
         },
       })
       .then((response) => {
@@ -40,7 +44,9 @@ export const ActivitiesProvider = ({ children }) => {
     api
       .patch(`activities/${id}/`, payload, {
         headers: {
-          Authorization: `Bearer ${JSON.parse(localStorage.getItem("token"))}`,
+          Authorization: `Bearer ${JSON.parse(
+            localStorage.getItem("@Habits:token")
+          )}`,
         },
       })
       .then((res) => {
@@ -55,7 +61,9 @@ export const ActivitiesProvider = ({ children }) => {
     api
       .delete(`activities/${id}/`, {
         headers: {
-          Authorization: `Bearer ${JSON.parse(localStorage.getItem("token"))}`,
+          Authorization: `Bearer ${JSON.parse(
+            localStorage.getItem("@Habits:token")
+          )}`,
         },
       })
       .then((response) => {
