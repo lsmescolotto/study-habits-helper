@@ -20,6 +20,7 @@ const Header = ({ dashboard = false, id, group = false }) => {
   const logout = () => {
     localStorage.clear();
     history.push("/");
+    window.location.reload();
   };
 
   const handleUnsubscribe = (id) => {
@@ -50,7 +51,7 @@ const Header = ({ dashboard = false, id, group = false }) => {
             <span>
               <FiUser />
             </span>
-            <span onClick={logout}>
+            <span onClick={() => logout()}>
               <FiLogOut />
             </span>
           </div>
