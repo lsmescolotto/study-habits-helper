@@ -9,10 +9,9 @@ export const GroupProviders = ({ children }) => {
   const [subscriptions, setSubscriptions] = useState([]);
   const [groupName, setGroupName] = useState("");
 
+  const groupContent = JSON.parse(localStorage.getItem("@Habits:groupContent"));
+
   useEffect(() => {
-    const groupContent = JSON.parse(
-      localStorage.getItem("@Habits:groupContent")
-    );
     setGroupName(groupContent?.name);
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
