@@ -9,9 +9,10 @@ export const GroupProviders = ({ children }) => {
   const [subscriptions, setSubscriptions] = useState([]);
   const [groupName, setGroupName] = useState("");
 
-  const groupContent = JSON.parse(localStorage.getItem("@Habits:groupContent"));
-
   useEffect(() => {
+    const groupContent = JSON.parse(
+      localStorage.getItem("@Habits:groupContent")
+    );
     setGroupName(groupContent?.name);
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
@@ -59,6 +60,7 @@ export const GroupProviders = ({ children }) => {
       .then((res) => {
         localStorage.setItem("@Habits:groupContent", JSON.stringify(res.data));
         getGroups(res.data.name);
+        setGroupName(res.data.name);
         toast.success("Grupo atualizado com sucesso!");
       })
       .catch((_) =>

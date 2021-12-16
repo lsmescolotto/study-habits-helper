@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import { Container } from "./styles";
 import UpdateGoals from "../popUps/goals/updateGoal";
 import UpdateActivity from "../popUps/updateActivity";
@@ -9,11 +9,6 @@ const DisplayGroup = ({ type = "", data }) => {
   const [actualId, setActualId] = useState(0);
 
   const groupContent = JSON.parse(localStorage.getItem("@Habits:groupContent"));
-
-  useEffect(() => {
-    setEditGoals(false);
-    setEditActivities(false);
-  }, [editGoals, editActivities]);
 
   const OpClEditGoals = (id) => {
     setEditGoals(!editGoals);
