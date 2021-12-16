@@ -7,7 +7,7 @@ import UpdateGroup from "../popUps/updateGroup";
 import User from "../popUps/user";
 import { useState } from "react";
 import { FiUser, FiLogOut, FiArrowLeftCircle } from "react-icons/fi";
-import { Link, useHistory } from "react-router-dom";
+import { useHistory } from "react-router-dom";
 
 const Header = ({ dashboard = false, id, group = false }) => {
   const [updatePopUp, setUpdatePopUp] = useState(false);
