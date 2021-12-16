@@ -7,7 +7,7 @@ import { useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
 import { useContext } from "react";
 import { ActivitiesContext } from "../../../providers/activities/activities";
-import { Container } from "./styles";
+import { Container, Content } from "./styles";
 
 const NewActivity = ({ newActivity, setNewActivity }) => {
   const { createActivities } = useContext(ActivitiesContext);
