@@ -12,38 +12,39 @@ export const Container = styled.div`
     align-items: center;
     display: flex;
     flex-flow: column nowrap;
-    height: auto;
-    width: 95%;
+    overflow-y: scroll;
+    height: calc(100vh - 20vh);
+    width: 98%;
   }
 
   @media (min-width: 1024px) {
     .cards-containers {
       align-items: center;
       flex-flow: row nowrap;
-      justify-content: space-around;
+      justify-content: space-evenly;
+    }
 
-      .Habitos {
-        width: 480px;
-      }
+    .habits {
+      width: 500px;
     }
   }
 `;
 
 export const HabitsContainer = styled.div`
-  overflow-x: scroll;
+  overflow: hidden scroll;
   width: 98%;
-  height: 235px;
+  height: 80%;
   @media (min-width: 1024px) {
-    height: 505px;
+    height: 85%;
   }
 `;
 
 export const GroupsContainer = styled.div`
-  overflow-x: scroll;
+  overflow: hidden scroll;
   width: 98%;
   height: 80%;
 
   @media (min-width: 1024px) {
-    height: 88%;
+    height: 85%;
   }
 `;

@@ -29,7 +29,7 @@ const ContainerDashboard = ({ text, children }) => {
   };
 
   return (
-    <DashboardContainer className={text === "Habitos" ? "Habitos" : ""}>
+    <DashboardContainer className={text === "Habitos" ? "habits" : ""}>
       <ContainerHeader>
         <h3>{text}</h3>
         <div>
@@ -48,6 +48,7 @@ const ContainerDashboard = ({ text, children }) => {
       </ContainerHeader>
 
       {children}
+
       {newHabit && <NewHabit setNewHabit={setNewHabit} newHabit={newHabit} />}
       {searchHabit && (
         <GetHabitsSearch

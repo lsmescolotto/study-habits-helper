@@ -14,7 +14,7 @@ export const DashboardContainer = styled.div`
   width: 80%;
 
   @media (min-width: 1024px) {
-    height: 572px;
+    height: 472px;
     margin: 0;
     min-width: 401px;
   }
