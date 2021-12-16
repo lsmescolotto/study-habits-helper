@@ -1,5 +1,5 @@
 import { useHistory } from "react-router-dom";
-import { useState, useContext } from "react";
+import { useState, useContext, useEffect } from "react";
 import { GroupContext } from "../../providers/groups/groups";
 import { GoalsContext } from "../../providers/goal/goal";
 import { Container, DisplayContainer } from "./styles";
@@ -16,6 +16,10 @@ const DisplayCard = ({ type = "", data, boolean = false }) => {
   const { renderActivities, setActivities } = useContext(ActivitiesContext);
 
   const history = useHistory();
+
+  useEffect(() => {
+    setEditHabits(false);
+  }, []);
 
   const OpClEdit = (id) => {
     setEditHabits(!editHabits);
