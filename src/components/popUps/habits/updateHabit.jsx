@@ -50,7 +50,10 @@ const HabitEditInfo = ({ setEditHabits, editHabits, id }) => {
   return (
     <ContainerUpdateGoal>
       <PopUpBase title="Atualizar Habito" closePopUp={OpClEdit}>
-        <UpdateHabitForm onSubmit={handleSubmit(handleEdit)}>
+        <UpdateHabitForm
+          className="updateHabit"
+          onSubmit={handleSubmit(handleEdit)}
+        >
           <Input
             register={register}
             name="how_much_achieved"

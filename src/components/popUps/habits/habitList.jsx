@@ -54,8 +54,9 @@ const GetHabitsSearch = ({ searchHabit, setSearchHabit, search = true }) => {
                 Pesquisar
               </Button>
             </form>
-
-            {searchedHabits[0] && <DisplayCard data={searchedHabits} />}
+            <div className="habitList">
+              {searchedHabits[0] && <DisplayCard data={searchedHabits} />}
+            </div>
           </PopUpBase>
         </ContainerSearchHabit>
       )}
