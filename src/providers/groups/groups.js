@@ -1,4 +1,4 @@
-import { createContext, useState } from "react";
+import { createContext, useEffect, useState } from "react";
 import toast from "react-hot-toast";
 import api from "../../services/api";
 
@@ -8,6 +8,13 @@ export const GroupProviders = ({ children }) => {
   const [groupList, setGroupList] = useState([]);
   const [subscriptions, setSubscriptions] = useState([]);
   const [groupName, setGroupName] = useState("");
+
+  const groupContent = JSON.parse(localStorage.getItem("@Habits:groupContent"));
+
+  useEffect(() => {
+    setGroupName(groupContent.name);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
 
   const createGroup = (payload) => {
     api
