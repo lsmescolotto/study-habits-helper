@@ -8,6 +8,7 @@ import { yupResolver } from "@hookform/resolvers/yup";
 import PopUpBase from "../popUpBase";
 import Input from "../../input";
 import Button from "../../button";
+import { Form } from "./styles";
 
 import { Form } from "./styles";
 
@@ -34,6 +35,7 @@ const UpdateGroup = ({ id, closePopUp }) => {
         </Button>
       </Form>
     </PopUpBase>
+
   );
 };
 

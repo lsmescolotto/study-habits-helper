@@ -2,33 +2,33 @@ import styled from "styled-components";
 import homeImage from "../../assets/img/homeImg.gif";
 
 export const Container = styled.div`
+  align-items: center;
   display: flex;
   flex-direction: column;
-  justify-content: space-between;
-  align-items: center;
-  height: 100vh;
   font-family: var(--main-font);
+  height: 100vh;
+  justify-content: space-between;
 `;
 
 export const Content = styled.main`
-  width: 100vw;
-  display: flex;
   align-items: center;
+  display: flex;
   justify-content: center;
+  width: 100vw;
 
   @media (min-width: 1024px) {
-    justify-content: space-around;
     align-items: center;
+    justify-content: space-around;
   }
 `;
 
 export const RedirectContainer = styled.div`
   display: flex;
   flex-direction: column;
-  justify-content: space-around;
   height: 50vh;
-  width: 60vw;
+  justify-content: space-around;
   text-align: center;
+  width: 60vw;
 
   header {
     h1 {
@@ -51,19 +51,31 @@ export const RedirectContainer = styled.div`
 
   a {
     margin-left: 5px;
+    color: var(--blue-50);
+    font-weight: 500;
+  }
+
+  a:hover {
+    color: var(--pink-50);
+    text-shadow: 0 0 var(--black-50);
+  }
+
+  a:active {
+    color: var(--pink-60);
+    text-shadow: 0 0 var(--black-50);
   }
 
   @media screen and (min-width: 1024px) {
     width: 45vw;
 
     header {
+      align-items: flex-start;
       display: flex;
       justify-content: center;
-      align-items: flex-start;
 
       h1 {
-        margin-right: 7px;
         font-size: 32px;
+        margin-right: 7px;
       }
 
       h2 {
@@ -83,9 +95,9 @@ export const RedirectContainer = styled.div`
 
 export const ImageContainer = styled.div`
   @media (min-width: 1024px) {
-    width: 495px;
-    height: 579px;
-    background: url(${homeImage}) no-repeat center;
     background-size: 479px 372px;
+    background: url(${homeImage}) no-repeat center;
+    height: 579px;
+    width: 495px;
   }
 `;
