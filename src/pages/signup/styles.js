@@ -4,12 +4,16 @@ export const Image = styled.img`
   display: none;
 
   @media only screen and (min-width: 900px) {
-    display: inline-block;
+    display: flex;
+    height: 70%;
+    width: auto;
   }
 `;
 
 export const Desktop = styled.div`
+  align-items: center;
   display: flex;
+  height: 80%;
   justify-content: space-around;
 `;
 
@@ -31,18 +35,7 @@ export const Content = styled.section`
   h2 {
     color: var(--black-100);
     font-family: var(--title-font);
-    font-size: 28px;
-  }
-
-  form {
-    align-items: center;
-    display: flex;
-    flex-direction: column;
-    padding-bottom: 20px;
-  }
-
-  input {
-    width: 250px;
+    font-size: 26px;
   }
 `;
 
@@ -56,6 +49,33 @@ export const SignUpBox = styled.div`
 
   border-radius: 8px;
   box-shadow: 4px 5px 4px var(--grey-90);
+
+  form {
+    align-items: center;
+    display: flex;
+    flex-direction: column;
+    height: 350px;
+    justify-content: space-evenly;
+    padding-bottom: 10px;
+  }
+
+  form,
+  form div input {
+    width: 220px;
+  }
+
+  form div {
+    margin: 3px 10px;
+  }
+
+  @media only screen and (min-width: 900px) {
+    width: 400px;
+
+    form,
+    form div input {
+      width: 300px;
+    }
+  }
 `;
 
 export const LoginRedirectBox = styled.div`
@@ -63,7 +83,7 @@ export const LoginRedirectBox = styled.div`
   box-shadow: 4px 5px 4px var(--grey-90);
   display: flex;
   justify-content: space-around;
-  padding: 20px 30px;
+  padding: 15px;
   text-align: center;
   width: 300px;
 
@@ -89,5 +109,6 @@ export const LoginRedirectBox = styled.div`
 
   @media only screen and (min-width: 900px) {
     font-size: 16px;
+    padding: 20px 30px;
   }
 `;
