@@ -9,10 +9,10 @@ export const Container = styled.div`
   text-align: center;
 
   .cards-containers {
+    align-items: center;
     display: flex;
     flex-flow: column nowrap;
     height: auto;
-    justify-content: space-around;
     width: 95%;
   }
 
@@ -20,10 +20,10 @@ export const Container = styled.div`
     .cards-containers {
       align-items: center;
       flex-flow: row nowrap;
-      justify-content: space-between;
+      justify-content: space-around;
 
       .Habitos {
-        width: 555px;
+        width: 480px;
       }
     }
   }

@@ -22,6 +22,7 @@ export const ContainerHeader = styled.div`
 
     svg {
       font-size: 25px;
+
       &:hover {
         cursor: pointer;
       }

@@ -8,12 +8,15 @@ export const Container = styled.div`
   justify-content: space-between;
   text-align: center;
 
+<<<<<<< HEAD
   header {
     div {
       display: none;
     }
   }
 
+=======
+>>>>>>> b7e13dc11df16858c962def5832a96130e700345
   h2 {
     font-size: 30px;
     font-family: var(--title-font);
@@ -21,6 +24,7 @@ export const Container = styled.div`
   }
 
   .cards-containers {
+    align-items: center;
     display: flex;
     flex-flow: column nowrap;
     justify-content: space-around;
@@ -37,6 +41,20 @@ export const Container = styled.div`
     flex-direction: column;
     font-family: var(--main-font);
     height: 100px;
+    margin: 15px 0;
+    min-width: 260px;
+    padding: 5px;
+    width: 50%;
+  }
+
+  .container__box {
+    align-items: center;
+    border-radius: 5px;
+    box-shadow: 0px 4px 4px var(--black-60);
+    color: var(--black-50);
+    display: flex;
+    flex-direction: column;
+    font-family: var(--main-font);
     margin: 15px 0;
     min-width: 260px;
     padding: 5px;
@@ -75,9 +93,12 @@ export const MembersContainer = styled.div`
     width: 30%;
   }
 `;
+<<<<<<< HEAD
 
 export const Content = styled.div`
   height: 75%;
   overflow: hidden scroll;
   width: 98%;
 `;
+=======
+>>>>>>> b7e13dc11df16858c962def5832a96130e700345

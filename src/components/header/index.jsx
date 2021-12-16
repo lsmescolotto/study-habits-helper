@@ -1,26 +1,35 @@
-import { Container } from "./styles";
+import { useState, useContext } from "react";
+import { useHistory } from "react-router-dom";
 import Button from "../button";
 import Logo from "../../assets/img/logo.png";
-import { useContext } from "react";
 import { GroupContext } from "../../providers/groups/groups";
 import UpdateGroup from "../popUps/updateGroup";
 import User from "../popUps/user";
-import { useState } from "react";
-import { FiUser, FiLogOut, FiArrowLeftCircle } from "react-icons/fi";
-import { Link, useHistory } from "react-router-dom";
+import {
+  FiUser,
+  FiLogOut,
+  FiArrowLeftCircle,
+  FiEdit,
+  FiUserX,
+} from "react-icons/fi";
+import { Container } from "./styles";
+
 
 const Header = ({ dashboard = false, id, group = false }) => {
-  const { unsubscribeGroup } = useContext(GroupContext);
   const [updatePopUp, setUpdatePopUp] = useState(false);
   const [userPopUP, setUserPopUp] = useState(false);
+
+  const { unsubscribeGroup } = useContext(GroupContext);
+
   const history = useHistory();
-  
+
   const logout = () => {
     localStorage.clear();
     history.push("/");
+    window.location.reload();
   };
-  
-   const handleUnsubscribe = (id) => {
+
+  const handleUnsubscribe = (id) => {
     unsubscribeGroup(id);
     history.push("/dashboard");
   };
@@ -39,7 +48,7 @@ const Header = ({ dashboard = false, id, group = false }) => {
 
   return (
     <>
-       <Container>
+      <Container>
         <figure>
           <img src={Logo} alt="logo" />
         </figure>
@@ -48,27 +57,50 @@ const Header = ({ dashboard = false, id, group = false }) => {
             <span>
               <FiUser />
             </span>
-            <span onClick={logout}>
+            <span onClick={() => logout()}>
               <FiLogOut />
             </span>
           </div>
         )}
         {!!group && (
           <section>
-            <Button onClick={() => handleEdit(id)} name="button--blue button__header">Editar</Button>
+            <p>
+              <FiEdit onClick={() => handleEdit(id)} />
+            </p>
+            <span>
+              <Button
+                onClick={() => handleEdit(id)}
+                name="button--blue button__header"
+              >
+                Editar
+              </Button>
+            </span>
             {!!id && (
-              <Button onClick={() => handleUnsubscribe(id)} name="button--red button__header">Sair do grupo</Button>
+              <span>
+                <Button
+                  onClick={() => handleUnsubscribe(id)}
+                  name="button--red button__header"
+                >
+                  Sair do grupo
+                </Button>
+              </span>
+
             )}
-            <span onClick={GoToDashboard}>
-              <FiArrowLeftCircle />
+            <p>
+              <FiUserX onClick={() => handleUnsubscribe(id)} />
+            </p>
+            <p>
+              <FiArrowLeftCircle onClick={GoToDashboard} />
+            </p>
+            <span>
+              <FiArrowLeftCircle onClick={GoToDashboard} />
             </span>
           </section>
         )}
-        </Container>
-        {updatePopUp && <UpdateGroup id={id} closePopUp={handleEdit} />}
-        {userPopUP && <User closePopUp={handleUser} />}
-      </>
-
+      </Container>
+      {updatePopUp && <UpdateGroup id={id} closePopUp={handleEdit} />}
+      {userPopUP && <User closePopUp={handleUser} />}
+    </>
   );
 };
 

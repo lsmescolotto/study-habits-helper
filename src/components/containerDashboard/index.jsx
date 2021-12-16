@@ -48,19 +48,17 @@ const ContainerDashboard = ({ text, children }) => {
       </ContainerHeader>
 
       {children}
-      {newHabit === true && (
-        <NewHabit setNewHabit={setNewHabit} newHabit={newHabit} />
-      )}
-      {searchHabit === true && (
+      {newHabit && <NewHabit setNewHabit={setNewHabit} newHabit={newHabit} />}
+      {searchHabit && (
         <GetHabitsSearch
           searchHabit={searchHabit}
           setSearchHabit={setSearchHabit}
         />
       )}
-      {newGroup === true && (
+      {newGroup && (
         <NewGroup setNewGroup={setNewGroup} newGroupState={newGroup} />
       )}
-      {searchGroup === true && (
+      {searchGroup && (
         <FindGroups setSearch={setNewSearchGroup} search={searchGroup} />
       )}
     </DashboardContainer>

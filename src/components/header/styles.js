@@ -1,4 +1,5 @@
 import styled from "styled-components";
+import { FiEdit } from "react-icons";
 
 export const Container = styled.div`
   height: 10vh;
@@ -14,7 +15,6 @@ export const Container = styled.div`
   }
 
   span {
-    margin-right: 15px;
     font-size: 32px;
     cursor: pointer;
   }
@@ -28,5 +28,25 @@ export const Container = styled.div`
     margin-right: 20px;
     align-items: center;
     cursor: pointer;
+
+    @media (max-width: 630px) {
+      margin-right: 3px;
+    }
+
+    p {
+      display: none;
+    }
+
+    @media (max-width: 630px) {
+      span {
+        display: none;
+      }
+
+      p {
+        font-size: 25px;
+        display: inline;
+        margin-right: 8px;
+      }
+    }
   }
 `;

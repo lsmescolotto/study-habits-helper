@@ -1,28 +1,30 @@
 import styled from "styled-components";
 
 export const DashboardContainer = styled.div`
-  box-shadow: 0px 4px 4px var(--black-60);
+  align-items: center;
   border-radius: 5px;
-  width: 260px;
-  height: 290px;
-  font-family: var(--main-font);
+  box-shadow: 0px 4px 4px var(--black-60);
+  color: var(--black-50);
   display: flex;
   flex-direction: column;
-  align-items: center;
+  font-family: var(--main-font);
+  height: 290px;
   margin: 15px 0;
-  color: var(--black-50);
+  max-width: 350px;
+  width: 80%;
 
   @media (min-width: 1024px) {
     height: 572px;
     margin: 0;
     min-width: 401px;
+  }
 `;
 
-export const ContainerHeader = styled.header`
-  display: flex;
-  justify-content: space-between;
+export const ContainerHeader = styled.div`
   align-items: center;
+  display: flex;
   height: 55px;
+  justify-content: space-between;
   width: 100%;
 
   h3 {
@@ -32,10 +34,10 @@ export const ContainerHeader = styled.header`
   }
 
   div {
-    width: 75px;
+    align-items: center;
     display: flex;
     justify-content: space-around;
-    align-items: center;
+    width: 75px;
 
     svg {
       font-size: 25px;

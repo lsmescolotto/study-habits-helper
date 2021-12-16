@@ -7,7 +7,7 @@ export const Container = styled.div`
   font-family: var(--main-font);
   font-size: 11px;
   height: auto;
-  line-height: 15px;
+  line-height: 18px;
   margin: 10px;
   padding: 8px;
   text-align: start;
@@ -33,6 +33,18 @@ export const Container = styled.div`
     flex-direction: row nowrap;
     justify-content: space-evenly;
     margin-top: 8px;
+  }
+
+  .achievied {
+    color: green;
+  }
+
+  .in-progress {
+    color: var(--red-20);
+  }
+
+  span {
+    font-weight: 500;
   }
 
   @media (min-width: 1024px) {
