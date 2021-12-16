@@ -11,7 +11,7 @@ const DisplayCard = ({ type = "", data, boolean = false }) => {
   const [actualId, setActualId] = useState(0);
   const [editHabits, setEditHabits] = useState(false);
 
-  const { subscribeGroup } = useContext(GroupContext);
+  const { subscribeGroup, setGroupName } = useContext(GroupContext);
   const { renderGoals, setGoals } = useContext(GoalsContext);
   const { renderActivities, setActivities } = useContext(ActivitiesContext);
 
@@ -26,6 +26,7 @@ const DisplayCard = ({ type = "", data, boolean = false }) => {
     localStorage.setItem("@Habits:groupID", id);
     localStorage.setItem("@Habits:groupContent", JSON.stringify(group));
 
+    setGroupName(group.name);
     setGoals([]);
     setActivities([]);
 
