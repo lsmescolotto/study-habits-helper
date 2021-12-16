@@ -35,10 +35,13 @@ const NewActivity = ({ newActivity, setNewActivity }) => {
   const onSubmitFunction = (data) => {
     const groupId = localStorage.getItem("@Habits:groupID");
 
-    let dateTime =
-      data.realization_time.toISOString().replace(/\..+/, "") + "Z";
+    let dateTime = new Date(data.realization_time);
+    let convert =
+      new Date(dateTime.getTime() - dateTime.getTimezoneOffset() * 60000)
+        .toISOString()
+        .replace(/\..+/, "") + "Z";
 
-    const payload = { ...data, realization_time: dateTime, group: groupId };
+    const payload = { ...data, realization_time: convert, group: groupId };
     createActivities(payload);
     setNewActivity(!newActivity);
   };

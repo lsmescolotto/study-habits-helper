@@ -7,3 +7,4 @@ export const Form = styled.form`
   justify-content: space-around;
   text-align: start;
 `;
+
