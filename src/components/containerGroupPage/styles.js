@@ -15,10 +15,11 @@ export const ContainerHeader = styled.div`
   }
 
   div {
-    width: 75px;
+    /* width: 75px; */
     display: flex;
     justify-content: space-around;
     align-items: center;
+    margin-right: 10px;
 
     svg {
       font-size: 25px;
@@ -44,7 +45,7 @@ export const ContainerHeader = styled.div`
     }
 
     div {
-      width: 100px;
+      /* width: 100px; */
       .addNew {
         background-color: var(--pink-50);
         font-size: 35px;

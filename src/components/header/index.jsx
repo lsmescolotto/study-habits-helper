@@ -14,7 +14,6 @@ import {
 } from "react-icons/fi";
 import { Container } from "./styles";
 
-
 const Header = ({ dashboard = false, id, group = false }) => {
   const [updatePopUp, setUpdatePopUp] = useState(false);
   const [userPopUP, setUserPopUp] = useState(false);
@@ -84,7 +83,6 @@ const Header = ({ dashboard = false, id, group = false }) => {
                   Sair do grupo
                 </Button>
               </span>
-
             )}
             <p>
               <FiUserX onClick={() => handleUnsubscribe(id)} />

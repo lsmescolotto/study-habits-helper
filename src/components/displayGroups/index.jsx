@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { Container } from "./styles";
 import UpdateGoals from "../popUps/goals/updateGoal";
 import UpdateActivity from "../popUps/updateActivity";
@@ -7,9 +7,15 @@ import { GroupContext } from "../../providers/groups/groups";
 
 const DisplayGroup = ({ type = "", data }) => {
   const { setGroupName } = useContext(GroupContext);
+
   const [editGoals, setEditGoals] = useState(false);
   const [editActivities, setEditActivities] = useState(false);
   const [actualId, setActualId] = useState(0);
+
+  useEffect(() => {
+    setEditGoals(false);
+    setEditActivities(false);
+  }, []);
 
   const OpClEditGoals = (id) => {
     setEditGoals(!editGoals);
@@ -28,6 +34,9 @@ const DisplayGroup = ({ type = "", data }) => {
     let current = new Date(dateTime.slice(0, -1));
     return current.toLocaleString();
   };
+  const handleAchieved = (percentage) => {
+    return percentage === 100 ? true : false;
+  };
 
   return (
     <>
@@ -38,7 +47,7 @@ const DisplayGroup = ({ type = "", data }) => {
               <h4>{goals.difficulty}</h4>
               <p>
                 Status:{" "}
-                {goals.achieved ? (
+                {handleAchieved(goals.how_much_achieved) ? (
                   <span className="achievied">Concluído</span>
                 ) : (
                   <span className="in-progress">Em Progresso</span>

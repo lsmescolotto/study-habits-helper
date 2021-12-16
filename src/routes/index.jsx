@@ -9,14 +9,18 @@ import AboutUs from "../pages/about";
 import { useContext } from "react/cjs/react.development";
 import { UserContext } from "../providers/user/user";
 import { Redirect } from "react-router-dom";
+import { useEffect } from "react";
 
 const Routes = () => {
   const { authenticated, setAuthenticated } = useContext(UserContext);
 
   const token = localStorage.getItem("@Habits:token");
-  if (token !== null) {
-    setAuthenticated(true);
-  }
+
+  useEffect(() => {
+    if (token !== null) {
+      setAuthenticated(true);
+    }
+  });
 
   return (
     <Switch>

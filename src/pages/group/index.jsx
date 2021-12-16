@@ -4,6 +4,7 @@ import {
   GoalsContainer,
   ActivitiesContainer,
   MembersContainer,
+  Content,
 } from "./styles.js";
 import Header from "../../components/header";
 import Footer from "../../components/footer";
@@ -34,21 +35,28 @@ const Group = () => {
       <div className="cards-containers">
         <GoalsContainer className="container__box">
           <ContainerGroup text="Metas do Grupo" />
-          {goals.results && <DisplayGroup type="goals" data={goals.results} />}
+          <Content>
+            {goals.results && (
+              <DisplayGroup type="goals" data={goals.results} />
+            )}
+          </Content>
         </GoalsContainer>
         <ActivitiesContainer className="container__box">
           <ContainerGroup text="Atividades do Grupo" />
-          {activities.results && (
-            <DisplayGroup type="activities" data={activities.results} />
-          )}
+          <Content>
+            {activities.results && (
+              <DisplayGroup type="activities" data={activities.results} />
+            )}
+          </Content>
         </ActivitiesContainer>
 
         <MembersContainer className="container__box">
           {localStorage.getItem("@Habits:groupContent") && (
-
             <>
               <ContainerGroup text="Membros do Grupo" />
-              <DisplayGroup type="members" />
+              <Content>
+                <DisplayGroup type="members" />
+              </Content>
             </>
           )}
         </MembersContainer>
