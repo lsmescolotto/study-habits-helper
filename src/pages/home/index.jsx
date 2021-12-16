@@ -1,6 +1,7 @@
 import { Link } from "react-router-dom";
 import Footer from "../../components/footer";
 import Header from "../../components/header";
+import homeImage from "../../assets/img/homeImg.gif";
 import {
   Container,
   Content,
@@ -28,7 +29,9 @@ const Home = () => {
             <Link to="/signup">Cadastro</Link>!
           </h4>
         </RedirectContainer>
-        <ImageContainer></ImageContainer>
+        <ImageContainer>
+          <img src={homeImage} alt="people studying" />
+        </ImageContainer>
       </Content>
       <Footer />
     </Container>

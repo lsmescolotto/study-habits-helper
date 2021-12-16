@@ -1,5 +1,4 @@
 import styled from "styled-components";
-import homeImage from "../../assets/img/homeImg.gif";
 
 export const Container = styled.div`
   align-items: center;
@@ -10,15 +9,15 @@ export const Container = styled.div`
   justify-content: space-between;
 `;
 
-export const Content = styled.main`
+export const Content = styled.section`
   align-items: center;
   display: flex;
   justify-content: center;
-  width: 100vw;
+  width: 80vw;
 
   @media (min-width: 1024px) {
     align-items: center;
-    justify-content: space-around;
+    justify-content: space-between;
   }
 `;
 
@@ -66,7 +65,7 @@ export const RedirectContainer = styled.div`
   }
 
   @media screen and (min-width: 1024px) {
-    width: 45vw;
+    width: 40vw;
 
     header {
       align-items: flex-start;
@@ -94,10 +93,14 @@ export const RedirectContainer = styled.div`
 `;
 
 export const ImageContainer = styled.div`
+  display: none;
   @media (min-width: 1024px) {
-    background-size: 479px 372px;
-    background: url(${homeImage}) no-repeat center;
-    height: 579px;
-    width: 495px;
+    display: inline-block;
+    img {
+      min-height: 345px;
+      min-width: 429px;
+      height: 30vh;
+      width: 30vw;
+    }
   }
 `;
