@@ -13,6 +13,7 @@ import { GoalsContext } from "../../providers/goal/goal.js";
 import { ActivitiesContext } from "../../providers/activities/activities.js";
 import DisplayGroup from "../../components/displayGroups/index.jsx";
 import { GroupContext } from "../../providers/groups/groups.js";
+
 const Group = () => {
   const { goals, renderGoals } = useContext(GoalsContext);
   const { activities, renderActivities } = useContext(ActivitiesContext);

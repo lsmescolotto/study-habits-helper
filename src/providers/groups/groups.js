@@ -8,6 +8,7 @@ export const GroupProviders = ({ children }) => {
   const [groupList, setGroupList] = useState([]);
   const [subscriptions, setSubscriptions] = useState([]);
   const [groupName, setGroupName] = useState("");
+
   const createGroup = (payload) => {
     api
       .post("groups/", payload, {
@@ -16,11 +17,10 @@ export const GroupProviders = ({ children }) => {
         },
       })
       .then((res) => {
-        console.log(res);
         getGroupsSubscriptions();
       })
       .catch((err) => {
-        console.log(err.message);
+        toast.error(err.message);
       });
   };
 
@@ -35,7 +35,7 @@ export const GroupProviders = ({ children }) => {
         setGroupList(res.data);
       })
       .catch((err) => {
-        console.log(err.message);
+        toast.error(err.message);
       });
   };
 
@@ -47,13 +47,11 @@ export const GroupProviders = ({ children }) => {
         },
       })
       .then((res) => {
-        console.log(res.data);
         localStorage.setItem("groupContent", JSON.stringify(res.data));
         getGroups(res.data.name);
         toast.success("Grupo atualizado");
       })
       .catch((err) => {
-        console.log(err.message);
         toast.error("Erro ao atualizar grupo");
       });
   };
@@ -72,11 +70,10 @@ export const GroupProviders = ({ children }) => {
         }
       )
       .then((res) => {
-        console.log(res.data);
         getGroupsSubscriptions();
       })
       .catch((err) => {
-        console.log(err.message);
+        toast.error(err.message);
       });
   };
 
@@ -91,7 +88,7 @@ export const GroupProviders = ({ children }) => {
         setSubscriptions(res.data);
       })
       .catch((err) => {
-        console.log(err.message);
+        toast.error(err.message);
       });
   };
 
@@ -103,11 +100,10 @@ export const GroupProviders = ({ children }) => {
         },
       })
       .then((res) => {
-        console.log(res);
         getGroupsSubscriptions();
       })
       .catch((err) => {
-        console.log(err.message);
+        toast.error(err.message);
       });
   };
 

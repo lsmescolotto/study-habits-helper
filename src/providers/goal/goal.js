@@ -1,4 +1,5 @@
 import { createContext, useState } from "react";
+import toast from "react-hot-toast";
 import api from "../../services/api";
 
 export const GoalsContext = createContext();
@@ -6,6 +7,7 @@ export const GoalsContext = createContext();
 export const GoalsProvider = ({ children }) => {
   const [goals, setGoals] = useState([]);
   const groupId = localStorage.getItem("GroupID");
+
   const renderGoals = (groupId) => {
     api
       .get(`goals/?group=${groupId}`, {
@@ -17,7 +19,7 @@ export const GoalsProvider = ({ children }) => {
         setGoals(res.data);
       })
       .catch((err) => {
-        console.log(err);
+        toast.error(err);
       });
   };
 
@@ -29,10 +31,9 @@ export const GoalsProvider = ({ children }) => {
         },
       })
       .then((response) => {
-        console.log(response);
         renderGoals(groupId);
       })
-      .catch((err) => console.log(err));
+      .catch((err) => toast.error(err));
   };
 
   const updateGoals = (id, payload) => {
@@ -43,11 +44,10 @@ export const GoalsProvider = ({ children }) => {
         },
       })
       .then((response) => {
-        console.log(response);
         renderGoals(groupId);
       })
       .catch((err) => {
-        console.log(err);
+        toast.error(err);
       });
   };
 
@@ -59,7 +59,6 @@ export const GoalsProvider = ({ children }) => {
         },
       })
       .then((response) => {
-        console.log(response);
         renderGoals(groupId);
       });
   };

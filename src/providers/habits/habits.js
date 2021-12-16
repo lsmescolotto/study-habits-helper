@@ -1,4 +1,5 @@
 import { createContext, useState } from "react";
+import toast from "react-hot-toast";
 import api from "../../services/api";
 
 export const HabitsContext = createContext();
@@ -14,11 +15,10 @@ export const HabitsProvider = ({ children }) => {
         },
       })
       .then((res) => {
-        console.log(res);
         getHabitsAxios();
       })
       .catch((err) => {
-        console.log(err.message);
+        toast.error(err.message);
       });
   };
 
@@ -30,12 +30,10 @@ export const HabitsProvider = ({ children }) => {
         },
       })
       .then((res) => {
-        console.log(res.data);
-
         setHabitsList(res.data);
       })
       .catch((err) => {
-        console.log(err.message);
+        toast.error(err.message);
       });
   };
 
@@ -47,11 +45,10 @@ export const HabitsProvider = ({ children }) => {
         },
       })
       .then((res) => {
-        console.log(res.data);
         getHabitsAxios();
       })
       .catch((err) => {
-        console.log(err.message);
+        toast.error(err.message);
       });
   };
   const deleteHabit = (id) => {
@@ -62,11 +59,10 @@ export const HabitsProvider = ({ children }) => {
         },
       })
       .then((res) => {
-        console.log(res.data);
         getHabitsAxios();
       })
       .catch((err) => {
-        console.log(err.message);
+        toast.error(err.message);
       });
   };
 

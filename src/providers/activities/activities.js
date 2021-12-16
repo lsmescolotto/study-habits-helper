@@ -1,4 +1,5 @@
 import { createContext, useState } from "react";
+import toast from "react-hot-toast";
 import api from "../../services/api";
 
 export const ActivitiesContext = createContext();
@@ -6,6 +7,7 @@ export const ActivitiesContext = createContext();
 export const ActivitiesProvider = ({ children }) => {
   const [activities, setActivities] = useState([]);
   const groupId = localStorage.getItem("GroupID");
+
   const renderActivities = (groupId) => {
     api
       .get(`activities/?group=${groupId}`, {
@@ -17,7 +19,7 @@ export const ActivitiesProvider = ({ children }) => {
         setActivities(res.data);
       })
       .catch((err) => {
-        console.log(err);
+        toast.error(err);
       });
   };
 
@@ -29,10 +31,9 @@ export const ActivitiesProvider = ({ children }) => {
         },
       })
       .then((response) => {
-        console.log(response);
         renderActivities(groupId);
       })
-      .catch((err) => console.log(err));
+      .catch((err) => toast.error(err));
   };
 
   const updateActivities = (id, payload) => {
@@ -43,11 +44,10 @@ export const ActivitiesProvider = ({ children }) => {
         },
       })
       .then((res) => {
-        console.log(res);
         renderActivities(groupId);
       })
       .catch((err) => {
-        console.log(err);
+        toast.error(err);
       });
   };
 
@@ -59,7 +59,6 @@ export const ActivitiesProvider = ({ children }) => {
         },
       })
       .then((response) => {
-        console.log(response);
         renderActivities(groupId);
       });
   };

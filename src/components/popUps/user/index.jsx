@@ -4,7 +4,7 @@ import { useState } from "react";
 import Button from "../../button";
 import { useEffect } from "react/cjs/react.development";
 import UpdateUserPopUp from "../updateUser";
-
+import toast from "react-hot-toast";
 
 const User = ({ closePopUp }) => {
   const [user, setUser] = useState([]);
@@ -25,7 +25,7 @@ const User = ({ closePopUp }) => {
 
         setUser(response.data);
       })
-      .catch((err) => console.log(err));
+      .catch((err) => toast.error(""));
   };
 
   const handleClick = () => {
@@ -39,10 +39,14 @@ const User = ({ closePopUp }) => {
   return (
     <>
       <PopUpBase title={"Usuário"} closePopUp={closePopUp}>
-        <p>Username:{user.username}</p>
+        <p>Username: {user.username}</p>
         <p>Email: {user.email}</p>
-        <Button onClick={() => handleClick()} name="button--pink button__pop-up" >Editar</Button>
-
+        <Button
+          onClick={() => handleClick()}
+          name="button--pink button__pop-up"
+        >
+          Editar
+        </Button>
       </PopUpBase>
       {editUser && <UpdateUserPopUp closePopUp={closePopUp} />}
     </>
