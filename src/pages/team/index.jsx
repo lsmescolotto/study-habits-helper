@@ -1,6 +1,9 @@
-import { Container, InfoTeam, Content, About } from "./styles";
-import Footer from "../../components/footer";
 import { useState } from "react";
+import { AiFillLinkedin } from "react-icons/ai";
+import { TeamContainer, Container, InfoTeam, Content, About } from "./styles";
+import Footer from "../../components/footer";
+import teamImg from "../../assets/img/teamImg.gif";
+import { motion } from "framer-motion";
 
 const Team = () => {
   const [team] = useState([
@@ -21,8 +24,9 @@ const Team = () => {
     {
       role: "SM",
       name: "Luan Diniz",
-      profileImg: "",
-      profileLink: "",
+      profileImg:
+        "https://media-exp1.licdn.com/dms/image/C4D03AQGy_V9HI-BJSA/profile-displayphoto-shrink_800_800/0/1639085064248?e=1644451200&v=beta&t=2PSiZjMtk9cmDneA7eGzjuU37OLvgR4Ro6lDWZRCE0A",
+      profileLink: "https://www.linkedin.com/in/luan-diniz-985a7b223/",
     },
     {
       role: "QA",
@@ -49,27 +53,39 @@ const Team = () => {
   ]);
 
   return (
-    <>
-      <Container>
-        <InfoTeam>
-          {team.map((atual, index) => (
-            <Content key={index}>
-              <figure>
-                <img src={atual.profileImg} alt="profile" />
-              </figure>
-              <About>
-                <h4>Cargo:{atual.role}</h4>
-                <h4>Nome:{atual.name}</h4>
-                <a href={atual.profileLink} rel="noreferrer" target="_blank">
-                  Linkedin
-                </a>
-              </About>
-            </Content>
-          ))}
-        </InfoTeam>
-      </Container>
-      <Footer />
-    </>
+    <motion.div
+      initial={{ opacity: 0 }}
+      animate={{ opacity: 1 }}
+      exit={{ opacity: 0 }}
+      transition={{ duration: 1 }}
+    >
+      <TeamContainer>
+        <Container>
+          <img src={teamImg} alt="Team gif" className="team_gif" />
+          <InfoTeam>
+            {team.map((atual, index) => (
+              <Content key={index}>
+                <figure>
+                  <img src={atual.profileImg} alt="profile" />
+                </figure>
+                <About>
+                  <h4>
+                    <strong>Cargo:</strong> {atual.role}
+                  </h4>
+                  <h4>
+                    <strong>Nome:</strong> {atual.name}
+                  </h4>
+                  <a href={atual.profileLink} rel="noreferrer" target="_blank">
+                    <AiFillLinkedin />
+                  </a>
+                </About>
+              </Content>
+            ))}
+          </InfoTeam>
+        </Container>
+        <Footer />
+      </TeamContainer>
+    </motion.div>
   );
 };
 

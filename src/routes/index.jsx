@@ -1,31 +1,45 @@
 import { Route, Switch } from "react-router-dom";
+import Home from "../pages/home";
+import Login from "../pages/login";
+import Signup from "../pages/signup";
 import Team from "../pages/team";
 import Dashboard from "../pages/dashboard";
 import Group from "../pages/group";
 import AboutUs from "../pages/about";
+import { useContext } from "react/cjs/react.development";
+import { UserContext } from "../providers/user/user";
+import { Redirect } from "react-router-dom";
+import { useEffect } from "react";
 
 const Routes = () => {
+  const { authenticated, setAuthenticated } = useContext(UserContext);
+
+  const token = localStorage.getItem("@Habits:token");
+
+  useEffect(() => {
+    if (token !== null) {
+      setAuthenticated(true);
+    }
+  });
+
   return (
     <Switch>
       <Route exact path="/">
-        <h1>Home</h1>
+        {!authenticated ? <Home /> : <Redirect to="/dashboard" />}
       </Route>
-      <Route path="/login">
-        <h1>Login</h1>
+      <Route exact path="/login">
+        {!authenticated ? <Login /> : <Redirect to="/dashboard" />}
       </Route>
-      <Route path="/signup">
-        <h1>Signup</h1>
+      <Route exact path="/signup">
+        {!authenticated ? <Signup /> : <Redirect to="/dashboard" />}
       </Route>
-      <Route path="/dashboard">
-        <Dashboard />
+      <Route exact path="/dashboard">
+        {authenticated ? <Dashboard /> : <Redirect to="/login" />}
       </Route>
-      <Route path="/groups_list">
-        <h1>Groups List</h1>
+      <Route exact path="/group/:group_id">
+        {authenticated ? <Group /> : <Redirect to="/login" />}
       </Route>
-      <Route path="/group/:group_id">
-        <Group />
-      </Route>
-      <Route path="/team">
+      <Route exact path="/team">
         <Team />
       </Route>
       <Route path="/about">

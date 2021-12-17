@@ -1,27 +1,76 @@
 import React from "react";
 import {
   Container,
-  HeaderContainer,
   GoalsContainer,
   ActivitiesContainer,
   MembersContainer,
-  FooterContainer,
+  Content,
 } from "./styles.js";
+import Header from "../../components/header";
+import Footer from "../../components/footer";
+import ContainerGroup from "../../components/containerGroupPage";
+import { useContext, useEffect } from "react";
+import { GoalsContext } from "../../providers/goal/goal.js";
+import { ActivitiesContext } from "../../providers/activities/activities.js";
+import DisplayGroup from "../../components/displayGroups/index.jsx";
+import { GroupContext } from "../../providers/groups/groups.js";
+import { motion } from "framer-motion";
 
 const Group = () => {
+  const { groupName } = useContext(GroupContext);
+  const { goals, renderGoals } = useContext(GoalsContext);
+  const { activities, renderActivities } = useContext(ActivitiesContext);
+
+  const groupId = JSON.parse(localStorage.getItem("@Habits:groupID"));
+
+  useEffect(() => {
+    renderGoals(groupId);
+    renderActivities(groupId);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
+
   return (
-    <Container>
-      <HeaderContainer>HEADER</HeaderContainer>
+    <motion.div
+      initial={{ opacity: 0 }}
+      animate={{ opacity: 1 }}
+      exit={{ opacity: 0 }}
+      transition={{ duration: 1 }}
+    >
+      <Container>
+        <Header group id={groupId} />
+        <h2>{groupName}</h2>
+        <div className="cards-containers">
+          <GoalsContainer className="container__box">
+            <ContainerGroup text="Metas do Grupo" />
+            <Content>
+              {goals.results && (
+                <DisplayGroup type="goals" data={goals.results} />
+              )}
+            </Content>
+          </GoalsContainer>
+          <ActivitiesContainer className="container__box">
+            <ContainerGroup text="Atividades do Grupo" />
+            <Content>
+              {activities.results && (
+                <DisplayGroup type="activities" data={activities.results} />
+              )}
+            </Content>
+          </ActivitiesContainer>
 
-      <div className="cards-containers">
-        <GoalsContainer>METAS DO GRUPO</GoalsContainer>
-        <ActivitiesContainer>ATIVIDADES DO GRUPO</ActivitiesContainer>
-        <MembersContainer>MEMBROS DO GRUPO</MembersContainer>
-      </div>
-
-      <FooterContainer>FOOTER</FooterContainer>
-    </Container>
+          <MembersContainer className="container__box">
+            {localStorage.getItem("@Habits:groupContent") && (
+              <>
+                <ContainerGroup text="Membros do Grupo" />
+                <Content>
+                  <DisplayGroup type="members" />
+                </Content>
+              </>
+            )}
+          </MembersContainer>
+        </div>
+        <Footer />
+      </Container>
+    </motion.div>
   );
 };
-
 export default Group;

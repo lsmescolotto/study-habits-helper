@@ -1,26 +1,37 @@
 import Header from "../../components/header";
 import Footer from "../../components/footer";
-import { Container } from "./styles";
+import { Container, Content, ImageContainer, TextContainer } from "./styles";
+import { motion } from "framer-motion";
 
 const AboutUs = () => {
   return (
-    <>
-      <Header />
+    <motion.div
+      initial={{ opacity: 0 }}
+      animate={{ opacity: 1 }}
+      exit={{ opacity: 0 }}
+      transition={{ duration: 1 }}
+    >
       <Container>
-        <h2>SHH... ! Be quiet, we are studying here.</h2>
+        <Header />
+        <Content>
+          <TextContainer>
+            <h2>SHH... ! Be quiet, we are studying here.</h2>
 
-        <h4>
-          Ola! Somos a Study Habits Helper, e estamos aqui para ajudar a voce
-          criar novos habitos, e aprimorar os antigos!
-        </h4>
-        <p>
-          Projeto feito a partir da proposta da Kenzie Academy Brasil, no curso
-          de Full Stack Developer. Agradecemos a colaboracao de todos os
-          envolvidos.
-        </p>
+            <h4>
+              Olá! Somos a Study Habits Helper, e estamos aqui para ajudar você
+              a criar novos hábitos e aprimorar os antigos!
+            </h4>
+            <p>
+              Projeto feito a partir da proposta da Kenzie Academy Brasil, no
+              curso de Full Stack Developer. Agradecemos a colaboração de todos
+              os envolvidos.
+            </p>
+          </TextContainer>
+          <ImageContainer />
+        </Content>
+        <Footer />
       </Container>
-      <Footer />
-    </>
+    </motion.div>
   );
 };
 

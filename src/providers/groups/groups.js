@@ -1,116 +1,139 @@
-import { createContext, useContext, useState } from "react";
+import { createContext, useEffect, useState } from "react";
+import toast from "react-hot-toast";
 import api from "../../services/api";
-import { UserContext } from "../user/user";
 
 export const GroupContext = createContext();
 
 export const GroupProviders = ({ children }) => {
   const [groupList, setGroupList] = useState([]);
   const [subscriptions, setSubscriptions] = useState([]);
-  const { token } = useContext(UserContext);
+  const [groupName, setGroupName] = useState("");
+
+  const groupContent = JSON.parse(localStorage.getItem("@Habits:groupContent"));
+
+  useEffect(() => {
+    setGroupName(groupContent?.name);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
 
   const createGroup = (payload) => {
     api
       .post("groups/", payload, {
         headers: {
-          Authorization: `Bearer  ${JSON.parse(token)}`,
+          Authorization: `Bearer  ${JSON.parse(
+            localStorage.getItem("@Habits:token")
+          )}`,
         },
       })
-      .then((res) => {
-        console.log(res);
-        getGroups();
+      .then((_) => {
+        toast.success("Grupo criado com sucesso!");
+        getGroupsSubscriptions();
       })
-      .catch((err) => {
-        console.log(err.message);
-      });
+      .catch((_) => toast.error("Favor reveja os campos e tente novamente!"));
   };
-  const getGroups = () => {
+
+  const getGroups = (data) => {
     api
-      .get("groups/", {
+      .get(`/groups/?search=${data}`, {
         headers: {
-          Authorization: `Bearer  ${JSON.parse(token)}`,
+          Authorization: `Bearer  ${JSON.parse(
+            localStorage.getItem("@Habits:token")
+          )}`,
         },
       })
       .then((res) => {
         setGroupList(res.data);
       })
-      .catch((err) => {
-        console.log(err.message);
-      });
+      .catch((_) => toast.error("Grupo não encontrado, tente novamente!"));
   };
 
   const updateGroup = (id, payload) => {
     api
-      .patch(`groups/:${id}/`, payload, {
+      .patch(`groups/${id}/`, payload, {
         headers: {
-          Authorization: `Bearer  ${JSON.parse(token)}`,
+          Authorization: `Bearer  ${JSON.parse(
+            localStorage.getItem("@Habits:token")
+          )}`,
         },
       })
       .then((res) => {
-        console.log(res.data);
-        getGroups();
+        localStorage.setItem("@Habits:groupContent", JSON.stringify(res.data));
+        getGroups(res.data.name);
+        setGroupName(res.data.name);
+        toast.success("Grupo atualizado com sucesso!");
       })
-      .catch((err) => {
-        console.log(err.message);
-      });
+      .catch((_) =>
+        toast.error("Erro ao atualizar grupo, favor tente novamente")
+      );
   };
 
   const subscribeGroup = (id) => {
     api
-      .post(`groups/:${id}/subscribe/`, {
-        headers: {
-          Authorization: `Bearer  ${JSON.parse(token)}`,
-        },
-      })
-      .then((res) => {
-        console.log(res.data);
+      .post(
+        `groups/${id}/subscribe/`,
+        {},
+        {
+          headers: {
+            Authorization: `Bearer  ${JSON.parse(
+              localStorage.getItem("@Habits:token")
+            )}`,
+          },
+        }
+      )
+      .then((_) => {
+        toast.success("Você se inscreveu no grupo!");
         getGroupsSubscriptions();
       })
-      .catch((err) => {
-        console.log(err.message);
-      });
+      .catch((_) =>
+        toast.error("Erro ao se inscrever no grupo, favor tente novamente")
+      );
   };
 
   const getGroupsSubscriptions = () => {
     api
       .get("groups/subscriptions/", {
         headers: {
-          Authorization: `Bearer  ${JSON.parse(token)}`,
+          Authorization: `Bearer  ${JSON.parse(
+            localStorage.getItem("@Habits:token")
+          )}`,
         },
       })
       .then((res) => {
         setSubscriptions(res.data);
       })
-      .catch((err) => {
-        console.log(err.message);
-      });
+      .catch((_) => toast.error("Algo aconteceu, favor tente novamente!"));
   };
 
   const unsubscribeGroup = (id) => {
     api
-      .delete(`groups/:${id}/unsubscribe/`, {
+      .delete(`groups/${id}/unsubscribe/`, {
         headers: {
-          Authorization: `Bearer  ${JSON.parse(token)}`,
+          Authorization: `Bearer  ${JSON.parse(
+            localStorage.getItem("@Habits:token")
+          )}`,
         },
       })
-      .then((res) => {
-        console.log(res);
+      .then((_) => {
+        toast.success("Você saiu do grupo!");
         getGroupsSubscriptions();
       })
-      .catch((err) => {
-        console.log(err.message);
-      });
+      .catch((_) => toast.error("Algo aconteceu, favor tente novamente!"));
   };
 
   return (
     <GroupContext.Provider
       value={{
         groupList,
+        setGroupList,
         subscriptions,
         createGroup,
         updateGroup,
         subscribeGroup,
         unsubscribeGroup,
+        getGroups,
+        getGroupsSubscriptions,
+        groupName,
+        setGroupName,
       }}
     >
       {children}
