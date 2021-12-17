@@ -1,6 +1,6 @@
 import { useContext, useEffect } from "react";
 
-import { Route, Switch } from "react-router-dom";
+import { Route, Switch, Redirect } from "react-router-dom";
 import Home from "../pages/home";
 import Login from "../pages/login";
 import Signup from "../pages/signup";
@@ -9,12 +9,11 @@ import Dashboard from "../pages/dashboard";
 import Group from "../pages/group";
 import AboutUs from "../pages/about";
 import { UserContext } from "../providers/user/user";
-import { Redirect } from "react-router-dom"
 
 const Routes = () => {
   const { authenticated, setAuthenticated } = useContext(UserContext);
 
-  const token = localStorage.getItem("@Habits:token");
+  const token = localStorage.getItem("@Habits:token") || "";
 
   useEffect(() => {
     if (token !== null) {
