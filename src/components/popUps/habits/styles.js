@@ -38,6 +38,14 @@ export const searchHabitForm = styled.form`
 `;
 
 export const ContainerSearchHabit = styled.div`
+  align-content: flex-end;
+  display: flex;
+  flex-flow: column nowrap;
+  justify-content: space-around;
+  margin: 0 auto;
+  text-align: center;
+  width: 350px;
+
   form:second-of-type {
     flex-direction: colum;
   }
@@ -65,9 +73,10 @@ export const ContainerSearchHabit = styled.div`
 
   .updateHabit {
     flex-direction: column;
+    height: 265px;
 
     @media (min-width: 1024px) {
-      height: 300px;
+      height: 310px;
     }
   }
 `;
