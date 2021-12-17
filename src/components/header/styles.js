@@ -10,19 +10,45 @@ export const Container = styled.header`
 
   figure {
     margin-left: 20px;
-    img {
-      height: 40px;
-    }
   }
 
   span {
     cursor: pointer;
+    display: inline-block;
     font-size: 32px;
     margin-right: 15px;
+    position: relative;
   }
 
   div {
     margin-right: 15px;
+  }
+
+  .tooltip .tooltip-message {
+    background-color: var(--white);
+    border-radius: 6px;
+    border: 1px solid var(--grey-40);
+    color: var(--black-50);
+    font-size: 12px;
+    font-family: var(--main-font);
+    right: 0;
+    padding: 5px 0;
+    position: absolute;
+    text-align: center;
+    top: 100%;
+    visibility: hidden;
+    width: 80px;
+    z-index: 1;
+  }
+
+  .tooltip:hover .tooltip-message {
+    visibility: visible;
+  }
+
+  .tooltip:hover {
+    svg {
+      color: var(--blue-60);
+    }
   }
 
   section {
@@ -45,9 +71,18 @@ export const Container = styled.header`
       }
 
       p {
-        display: inline;
         font-size: 25px;
         margin-right: 8px;
+        display: inline-block;
+        position: relative;
+      }
+    }
+  }
+
+  @media (min-width: 768px) {
+    .tooltip:hover {
+      svg {
+        color: var(--pink-60);
       }
     }
   }

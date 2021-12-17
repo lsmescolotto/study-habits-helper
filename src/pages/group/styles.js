@@ -55,7 +55,7 @@ export const Container = styled.div`
       align-items: center;
       flex-flow: row nowrap;
       height: calc(100vh - 209px);
-      justify-content: space-between;
+      justify-content: space-around;
     }
   }
 `;
