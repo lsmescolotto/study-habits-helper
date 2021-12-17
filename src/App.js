@@ -7,9 +7,9 @@ const App = () => {
   return (
     <main>
       <AnimatePresence>
-        <GlobalStyle />
-        <Routes />
-        <Toaster position="top-right" reverseOrder={false} />
+        <GlobalStyle key={1} />
+        <Routes key={2} />
+        <Toaster position="top-right" reverseOrder={false} key={3} />
       </AnimatePresence>
     </main>
   );

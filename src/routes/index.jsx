@@ -14,7 +14,7 @@ import { useEffect } from "react";
 const Routes = () => {
   const { authenticated, setAuthenticated } = useContext(UserContext);
 
-  const token = localStorage.getItem("@Habits:token");
+  const token = localStorage.getItem("@Habits:token") || "";
 
   useEffect(() => {
     if (token !== null) {
