@@ -10,6 +10,9 @@ export const Container = styled.header`
 
   figure {
     margin-left: 20px;
+    img {
+      height: 40px;
+    }
   }
 
   span {
@@ -35,7 +38,7 @@ export const Container = styled.header`
     p {
       display: none;
     }
-    
+
     @media (max-width: 630px) {
       span {
         display: none;
