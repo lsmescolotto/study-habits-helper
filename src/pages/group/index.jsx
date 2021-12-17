@@ -1,4 +1,15 @@
-import React from "react";
+import { useContext, useEffect } from "react";
+
+import { motion } from "framer-motion";
+
+import { ActivitiesContext } from "../../providers/activities/activities.js";
+import { GoalsContext } from "../../providers/goal/goal.js";
+import { GroupContext } from "../../providers/groups/groups.js";
+import ContainerGroup from "../../components/containerGroupPage";
+import DisplayGroup from "../../components/displayGroups/index.jsx";
+import Footer from "../../components/footer";
+import Header from "../../components/header";
+
 import {
   Container,
   GoalsContainer,
@@ -6,20 +17,11 @@ import {
   MembersContainer,
   Content,
 } from "./styles.js";
-import Header from "../../components/header";
-import Footer from "../../components/footer";
-import ContainerGroup from "../../components/containerGroupPage";
-import { useContext, useEffect } from "react";
-import { GoalsContext } from "../../providers/goal/goal.js";
-import { ActivitiesContext } from "../../providers/activities/activities.js";
-import DisplayGroup from "../../components/displayGroups/index.jsx";
-import { GroupContext } from "../../providers/groups/groups.js";
-import { motion } from "framer-motion";
 
 const Group = () => {
-  const { groupName } = useContext(GroupContext);
-  const { goals, renderGoals } = useContext(GoalsContext);
   const { activities, renderActivities } = useContext(ActivitiesContext);
+  const { goals, renderGoals } = useContext(GoalsContext);
+  const { groupName } = useContext(GroupContext);
 
   const groupId = JSON.parse(localStorage.getItem("@Habits:groupID"));
 
@@ -48,6 +50,7 @@ const Group = () => {
               )}
             </Content>
           </GoalsContainer>
+
           <ActivitiesContainer className="container__box">
             <ContainerGroup text="Atividades do Grupo" />
             <Content>
@@ -68,6 +71,7 @@ const Group = () => {
             )}
           </MembersContainer>
         </div>
+
         <Footer />
       </Container>
     </motion.div>

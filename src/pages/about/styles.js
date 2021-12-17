@@ -2,50 +2,50 @@ import styled from "styled-components";
 import aboutUsImage from "../../assets/img/aboutUsImg.png";
 
 export const Container = styled.div`
-  width: 100vw;
-  height: 100vh;
+  align-items: center;
   display: flex;
   flex-direction: column;
-  justify-content: space-between;
-  align-items: center;
   font-family: var(--main-font);
+  height: 100vh;
+  justify-content: space-between;
+  width: 100vw;
 `;
 
 export const Content = styled.div`
-  width: 80vw;
   height: 55vh;
-   
+  width: 80vw;
+
   @media (min-width: 1024px) {
     align-items: center;
     display: flex;
     justify-content: space-between;
     width: 90vw;
+  }
 `;
 
 export const TextContainer = styled.div`
- display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-    line-height: 1.25;
-    height: 55vh;
+  display: flex;
+  flex-direction: column;
+  height: 55vh;
+  justify-content: space-between;
+  line-height: 1.25;
 
-    h2 {
-      font-family: var(--title-font);
-      font-size: 32px;
-    }
+  h2 {
+    font-family: var(--title-font);
+    font-size: 32px;
+  }
 
-    h4 {
-      font-size: 18px;
-    }
+  h4 {
+    font-size: 18px;
+  }
 
-    p {
-      font-size: 14px;
-    }
+  p {
+    font-size: 14px;
   }
 
   @media (min-width: 1024px) {
-    width: 35vw;
     height: 40vh;
+    width: 35vw;
 
     h2 {
       font-size: 36px;
@@ -58,14 +58,14 @@ export const TextContainer = styled.div`
     p {
       font-size: 16px;
     }
-    }
+  }
 `;
 
 export const ImageContainer = styled.div`
   @media (min-width: 1024px) {
-    background: url(${aboutUsImage}) no-repeat center;
     background-size: 543px 394px;
-    width: 563px;
+    background: url(${aboutUsImage}) no-repeat center;
     height: 464px;
+    width: 563px;
   }
 `;

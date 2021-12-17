@@ -1,10 +1,10 @@
 import styled from "styled-components";
 
 export const ContainerHeader = styled.div`
-  display: flex;
-  justify-content: space-between;
   align-items: center;
+  display: flex;
   height: 55px;
+  justify-content: space-between;
   width: 100%;
 
   h3 {
@@ -15,10 +15,9 @@ export const ContainerHeader = styled.div`
   }
 
   div {
-    /* width: 75px; */
+    align-items: center;
     display: flex;
     justify-content: space-around;
-    align-items: center;
     margin-right: 10px;
 
     svg {
@@ -44,12 +43,9 @@ export const ContainerHeader = styled.div`
       font-size: 22px;
     }
 
-    div {
-      /* width: 100px; */
-      .addNew {
-        background-color: var(--pink-50);
-        font-size: 35px;
-      }
+    div .addNew {
+      background-color: var(--pink-50);
+      font-size: 35px;
     }
   }
 `;

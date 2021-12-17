@@ -1,11 +1,13 @@
 import { useForm } from "react-hook-form";
-import * as yup from "yup";
 import { yupResolver } from "@hookform/resolvers/yup";
+import * as yup from "yup";
 import toast from "react-hot-toast";
-import PopUpBase from "../popUpBase";
-import Input from "../../input";
-import Button from "../../button";
+
 import api from "../../../services/api";
+import Button from "../../button";
+import Input from "../../input";
+import PopUpBase from "../popUpBase";
+
 import { Container } from "./styles";
 
 const UpdateUserPopUp = ({ closePopUp }) => {

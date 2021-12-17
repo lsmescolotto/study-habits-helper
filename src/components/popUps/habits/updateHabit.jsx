@@ -1,13 +1,16 @@
+import { useContext } from "react";
+
 import * as yup from "yup";
 import { yupResolver } from "@hookform/resolvers/yup";
 import { useForm } from "react-hook-form";
+
 import { HabitsContext } from "../../../providers/habits/habits";
-import { useContext } from "react";
-import { UpdateHabitForm, ButtonBox } from "./styles";
 import Button from "../../button";
 import Input from "../../input";
 import PopUpBase from "../popUpBase";
-import { ContainerUpdateGoal } from "../goals/styles";
+import { UpdateHabitContainer } from "./styles";
+
+import { UpdateHabitForm, ButtonBox } from "./styles";
 
 const HabitEditInfo = ({ setEditHabits, editHabits, id }) => {
   const { updateHabit, deleteHabit } = useContext(HabitsContext);
@@ -48,7 +51,7 @@ const HabitEditInfo = ({ setEditHabits, editHabits, id }) => {
   };
 
   return (
-    <ContainerUpdateGoal>
+    <UpdateHabitContainer>
       <PopUpBase title="Atualizar Habito" closePopUp={OpClEdit}>
         <UpdateHabitForm
           className="updateHabit"
@@ -73,7 +76,7 @@ const HabitEditInfo = ({ setEditHabits, editHabits, id }) => {
           </ButtonBox>
         </UpdateHabitForm>
       </PopUpBase>
-    </ContainerUpdateGoal>
+    </UpdateHabitContainer>
   );
 };
 export default HabitEditInfo;

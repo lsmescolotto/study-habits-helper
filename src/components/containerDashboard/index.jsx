@@ -1,16 +1,18 @@
-import { FiSearch, FiPlusSquare } from "react-icons/fi";
 import { useState } from "react";
-import NewHabit from "../popUps/habits/newHabit";
+import { FiSearch, FiPlusSquare } from "react-icons/fi";
+
+import FindGroups from "../popUps/findGroups";
 import GetHabitsSearch from "../popUps/habits/habitList";
 import NewGroup from "../popUps/groups/newGroup";
-import FindGroups from "../popUps/findGroups";
+import NewHabit from "../popUps/habits/newHabit";
+
 import { DashboardContainer, ContainerHeader } from "./styles";
 
 const ContainerDashboard = ({ text, children }) => {
-  const [newHabit, setNewHabit] = useState(false);
-  const [searchHabit, setSearchHabit] = useState(false);
   const [newGroup, setNewGroup] = useState(false);
+  const [newHabit, setNewHabit] = useState(false);
   const [searchGroup, setNewSearchGroup] = useState(false);
+  const [searchHabit, setSearchHabit] = useState(false);
 
   const OpClHabit = () => {
     setNewHabit(!newHabit);

@@ -1,11 +1,14 @@
+import { useContext } from "react";
+
 import { useForm } from "react-hook-form";
-import * as yup from "yup";
 import { yupResolver } from "@hookform/resolvers/yup";
+import * as yup from "yup";
+
+import { GoalsContext } from "../../../providers/goal/goal";
+import Button from "../../button";
 import Input from "../../input";
 import PopUpBase from "../popUpBase";
-import Button from "../../button";
-import { GoalsContext } from "../../../providers/goal/goal";
-import { useContext } from "react";
+
 import { ContainerNewGoal } from "./styles.js";
 
 const NewGoal = ({ newGoal, setNewGoal }) => {
@@ -42,7 +45,7 @@ const NewGoal = ({ newGoal, setNewGoal }) => {
     setNewGoal(!newGoal);
   };
 
-    return (
+  return (
     <ContainerNewGoal>
       <PopUpBase title={"Nova Meta"} closePopUp={ClosePopUp}>
         <form onSubmit={handleSubmit(handleGoal)}>

@@ -1,14 +1,16 @@
 import { Link } from "react-router-dom";
+import { motion } from "framer-motion";
+
 import Footer from "../../components/footer";
 import Header from "../../components/header";
 import homeImage from "../../assets/img/homeImg.gif";
+
 import {
   Container,
   Content,
   RedirectContainer,
   ImageContainer,
 } from "./styles";
-import { motion } from "framer-motion";
 
 const Home = () => {
   return (

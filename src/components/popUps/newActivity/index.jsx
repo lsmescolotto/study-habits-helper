@@ -1,12 +1,14 @@
-import React from "react";
-import PopUpBase from "../popUpBase";
-import Input from "../../input";
-import Button from "../../button";
-import * as yup from "yup";
+import { useContext } from "react";
+
 import { useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
-import { useContext } from "react";
+import * as yup from "yup";
+
 import { ActivitiesContext } from "../../../providers/activities/activities";
+import Button from "../../button";
+import Input from "../../input";
+import PopUpBase from "../popUpBase";
+
 import { Container } from "./styles";
 
 const NewActivity = ({ newActivity, setNewActivity }) => {

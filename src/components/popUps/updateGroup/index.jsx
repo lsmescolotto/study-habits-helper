@@ -1,13 +1,13 @@
 import { useContext } from "react";
-import { GroupContext } from "../../../providers/groups/groups";
 
 import { useForm } from "react-hook-form";
-import * as yup from "yup";
 import { yupResolver } from "@hookform/resolvers/yup";
+import * as yup from "yup";
 
-import PopUpBase from "../popUpBase";
-import Input from "../../input";
+import { GroupContext } from "../../../providers/groups/groups";
 import Button from "../../button";
+import Input from "../../input";
+import PopUpBase from "../popUpBase";
 
 import { Form } from "./styles";
 

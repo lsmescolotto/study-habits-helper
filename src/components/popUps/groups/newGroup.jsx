@@ -1,12 +1,15 @@
-import * as yup from "yup";
+import { useContext } from "react";
+
 import { useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
-import { useContext } from "react";
-import { Form } from "./styles";
+import * as yup from "yup";
+
 import { GroupContext } from "../../../providers/groups/groups";
+import Button from "../../button";
 import Input from "../../input";
 import PopUpBase from "../popUpBase";
-import Button from "../../button";
+
+import { Form } from "./styles";
 
 const NewGroup = ({ setNewGroup, newGroupState }) => {
   const { createGroup } = useContext(GroupContext);
