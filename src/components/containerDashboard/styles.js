@@ -41,6 +41,7 @@ export const ContainerHeader = styled.div`
 
     svg {
       font-size: 25px;
+
       &:hover {
         cursor: pointer;
       }
@@ -59,6 +60,7 @@ export const ContainerHeader = styled.div`
 
     div {
       width: 100px;
+
       .addNew {
         background-color: var(--pink-50);
         font-size: 35px;

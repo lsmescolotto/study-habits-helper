@@ -5,8 +5,8 @@ export const Container = styled.div`
     display: flex;
     flex-direction: column;
     justify-content: center;
-    text-align: start;
     padding: 0px 40px 40px 40px;
+    text-align: start;
 
     @media (max-width: 768px) {
       padding: 0px 30px 30px 30px;

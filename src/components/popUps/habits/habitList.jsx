@@ -1,14 +1,16 @@
-import * as yup from "yup";
+import { useContext, useState } from "react";
+
 import { useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
-import { useContext } from "react";
+import * as yup from "yup";
+
 import { HabitsContext } from "../../../providers/habits/habits";
-import { useState } from "react/cjs/react.development";
-import { ContainerSearchHabit, Content } from "./styles";
 import Button from "../../button";
 import DisplayCard from "../../displayCard";
 import Input from "../../input";
 import PopUpBase from "../popUpBase";
+
+import { ContainerSearchHabit, Content } from "./styles";
 
 const GetHabitsSearch = ({ searchHabit, setSearchHabit, search = true }) => {
   const [searchedHabits, setSearchedHabits] = useState([]);
@@ -62,12 +64,14 @@ const GetHabitsSearch = ({ searchHabit, setSearchHabit, search = true }) => {
                 Pesquisar
               </Button>
             </form>
+
             <Content>
               <span>Resultado para: {searchInput}</span>
               <Button onClick={() => cleanSearch()} name="button--clear">
                 Limpar
               </Button>
             </Content>
+            
             <div className="habitList">
               {searchedHabits[0] && <DisplayCard data={searchedHabits} />}
             </div>

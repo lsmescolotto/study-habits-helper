@@ -1,12 +1,15 @@
-import * as yup from "yup";
+import { useContext } from "react";
+
 import { useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
+import * as yup from "yup";
+
 import { HabitsContext } from "../../../providers/habits/habits";
-import { useContext } from "react";
-import { NewHabitForm } from "./styles";
 import Button from "../../button";
 import Input from "../../input";
 import PopUpBase from "../popUpBase";
+
+import { NewHabitForm } from "./styles";
 
 const NewHabit = ({ setNewHabit, newHabit }) => {
   const { createHabit } = useContext(HabitsContext);

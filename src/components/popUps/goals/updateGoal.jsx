@@ -1,11 +1,14 @@
-import { yupResolver } from "@hookform/resolvers/yup";
 import { useContext } from "react";
+
 import { useForm } from "react-hook-form";
+import { yupResolver } from "@hookform/resolvers/yup";
 import * as yup from "yup";
+
+import { GoalsContext } from "../../../providers/goal/goal";
 import Button from "../../button";
 import Input from "../../input";
 import PopUpBase from "../popUpBase";
-import { GoalsContext } from "../../../providers/goal/goal";
+
 import { ContainerUpdateGoal } from "./styles.js";
 
 const UpdateGoals = ({ id, editGoals, setEditGoals }) => {
@@ -18,7 +21,6 @@ const UpdateGoals = ({ id, editGoals, setEditGoals }) => {
       .typeError("Digite a porcentagem do progresso")
       .min(0, "Progresso não pode ser negativo")
       .max(100, "Maximo deve ser 100/100"),
-
   });
 
   const {
@@ -53,12 +55,14 @@ const UpdateGoals = ({ id, editGoals, setEditGoals }) => {
     <ContainerUpdateGoal>
       <PopUpBase title={"Atualizar Meta"} closePopUp={closePopUp}>
         <form onSubmit={handleSubmit(handleEdit)}>
+          
           <Input
             register={register}
             name="how_much_achieved"
             label="Progresso:"
             error={errors.how_much_achieved?.message}
           />
+
           <div className="buttons_box">
             <Button type="submit" name="button--blue button__pop-up">
               Atualizar
@@ -69,6 +73,7 @@ const UpdateGoals = ({ id, editGoals, setEditGoals }) => {
             >
               Deletar
             </Button>
+
           </div>
         </form>
       </PopUpBase>

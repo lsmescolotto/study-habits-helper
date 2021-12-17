@@ -1,12 +1,14 @@
 import { useState } from "react";
-import { Container } from "./styles";
-import UpdateGoals from "../popUps/goals/updateGoal";
+
 import UpdateActivity from "../popUps/updateActivity";
+import UpdateGoals from "../popUps/goals/updateGoal";
+
+import { Container } from "./styles";
 
 const DisplayGroup = ({ type = "", data }) => {
-  const [editGoals, setEditGoals] = useState(false);
-  const [editActivities, setEditActivities] = useState(false);
   const [actualId, setActualId] = useState(0);
+  const [editActivities, setEditActivities] = useState(false);
+  const [editGoals, setEditGoals] = useState(false);
 
   const groupContent = JSON.parse(localStorage.getItem("@Habits:groupContent"));
 
@@ -66,6 +68,7 @@ const DisplayGroup = ({ type = "", data }) => {
               <h4>{user.email}</h4>
             </Container>
           ))}
+
       {editGoals && (
         <UpdateGoals
           editGoals={editGoals}
@@ -73,6 +76,7 @@ const DisplayGroup = ({ type = "", data }) => {
           id={actualId}
         />
       )}
+      
       {editActivities && (
         <UpdateActivity
           editActivities={editActivities}

@@ -29,11 +29,11 @@ export const Container = styled.header`
     border-radius: 6px;
     border: 1px solid var(--grey-40);
     color: var(--black-50);
-    font-size: 12px;
     font-family: var(--main-font);
-    right: 0;
+    font-size: 12px;
     padding: 5px 0;
     position: absolute;
+    right: 0;
     text-align: center;
     top: 100%;
     visibility: hidden;
@@ -71,9 +71,9 @@ export const Container = styled.header`
       }
 
       p {
+        display: inline-block;
         font-size: 25px;
         margin-right: 8px;
-        display: inline-block;
         position: relative;
       }
     }

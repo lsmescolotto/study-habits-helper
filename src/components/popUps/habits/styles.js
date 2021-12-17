@@ -55,13 +55,14 @@ export const ContainerSearchHabit = styled.div`
     display: flex;
     flex-direction: row;
     justify-content: space-evenly;
-    text-align: start;
     padding: 0 10px 0 10px;
+    text-align: start;
 
     div button {
       margin-left: 5px;
     }
   }
+  
   .habitList {
     height: 170px;
     overflow-x: scroll;

@@ -1,13 +1,15 @@
-import React, { useEffect } from "react";
-import { useContext } from "react";
-import { Container, HabitsContainer, GroupsContainer } from "./styles.js";
-import Header from "../../components/header";
-import Footer from "../../components/footer";
+import { useEffect, useContext } from "react";
+
+import { motion } from "framer-motion";
+
+import { GroupContext } from "../../providers/groups/groups.js";
+import { HabitsContext } from "../../providers/habits/habits.js";
 import ContainerDashboard from "../../components/containerDashboard";
 import DisplayCard from "../../components/displayCard/index.jsx";
-import { HabitsContext } from "../../providers/habits/habits.js";
-import { GroupContext } from "../../providers/groups/groups.js";
-import { motion } from "framer-motion";
+import Footer from "../../components/footer";
+import Header from "../../components/header";
+
+import { Container, HabitsContainer, GroupsContainer } from "./styles.js";
 
 const Dashboard = () => {
   const { habitsList, getHabitsAxios } = useContext(HabitsContext);

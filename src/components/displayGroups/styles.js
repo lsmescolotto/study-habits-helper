@@ -1,9 +1,10 @@
 import styled from "styled-components";
 
 export const Container = styled.div`
+  background-color: var(--grey-40);
   border-radius: 4px;
   border: 2px solid transparent;
-  background-color: var(--grey-40);
+  cursor: pointer;
   font-family: var(--main-font);
   font-size: 11px;
   height: auto;
@@ -12,11 +13,10 @@ export const Container = styled.div`
   padding: 8px;
   text-align: start;
   width: 90%;
-  cursor: pointer;
 
   h3 {
-    font-weight: 600;
     font-size: 12px;
+    font-weight: 600;
   }
 
   h4 {

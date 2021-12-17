@@ -1,14 +1,6 @@
 import styled from "styled-components";
 
 export const Container = styled.div`
-  .button--pink {
-    background-color: var(--pink-50);
-  }
-
-  .button--pink:active {
-    background-color: var(--pink-60);
-  }
-
   .button--blue {
     background-color: var(--blue-60);
   }
@@ -17,17 +9,18 @@ export const Container = styled.div`
     background-color: var(--blue-50);
   }
 
-  .button--red {
-    background-color: var(--red-20);
-  }
-
-  .button--red:active {
-    background-color: var(--red-50);
+  .button--clear {
+    background-color: var(--grey-90);
+    font-size: 11px;
+    height: 18px;
+    letter-spacing: 0px;
+    max-width: 50px;
+    padding: 0;
   }
 
   .button__close-pop-up {
-    border: 2px solid transparent;
     background-color: transparent;
+    border: 2px solid transparent;
     color: var(--grey-90);
   }
 
@@ -40,6 +33,14 @@ export const Container = styled.div`
     color: var(--black-50);
   }
 
+  .button--pink {
+    background-color: var(--pink-50);
+  }
+
+  .button--pink:active {
+    background-color: var(--pink-60);
+  }
+
   .button__pop-up,
   .button__header {
     border-radius: 8px;
@@ -47,13 +48,12 @@ export const Container = styled.div`
     min-width: 100px;
   }
 
-  .button--clear {
-    background-color: var(--grey-90);
-    font-size: 11px;
-    height: 18px;
-    letter-spacing: 0px;
-    max-width: 50px;
-    padding: 0;
+  .button--red {
+    background-color: var(--red-20);
+  }
+
+  .button--red:active {
+    background-color: var(--red-50);
   }
 
   @media (min-width: 1024px) {
