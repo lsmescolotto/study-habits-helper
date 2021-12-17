@@ -3,7 +3,7 @@ import { useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
 import { useContext } from "react";
 import { HabitsContext } from "../../../providers/habits/habits";
-import { useState } from "react/cjs/react.development";
+import { useState } from "react";
 import { ContainerSearchHabit, Content } from "./styles";
 import Button from "../../button";
 import DisplayCard from "../../displayCard";

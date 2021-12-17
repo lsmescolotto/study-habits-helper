@@ -2,7 +2,7 @@ import PopUpBase from "../popUpBase";
 import api from "../../../services/api";
 import { useState } from "react";
 import Button from "../../button";
-import { useEffect } from "react/cjs/react.development";
+import { useEffect } from "react";
 import UpdateUserPopUp from "../updateUser";
 import toast from "react-hot-toast";
 
