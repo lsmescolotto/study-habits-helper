@@ -65,3 +65,12 @@ export const UpdateHabitContainer = styled.div`
   justify-content: space-around;
   align-items: center;
 `;
+export const Content = styled.div`
+  display: flex;
+  font-size: 12px;
+  height: 25px;
+
+  button {
+    margin-left: 15px;
+  }
+`;
