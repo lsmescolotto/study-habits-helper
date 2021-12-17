@@ -13,6 +13,7 @@ import PopUpBase from "../popUpBase";
 const GetHabitsSearch = ({ searchHabit, setSearchHabit, search = true }) => {
   const [searchedHabits, setSearchedHabits] = useState([]);
   const [searchInput, setSearchInput] = useState("");
+
   const { habitsList } = useContext(HabitsContext);
 
   const handlePopUp = () => {
@@ -37,6 +38,7 @@ const GetHabitsSearch = ({ searchHabit, setSearchHabit, search = true }) => {
     });
 
     setSearchedHabits(filteredHabits);
+    setSearchInput(data.search);
   };
 
   const cleanSearch = () => {
@@ -55,8 +57,6 @@ const GetHabitsSearch = ({ searchHabit, setSearchHabit, search = true }) => {
                 register={register}
                 name="search"
                 placeholder="Pesquisar"
-                value={searchInput}
-                onChange={(event) => setSearchInput(event.target.value)}
               />
               <Button type="submit" name="button--blue">
                 Pesquisar
