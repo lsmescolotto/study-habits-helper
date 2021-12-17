@@ -1,5 +1,4 @@
 import { useState } from "react";
-import { FiSearch, FiPlusSquare } from "react-icons/fi";
 
 import FindGroups from "../popUps/findGroups";
 import GetHabitsSearch from "../popUps/habits/habitList";
@@ -7,6 +6,7 @@ import NewGroup from "../popUps/groups/newGroup";
 import NewHabit from "../popUps/habits/newHabit";
 
 import { DashboardContainer, ContainerHeader } from "./styles";
+import { FiSearch, FiPlusSquare } from "react-icons/fi";
 
 const ContainerDashboard = ({ text, children }) => {
   const [newGroup, setNewGroup] = useState(false);

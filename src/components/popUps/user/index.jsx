@@ -5,8 +5,8 @@ import { FiUser, FiMail } from "react-icons/fi";
 
 import api from "../../../services/api";
 import Button from "../../button";
-import UpdateUserPopUp from "../updateUser";
 import PopUpBase from "../popUpBase";
+import UpdateUserPopUp from "../updateUser";
 
 import { Container } from "./styles";
 

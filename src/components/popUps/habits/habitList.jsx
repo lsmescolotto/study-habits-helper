@@ -71,7 +71,7 @@ const GetHabitsSearch = ({ searchHabit, setSearchHabit, search = true }) => {
                 Limpar
               </Button>
             </Content>
-
+            
             <div className="habitList">
               {searchedHabits[0] && <DisplayCard data={searchedHabits} />}
             </div>
