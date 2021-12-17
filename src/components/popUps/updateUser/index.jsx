@@ -43,6 +43,7 @@ const UpdateUserPopUp = ({ closePopUp }) => {
       )
       .then((response) => {
         closePopUp();
+        toast.success("Usuario atualizado com sucesso!");
       })
       .catch((_) => {
         toast.error(
