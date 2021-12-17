@@ -14,6 +14,7 @@ import { GoalsContext } from "../../providers/goal/goal.js";
 import { ActivitiesContext } from "../../providers/activities/activities.js";
 import DisplayGroup from "../../components/displayGroups/index.jsx";
 import { GroupContext } from "../../providers/groups/groups.js";
+import { motion } from "framer-motion";
 
 const Group = () => {
   const { groupName } = useContext(GroupContext);
@@ -29,40 +30,47 @@ const Group = () => {
   }, []);
 
   return (
-    <Container>
-      <Header group id={groupId} />
-      <h2>{groupName}</h2>
-      <div className="cards-containers">
-        <GoalsContainer className="container__box">
-          <ContainerGroup text="Metas do Grupo" />
-          <Content>
-            {goals.results && (
-              <DisplayGroup type="goals" data={goals.results} />
-            )}
-          </Content>
-        </GoalsContainer>
-        <ActivitiesContainer className="container__box">
-          <ContainerGroup text="Atividades do Grupo" />
-          <Content>
-            {activities.results && (
-              <DisplayGroup type="activities" data={activities.results} />
-            )}
-          </Content>
-        </ActivitiesContainer>
+    <motion.div
+      initial={{ opacity: 0 }}
+      animate={{ opacity: 1 }}
+      exit={{ opacity: 0 }}
+      transition={{ duration: 1 }}
+    >
+      <Container>
+        <Header group id={groupId} />
+        <h2>{groupName}</h2>
+        <div className="cards-containers">
+          <GoalsContainer className="container__box">
+            <ContainerGroup text="Metas do Grupo" />
+            <Content>
+              {goals.results && (
+                <DisplayGroup type="goals" data={goals.results} />
+              )}
+            </Content>
+          </GoalsContainer>
+          <ActivitiesContainer className="container__box">
+            <ContainerGroup text="Atividades do Grupo" />
+            <Content>
+              {activities.results && (
+                <DisplayGroup type="activities" data={activities.results} />
+              )}
+            </Content>
+          </ActivitiesContainer>
 
-        <MembersContainer className="container__box">
-          {localStorage.getItem("@Habits:groupContent") && (
-            <>
-              <ContainerGroup text="Membros do Grupo" />
-              <Content>
-                <DisplayGroup type="members" />
-              </Content>
-            </>
-          )}
-        </MembersContainer>
-      </div>
-      <Footer />
-    </Container>
+          <MembersContainer className="container__box">
+            {localStorage.getItem("@Habits:groupContent") && (
+              <>
+                <ContainerGroup text="Membros do Grupo" />
+                <Content>
+                  <DisplayGroup type="members" />
+                </Content>
+              </>
+            )}
+          </MembersContainer>
+        </div>
+        <Footer />
+      </Container>
+    </motion.div>
   );
 };
 export default Group;

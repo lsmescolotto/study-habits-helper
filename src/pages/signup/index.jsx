@@ -19,6 +19,7 @@ import {
   SignUpBox,
 } from "./styles";
 import SignUpImage from "../../assets/img/signUpImg.gif";
+import { motion } from "framer-motion";
 
 const Signup = () => {
   const { userRegister } = useContext(UserContext);
@@ -52,59 +53,66 @@ const Signup = () => {
   };
 
   return (
-    <Container>
-      <Header />
-      <Desktop>
-        <Content>
-          <h2> Cadastro </h2>
+    <motion.div
+      initial={{ opacity: 0 }}
+      animate={{ opacity: 1 }}
+      exit={{ opacity: 0 }}
+      transition={{ duration: 1 }}
+    >
+      <Container>
+        <Header />
+        <Desktop>
+          <Content>
+            <h2> Cadastro </h2>
 
-          <SignUpBox>
-            <form onSubmit={handleSubmit(submitFunction)}>
-              <Input
-                placeholder="username"
-                name="username"
-                label="Username:"
-                register={register}
-                error={errors.username?.message}
-              />
-              <Input
-                placeholder="email"
-                name="email"
-                label="Email:"
-                register={register}
-                error={errors.email?.message}
-              />
-              <Input
-                type="password"
-                placeholder="senha"
-                name="password"
-                label="Senha:"
-                register={register}
-                error={errors.password?.message}
-              />
-              <Input
-                type="password"
-                placeholder="confirmar senha"
-                name="passwordConfirm"
-                label="Confirmação de senha:"
-                register={register}
-                error={errors.passwordConfirm?.message}
-              />
-              <Button type="submit" name="button--blue">
-                Cadastrar
-              </Button>
-            </form>
-          </SignUpBox>
+            <SignUpBox>
+              <form onSubmit={handleSubmit(submitFunction)}>
+                <Input
+                  placeholder="username"
+                  name="username"
+                  label="Username:"
+                  register={register}
+                  error={errors.username?.message}
+                />
+                <Input
+                  placeholder="email"
+                  name="email"
+                  label="Email:"
+                  register={register}
+                  error={errors.email?.message}
+                />
+                <Input
+                  type="password"
+                  placeholder="senha"
+                  name="password"
+                  label="Senha:"
+                  register={register}
+                  error={errors.password?.message}
+                />
+                <Input
+                  type="password"
+                  placeholder="confirmar senha"
+                  name="passwordConfirm"
+                  label="Confirmação de senha:"
+                  register={register}
+                  error={errors.passwordConfirm?.message}
+                />
+                <Button type="submit" name="button--blue">
+                  Cadastrar
+                </Button>
+              </form>
+            </SignUpBox>
 
-          <LoginRedirectBox>
-            <span>Já possui conta? </span>
-            <Link to="/login">Ir para login</Link>
-          </LoginRedirectBox>
-        </Content>
-        <Image src={SignUpImage} alt="SignUp" />
-      </Desktop>
-      <Footer />
-    </Container>
+            <LoginRedirectBox>
+              <span>Já possui conta? </span>
+              <Link to="/login">Ir para login</Link>
+            </LoginRedirectBox>
+          </Content>
+          <Image src={SignUpImage} alt="SignUp" />
+        </Desktop>
+        <Footer />
+      </Container>
+    </motion.div>
   );
 };
 

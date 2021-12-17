@@ -3,6 +3,7 @@ import { AiFillLinkedin } from "react-icons/ai";
 import { TeamContainer, Container, InfoTeam, Content, About } from "./styles";
 import Footer from "../../components/footer";
 import teamImg from "../../assets/img/teamImg.gif";
+import { motion } from "framer-motion";
 
 const Team = () => {
   const [team] = useState([
@@ -52,32 +53,39 @@ const Team = () => {
   ]);
 
   return (
-    <TeamContainer>
-      <Container>
-        <img src={teamImg} alt="Team gif" className="team_gif" />
-        <InfoTeam>
-          {team.map((atual, index) => (
-            <Content key={index}>
-              <figure>
-                <img src={atual.profileImg} alt="profile" />
-              </figure>
-              <About>
-                <h4>
-                  <strong>Cargo:</strong> {atual.role}
-                </h4>
-                <h4>
-                  <strong>Nome:</strong> {atual.name}
-                </h4>
-                <a href={atual.profileLink} rel="noreferrer" target="_blank">
-                  <AiFillLinkedin />
-                </a>
-              </About>
-            </Content>
-          ))}
-        </InfoTeam>
-      </Container>
-      <Footer />
-    </TeamContainer>
+    <motion.div
+      initial={{ opacity: 0 }}
+      animate={{ opacity: 1 }}
+      exit={{ opacity: 0 }}
+      transition={{ duration: 1 }}
+    >
+      <TeamContainer>
+        <Container>
+          <img src={teamImg} alt="Team gif" className="team_gif" />
+          <InfoTeam>
+            {team.map((atual, index) => (
+              <Content key={index}>
+                <figure>
+                  <img src={atual.profileImg} alt="profile" />
+                </figure>
+                <About>
+                  <h4>
+                    <strong>Cargo:</strong> {atual.role}
+                  </h4>
+                  <h4>
+                    <strong>Nome:</strong> {atual.name}
+                  </h4>
+                  <a href={atual.profileLink} rel="noreferrer" target="_blank">
+                    <AiFillLinkedin />
+                  </a>
+                </About>
+              </Content>
+            ))}
+          </InfoTeam>
+        </Container>
+        <Footer />
+      </TeamContainer>
+    </motion.div>
   );
 };
 
