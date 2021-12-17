@@ -4,7 +4,7 @@ import { yupResolver } from "@hookform/resolvers/yup";
 import { useContext } from "react";
 import { HabitsContext } from "../../../providers/habits/habits";
 import { useState } from "react/cjs/react.development";
-import { ContainerSearchHabit } from "./styles";
+import { ContainerSearchHabit, Content } from "./styles";
 import Button from "../../button";
 import DisplayCard from "../../displayCard";
 import Input from "../../input";
@@ -12,7 +12,7 @@ import PopUpBase from "../popUpBase";
 
 const GetHabitsSearch = ({ searchHabit, setSearchHabit, search = true }) => {
   const [searchedHabits, setSearchedHabits] = useState([]);
-
+  const [searchInput, setSearchInput] = useState("");
   const { habitsList } = useContext(HabitsContext);
 
   const handlePopUp = () => {
@@ -39,6 +39,12 @@ const GetHabitsSearch = ({ searchHabit, setSearchHabit, search = true }) => {
     setSearchedHabits(filteredHabits);
   };
 
+  const cleanSearch = () => {
+    setSearchHabit([]);
+    setSearchInput("");
+    setSearchedHabits([]);
+  };
+
   return (
     <>
       {search && (
@@ -49,11 +55,19 @@ const GetHabitsSearch = ({ searchHabit, setSearchHabit, search = true }) => {
                 register={register}
                 name="search"
                 placeholder="Pesquisar"
+                value={searchInput}
+                onChange={(event) => setSearchInput(event.target.value)}
               />
               <Button type="submit" name="button--blue">
                 Pesquisar
               </Button>
             </form>
+            <Content>
+              <span>Resultado para: {searchInput}</span>
+              <Button onClick={() => cleanSearch()} name="button--clear">
+                Limpar
+              </Button>
+            </Content>
             <div className="habitList">
               {searchedHabits[0] && <DisplayCard data={searchedHabits} />}
             </div>
