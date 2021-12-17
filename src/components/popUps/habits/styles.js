@@ -8,8 +8,19 @@ export const ButtonBox = styled.div`
 `;
 
 export const NewHabitForm = styled.form`
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
   text-align: start;
-  text-transform: capitalize;
+  padding: 0px 40px 40px 40px;
+
+  @media (max-width: 768px) {
+    padding: 0px 30px 30px 30px;
+  }
+
+  button {
+    margin-top: 20px;
+  }
 `;
 
 export const UpdateHabitForm = styled.form`
@@ -37,6 +48,7 @@ export const ContainerSearchHabit = styled.div`
     flex-direction: row;
     justify-content: space-evenly;
     text-align: start;
+    padding: 0 10px 0 10px;
 
     div button {
       margin-left: 5px;
@@ -53,6 +65,7 @@ export const ContainerSearchHabit = styled.div`
 
   .updateHabit {
     flex-direction: column;
+
     @media (min-width: 1024px) {
       height: 300px;
     }
@@ -69,6 +82,10 @@ export const Content = styled.div`
   display: flex;
   font-size: 12px;
   height: 25px;
+
+  span {
+    margin-left: 15px;
+  }
 
   button {
     margin-left: 15px;
