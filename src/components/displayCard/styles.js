@@ -38,6 +38,10 @@ export const Container = styled.div`
     font-size: 12px;
   }
 
+  p {
+    overflow: hidden;
+  }
+  
   h4 {
     font-weight: 500;
   }
@@ -54,7 +58,7 @@ export const Container = styled.div`
   .group-card-button {
     margin-block: 5px;
     margin: 0 auto;
-    width: 90px;
+    width: 110px;
   }
 
   .join-group-button {
@@ -74,11 +78,7 @@ export const Container = styled.div`
     h4 {
       font-size: 13px;
     }
-
-    .group-card-button {
-      width: 110px;
-    }
-
+    
     .join-group-button {
       div {
         width: 100px;

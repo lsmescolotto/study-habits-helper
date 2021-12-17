@@ -13,7 +13,7 @@ export const Container = styled.div`
     display: flex;
     flex-flow: column nowrap;
     overflow-y: scroll;
-    height: calc(100vh - 20vh);
+    height: calc(100vh - 23vh);
     width: 98%;
   }
 
@@ -22,10 +22,6 @@ export const Container = styled.div`
       align-items: center;
       flex-flow: row nowrap;
       justify-content: space-evenly;
-    }
-
-    .habits {
-      width: 500px;
     }
   }
 `;
