@@ -53,18 +53,21 @@ const Header = ({ dashboard = false, id, group = false }) => {
         </figure>
         {!!dashboard && (
           <div onClick={() => handleUser()}>
-            <span>
+            <span className="tooltip">
               <FiUser />
+              <small className="tooltip-message">Usuário</small>
             </span>
-            <span onClick={() => logout()}>
+            <span onClick={() => logout()} className="tooltip">
               <FiLogOut />
+              <small className="tooltip-message">Logout</small>
             </span>
           </div>
         )}
         {!!group && (
           <section>
-            <p>
+            <p className="tooltip">
               <FiEdit onClick={() => handleEdit(id)} />
+              <small className="tooltip-message">Editar Grupo</small>
             </p>
             <span>
               <Button
@@ -84,14 +87,17 @@ const Header = ({ dashboard = false, id, group = false }) => {
                 </Button>
               </span>
             )}
-            <p>
+            <p className="tooltip">
               <FiUserX onClick={() => handleUnsubscribe(id)} />
+              <small className="tooltip-message">Sair do Grupo</small>
             </p>
-            <p>
+            <p className="tooltip">
               <FiArrowLeftCircle onClick={GoToDashboard} />
+              <small className="tooltip-message">Dashboard</small>
             </p>
-            <span>
+            <span className="tooltip">
               <FiArrowLeftCircle onClick={GoToDashboard} />
+              <small className="tooltip-message">Dashboard</small>
             </span>
           </section>
         )}
