@@ -1,19 +1,20 @@
 import { useHistory } from "react-router-dom";
 import { useState, useContext } from "react";
-import { GroupContext } from "../../providers/groups/groups";
-import { GoalsContext } from "../../providers/goal/goal";
-import { Container, DisplayContainer } from "./styles";
+
 import { ActivitiesContext } from "../../providers/activities/activities";
-import HabitEditInfo from "../popUps/habits/updateHabit";
+import { Container, DisplayContainer } from "./styles";
+import { GoalsContext } from "../../providers/goal/goal";
+import { GroupContext } from "../../providers/groups/groups";
 import Button from "../button";
+import HabitEditInfo from "../popUps/habits/updateHabit";
 
 const DisplayCard = ({ type = "", data, boolean = false }) => {
   const [actualId, setActualId] = useState(0);
   const [editHabits, setEditHabits] = useState(false);
 
-  const { subscribeGroup, setGroupName } = useContext(GroupContext);
-  const { renderGoals, setGoals } = useContext(GoalsContext);
   const { renderActivities, setActivities } = useContext(ActivitiesContext);
+  const { renderGoals, setGoals } = useContext(GoalsContext);
+  const { subscribeGroup, setGroupName } = useContext(GroupContext);
 
   const history = useHistory();
 
@@ -38,6 +39,7 @@ const DisplayCard = ({ type = "", data, boolean = false }) => {
 
   return (
     <DisplayContainer>
+      
       {type === "group"
         ? data.map((group, index) => (
             <Container key={index} className="group-card">
@@ -88,6 +90,7 @@ const DisplayCard = ({ type = "", data, boolean = false }) => {
               </p>
             </Container>
           ))}
+
       {editHabits === true && (
         <HabitEditInfo
           editHabits={editHabits}
@@ -95,6 +98,7 @@ const DisplayCard = ({ type = "", data, boolean = false }) => {
           id={actualId}
         />
       )}
+
     </DisplayContainer>
   );
 };

@@ -1,19 +1,21 @@
 import { useContext, useEffect, useState } from "react";
 
-import * as yup from "yup";
 import { useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
+import * as yup from "yup";
+
 import { GroupContext } from "../../../providers/groups/groups";
-import PopUpBase from "../popUpBase";
 import Button from "../../button";
-import Input from "../../input";
 import DisplayCard from "../../displayCard";
+import Input from "../../input";
+import PopUpBase from "../popUpBase";
+
 import { Container, Content, CardsContainer } from "./styles";
 
 const FindGroups = ({ search, setSearch }) => {
   const [searchGroup, setSearchGroup] = useState("");
-  const [searchResult, setSearchResult] = useState([]);
   const [searchInput, setSearchInput] = useState("");
+  const [searchResult, setSearchResult] = useState([]);
 
   const { getGroups, groupList, setGroupList } = useContext(GroupContext);
 
@@ -49,6 +51,7 @@ const FindGroups = ({ search, setSearch }) => {
 
   return (
     <PopUpBase title="Pesquisar grupos" closePopUp={closeSearch}>
+
       <Container>
         <form onSubmit={handleSubmit(onSubmitFunction)}>
           <Input
@@ -59,7 +62,6 @@ const FindGroups = ({ search, setSearch }) => {
             value={searchInput}
             onChange={(event) => setSearchInput(event.target.value)}
           />
-
           <Button type="submit" name="button--blue">
             Pesquisar
           </Button>
@@ -71,6 +73,7 @@ const FindGroups = ({ search, setSearch }) => {
           </Button>
         </Content>
       </Container>
+
       <CardsContainer>
         {searchResult.results && (
           <DisplayCard type="group" data={searchResult.results} boolean />

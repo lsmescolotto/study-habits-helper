@@ -1,13 +1,14 @@
-import PopUpBase from "../popUpBase";
-import api from "../../../services/api";
-import { useState } from "react";
-import Button from "../../button";
-import { useEffect } from "react/cjs/react.development";
-import UpdateUserPopUp from "../updateUser";
+import { useEffect, useState } from "react";
+
 import toast from "react-hot-toast";
+import { FiUser, FiMail } from "react-icons/fi";
+
+import api from "../../../services/api";
+import Button from "../../button";
+import PopUpBase from "../popUpBase";
+import UpdateUserPopUp from "../updateUser";
 
 import { Container } from "./styles";
-import { FiUser, FiMail } from "react-icons/fi";
 
 const User = ({ closePopUp }) => {
   const [user, setUser] = useState([]);

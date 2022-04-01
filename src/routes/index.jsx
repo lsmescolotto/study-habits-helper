@@ -1,3 +1,5 @@
+import { useContext, useEffect } from "react";
+
 import { Route, Switch } from "react-router-dom";
 import Home from "../pages/home";
 import Login from "../pages/login";
@@ -6,10 +8,8 @@ import Team from "../pages/team";
 import Dashboard from "../pages/dashboard";
 import Group from "../pages/group";
 import AboutUs from "../pages/about";
-import { useContext } from "react/cjs/react.development";
 import { UserContext } from "../providers/user/user";
 import { Redirect } from "react-router-dom";
-import { useEffect } from "react";
 
 const Routes = () => {
   const { authenticated, setAuthenticated } = useContext(UserContext);

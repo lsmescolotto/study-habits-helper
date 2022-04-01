@@ -1,17 +1,19 @@
 import { useEffect, useState, useContext } from "react";
-import NewGoal from "../popUps/goals/newGoal";
-import NewActivity from "../popUps/newActivity";
-import { GoalsContext } from "../../providers/goal/goal";
+
 import { ActivitiesContext } from "../../providers/activities/activities";
-import { FiPlusSquare } from "react-icons/fi";
+import { GoalsContext } from "../../providers/goal/goal";
+import NewActivity from "../popUps/newActivity";
+import NewGoal from "../popUps/goals/newGoal";
+
 import { ContainerHeader } from "./styles";
+import { FiPlusSquare } from "react-icons/fi";
 
 const ContainerGroup = ({ text }) => {
-  const [newGoal, setNewGoal] = useState(false);
   const [newActivity, setNewActivity] = useState(false);
+  const [newGoal, setNewGoal] = useState(false);
 
-  const { renderGoals } = useContext(GoalsContext);
   const { renderActivities } = useContext(ActivitiesContext);
+  const { renderGoals } = useContext(GoalsContext);
 
   const groupId = localStorage.getItem("@Habits:groupID");
 
@@ -43,6 +45,7 @@ const ContainerGroup = ({ text }) => {
           )}
         </div>
       </ContainerHeader>
+      
       {newGoal && <NewGoal newGoal={newGoal} setNewGoal={setNewGoal} />}
       {newActivity && (
         <NewActivity

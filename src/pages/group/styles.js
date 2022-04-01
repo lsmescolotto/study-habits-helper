@@ -9,8 +9,8 @@ export const Container = styled.div`
   text-align: center;
 
   h2 {
-    font-size: 25px;
     font-family: var(--title-font);
+    font-size: 25px;
     margin: 30px 0 15px 0;
   }
 
@@ -18,11 +18,10 @@ export const Container = styled.div`
     align-items: center;
     display: flex;
     flex-flow: column nowrap;
-    justify-content: flex-start;
-    width: 95%;
-    align-items: center;
     height: calc(100vh - 189px);
+    justify-content: flex-start;
     overflow-y: scroll;
+    width: 95%;
   }
 
   .container__box {

@@ -1,10 +1,13 @@
 import { useState, useContext } from "react";
+
 import { useHistory } from "react-router-dom";
+
+import { GroupContext } from "../../providers/groups/groups";
 import Button from "../button";
 import Logo from "../../assets/img/logo.png";
-import { GroupContext } from "../../providers/groups/groups";
 import UpdateGroup from "../popUps/updateGroup";
 import User from "../popUps/user";
+
 import {
   FiUser,
   FiLogOut,
@@ -63,6 +66,7 @@ const Header = ({ dashboard = false, id, group = false }) => {
             </span>
           </div>
         )}
+
         {!!group && (
           <section>
             <p className="tooltip">
@@ -77,6 +81,7 @@ const Header = ({ dashboard = false, id, group = false }) => {
                 Editar
               </Button>
             </span>
+
             {!!id && (
               <span>
                 <Button
@@ -87,6 +92,7 @@ const Header = ({ dashboard = false, id, group = false }) => {
                 </Button>
               </span>
             )}
+
             <p className="tooltip">
               <FiUserX onClick={() => handleUnsubscribe(id)} />
               <small className="tooltip-message">Sair do Grupo</small>
@@ -102,6 +108,7 @@ const Header = ({ dashboard = false, id, group = false }) => {
           </section>
         )}
       </Container>
+
       {updatePopUp && <UpdateGroup id={id} closePopUp={handleEdit} />}
       {userPopUP && <User closePopUp={handleUser} />}
     </>

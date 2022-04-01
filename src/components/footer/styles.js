@@ -1,16 +1,14 @@
 import styled from "styled-components";
 
 export const Container = styled.footer`
-  background-color: var(--blue-80);
-
-  height: 10vh;
-  width: 100vw;
-
   align-items: center;
+  background-color: var(--blue-80);
   display: flex;
   flex-wrap: wrap;
+  height: 10vh;
   justify-content: center;
   justify-content: space-around;
+  width: 100vw;
 
   a {
     color: var(--blue-50);

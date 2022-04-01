@@ -34,14 +34,14 @@ export const Container = styled.div`
   width: 90%;
 
   h3 {
-    font-weight: 600;
     font-size: 12px;
+    font-weight: 600;
   }
 
   p {
     overflow: hidden;
   }
-  
+
   h4 {
     font-weight: 500;
   }
@@ -78,11 +78,9 @@ export const Container = styled.div`
     h4 {
       font-size: 13px;
     }
-    
-    .join-group-button {
-      div {
-        width: 100px;
-      }
+
+    .join-group-button div {
+      width: 100px;
     }
   }
 `;
