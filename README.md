@@ -1,8 +1,12 @@
 <h1 align="center">
   <img alt="Study Habits Helper" src="./src/assets/img/logo.png" width="100px" />
-<!-- </h1>
-![studyhabitshelperGit]()
-<br> -->
+</h1>
+<br>
+
+<h1 align="center">
+    <img alt="study-habits-helper-app" title="study-habits-helper-app" src="https://user-images.githubusercontent.com/88347963/161449260-bbfe221c-0d49-4ea5-88df-d9e55743dc76.gif" />
+</h1>
+
 
 ## 🧪 Tecnologias
 
